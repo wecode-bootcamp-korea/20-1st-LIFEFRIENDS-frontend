@@ -1,0 +1,45 @@
+.mainHearder {
+  height: 775px;
+  div:first-child {
+    position: relative;
+    left: 0;
+    top: 250px;
+    margin: auto;
+    width: 90%;
+    h1 {
+      margin-bottom: 30px;
+      width: 250px;
+      font-size: 42px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  div {
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      li {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .prev {
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      font-size: 24px;
+    }
+    .next {
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      font-size: 24px;
+    }
+  }
+}
