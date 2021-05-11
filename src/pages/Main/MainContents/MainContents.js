@@ -231,9 +231,6 @@ class MainContents extends Component {
             </ul>
           </div>
         </section>
-        <section className="mainThema">
-          <h1 className="title">#우리집 홈카페</h1>
-        </section>
         <section className="mainProducts">
           <h1 className="title">마음껏 둘러보세요</h1>
           <div>
