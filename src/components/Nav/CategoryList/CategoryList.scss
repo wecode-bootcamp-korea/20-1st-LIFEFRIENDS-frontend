@@ -1,0 +1,49 @@
+.categoryList {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
+
+  .categoryMenu {
+    position: relative;
+    font-size: 16px;
+    height: 50px;
+
+    .categoryText {
+      &:hover {
+        font-weight: bolder;
+      }
+    }
+
+    .subMenuList {
+      display: none;
+      position: absolute;
+      left: -60px;
+      width: 170px;
+      margin: 10px auto;
+      padding: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+      background-color: white;
+      border-radius: 5%;
+      z-index: 100;
+      font-size: 16px;
+      text-align: center;
+
+      .subMenu {
+        display: block;
+        margin: 15px;
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+  .showMoreButton {
+    display: flex;
+    font-size: 16px;
+    height: 50px;
+  }
+
+  .categoryMenu:hover .subMenuList {
+    display: block;
+  }
+}

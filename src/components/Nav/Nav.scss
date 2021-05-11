@@ -1,0 +1,88 @@
+@import '../../styles/Common.scss';
+
+@mixin marginHeaderLeftRight {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.all {
+  width: 1280px;
+  margin: 10px auto;
+
+  .lifeStoreNav {
+    position: absolute;
+    top: 0;
+    width: 1280px;
+    margin: 10px auto;
+
+    .navHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 13px;
+      padding: 10px;
+      color: $--font-desc-gray;
+      font-size: 15px;
+      border-bottom: 1px solid $--border-line;
+
+      .navHeaderLeft {
+        .toMoveNaverPage {
+          @include marginHeaderLeftRight();
+        }
+        .toMoveNaverShopping {
+          @include marginHeaderLeftRight();
+        }
+      }
+      .navHeaderRight {
+        .toLoginPage {
+          @include marginHeaderLeftRight();
+          .loginButton {
+            border: 1px solid $--border-line;
+            padding: 3px;
+            font-size: 15px;
+            color: $--font-desc-gray;
+          }
+          .viewTotal {
+            @include marginHeaderLeftRight();
+            font-size: 15px;
+          }
+        }
+      }
+    }
+    .navBody {
+      .logoAndSearch {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .logoLifeStore {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 30px;
+          margin-bottom: 22px;
+          font-size: 34px;
+          font-weight: bolder;
+        }
+        .searchBox {
+          .search {
+            position: absolute;
+            right: 5px;
+            top: 70px;
+            height: 40px;
+            width: 218px;
+            border: 1px solid $--font-desc-gray;
+            border-radius: 20px;
+            margin-top: 50px;
+            margin-bottom: 22px;
+            padding-left: 10px;
+          }
+          .searchButton {
+            position: absolute;
+            right: 20px;
+            top: 133px;
+          }
+        }
+      }
+    }
+  }
+}
