@@ -4,18 +4,6 @@
   height: 100vh;
   background-color: #f5f6f7;
 
-  .getUserHeader {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 200px;
-    padding-bottom: 20px;
-
-    img {
-      width: 15%;
-    }
-  }
-
   .loginContents {
     display: flex;
     justify-content: center;
@@ -51,10 +39,11 @@
         }
 
         .loginInputError {
-          display: none;
-          margin: 2px 0;
+          display: block;
+          margin: 5px 0;
           font-size: 13px;
           text-align: left;
+          color: #ff1616;
         }
       }
 
@@ -94,17 +83,23 @@
           font-weight: 100;
         }
         .loginStatusBefore {
-          display: inline-block;
           color: #e4e4e5;
         }
         .loginStatusAfter {
-          display: none;
           color: #03c75a;
         }
       }
       .ipSecurity {
         font-size: 15px;
         line-height: 15px;
+
+        .ipOnOff {
+          font-weight: bold;
+        }
+
+        .ipOn {
+          color: #03c75a;
+        }
       }
     }
 
@@ -118,28 +113,6 @@
         color: #8e8e8e;
         font-size: 14px;
         line-height: 14px;
-      }
-    }
-  }
-  .getUserFooter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    bottom: 0;
-    font-size: 11px;
-
-    .footerList {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-
-      li {
-        margin: 0 3px;
       }
     }
   }

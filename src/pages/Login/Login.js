@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import GetUserHeader from './GetUserHeader';
+import GetUserFooter from './GetUserFooter';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -8,6 +10,7 @@ class Login extends React.Component {
     this.state = {
       id: '',
       pw: '',
+      active: false,
     };
   }
 
@@ -46,8 +49,15 @@ class Login extends React.Component {
     });
   };
 
+  handleClick = () => {
+    const { active } = this.state;
+    this.setState({
+      active: !active,
+    });
+  };
+
   render() {
-    const { id, pw } = this.state;
+    const { id, pw, active } = this.state;
 
     const pwRegx =
       /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
@@ -61,10 +71,7 @@ class Login extends React.Component {
 
     return (
       <div className="login">
-        <header className="getUserHeader">
-          <img alt="logo" src="../../../Data/images/naver_logo.png" />
-          {/* <h1 className="getUserLogo">NEVER</h1> */}
-        </header>
+        <GetUserHeader />
         <main className="loginContents">
           <div className="loginContentsWrap">
             <form
@@ -80,9 +87,11 @@ class Login extends React.Component {
                   name="id"
                   onChange={this.handleInput}
                 />
-                <p className="loginInputError errorId">
-                  아이디를 입력해주세요.
-                </p>
+                {!id && (
+                  <p className="loginInputError errorId">
+                    아이디를 입력해주세요.
+                  </p>
+                )}
               </div>
               <div className="loginInputBox">
                 <input
@@ -92,9 +101,11 @@ class Login extends React.Component {
                   name="pw"
                   onChange={this.handleInput}
                 />
-                <p className="loginInputError errorPw">
-                  비밀번호를 입력해주세요.
-                </p>
+                {!pw && (
+                  <p className="loginInputError errorPw">
+                    비밀번호를 입력해주세요.
+                  </p>
+                )}
               </div>
               <button
                 className={`loginButton ${loginValid && 'loginButtonAfter'}`}
@@ -104,13 +115,21 @@ class Login extends React.Component {
               </button>
             </form>
             <div className="loginOption">
-              <button className="keepLogin">
-                <i className="far fa-check-circle loginStatusBefore"></i>
-                <i className="fas fa-check-circle loginStatusAfter"></i>
+              <button className="keepLogin" onClick={this.handleClick}>
+                {active ? (
+                  <i className="fas fa-check-circle loginStatusAfter"></i>
+                ) : (
+                  <i className="far fa-check-circle loginStatusBefore"></i>
+                )}
                 로그인 상태 유지
               </button>
-              <button className="ipSecurity">
-                IP 보안 <span className="loginOnOff">OFF</span>
+              <button className="ipSecurity" onClick={this.handleClick}>
+                IP 보안{' '}
+                {active ? (
+                  <span className="ipOnOff ipOn">ON</span>
+                ) : (
+                  <span className="ipOnOff ipOff">OFF</span>
+                )}
               </button>
             </div>
             <div className="findInfoList">
@@ -126,22 +145,7 @@ class Login extends React.Component {
             </div>
           </div>
         </main>
-        <footer className="getUserFooter">
-          <ul className="footerList">
-            <li className="">이용약관</li>
-            <li className="">개인정보처리방침</li>
-            <li className="">책임의 한계와 법적고지</li>
-            <li className="">회원정보</li>
-            <li className="">고객센터</li>
-          </ul>
-          <address>
-            <a className="footerLogo">NAVER</a>
-            <em className="copyRight">
-              Copyright <span className="copyrightBold">© NAVER Corp.</span> All
-              Rights Reserved.
-            </em>
-          </address>
-        </footer>
+        <GetUserFooter />
       </div>
     );
   }
