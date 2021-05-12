@@ -11,22 +11,55 @@ class Login extends React.Component {
     };
   }
 
-  // goToMain = e => {
-  //   e.preventDefault();
-  // };
+  goToMain = e => {
+    e.preventDefault();
+    //회원가입
+    const API = 'http://10.58.7.181:8000/users/login';
+    fetch(API, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.id,
+        password: this.state.pw,
+      }),
+    })
+      .then(res => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
+      .then(res => {
+        if (res) {
+          // save localstroage
+          localStorage.setItem('MESSAGE', res['ACCESS_TOKEN']);
+          // push to main
+          this.props.history.push('https://naver.com');
+        } else {
+          alert('');
+        }
+      });
+  };
 
-  // handleInput = e => {
-  //   const { name, loginInputValue } = e.target;
-  //   this.setState({
-  //     [name]: loginInputValue,
-  //   });
-  // };
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
+    const { id, pw } = this.state;
+
+    const pwRegx =
+      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+    const idValid = id.length >= 5 && id.length <= 20;
+    const pwValid = pwRegx.test(pw);
+    const loginValid = idValid && pwValid;
+
+    // console.log('pwValid >>> ', pwValid);
+    // console.log(pw);
+    // console.log('loginValid >>> ', loginValid);
+
     return (
-      // const conditionPw = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[!@#$%^&])[A-Za-z\d!@#$%^&]{8,16}$/
-      // const { id, pw } = this.state;
-      // const idIsValid = id.length >= 5 && id.length <= 20;
-      // const pwIsValid = pw
       <div className="login">
         <header className="getUserHeader">
           <img alt="logo" src="../../../Data/images/naver_logo.png" />
@@ -37,7 +70,7 @@ class Login extends React.Component {
             <form
               className="loginForm"
               action="https://naver.com"
-              // onSubmit={this.goToMain}
+              onSubmit={this.goToMain}
             >
               <div className="loginInputBox">
                 <input
@@ -46,7 +79,6 @@ class Login extends React.Component {
                   placeholder="아이디"
                   name="id"
                   onChange={this.handleInput}
-                  // {!isValid && return()}
                 />
                 <p className="loginInputError errorId">
                   아이디를 입력해주세요.
@@ -55,7 +87,7 @@ class Login extends React.Component {
               <div className="loginInputBox">
                 <input
                   className="inputPw loginInput"
-                  type="text"
+                  type="password"
                   placeholder="비밀번호"
                   name="pw"
                   onChange={this.handleInput}
@@ -64,12 +96,17 @@ class Login extends React.Component {
                   비밀번호를 입력해주세요.
                 </p>
               </div>
-              <button className="loginButton">로그인</button>
+              <button
+                className={`loginButton ${loginValid && 'loginButtonAfter'}`}
+                disabled={!loginValid}
+              >
+                로그인
+              </button>
             </form>
             <div className="loginOption">
               <button className="keepLogin">
-                <i class="far fa-check-circle loginStatusBefore"></i>
-                <i class="fas fa-check-circle loginStatusAfter"></i>
+                <i className="far fa-check-circle loginStatusBefore"></i>
+                <i className="fas fa-check-circle loginStatusAfter"></i>
                 로그인 상태 유지
               </button>
               <button className="ipSecurity">
