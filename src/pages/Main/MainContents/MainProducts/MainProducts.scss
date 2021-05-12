@@ -1,0 +1,12 @@
+@import '../../../../styles/Common.scss';
+
+.mainProducts {
+  div {
+    height: auto;
+
+    .mainGoods {
+      width: 90%;
+      overflow: visible;
+    }
+  }
+}

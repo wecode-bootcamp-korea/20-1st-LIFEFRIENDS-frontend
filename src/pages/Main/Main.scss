@@ -1,53 +1,5 @@
 @import '../../styles/Common.scss';
 
-.mainHeader {
-  @include flexBox(space-between, center, column);
-  height: 775px;
-  div:first-child {
-    margin: 225px auto 0;
-    width: 90%;
-    h1 {
-      margin-bottom: 45px;
-      width: 300px;
-      font-size: 56px;
-      font-weight: 900;
-      line-height: 1.2;
-    }
-    p {
-      font-size: 14px;
-    }
-  }
-  div {
-    position: absolute;
-    width: 100%;
-    ul {
-      top: 0;
-      left: 0;
-      width: 100%;
-      li {
-        img {
-          position: sticky;
-          width: 100%;
-          height: 775px;
-          object-fit: cover;
-          z-index: -1;
-        }
-      }
-    }
-    .prev,
-    .next {
-      position: absolute;
-      top: 55%;
-    }
-    .prev {
-      left: 40px;
-    }
-    .next {
-      right: 40px;
-    }
-  }
-}
-
 .prev,
 .next {
   i {
@@ -71,31 +23,8 @@
       background: rgba(0, 0, 0, 0.3);
       border-radius: 50%;
     }
-  }
-}
-
-.mainNews {
-  article {
-    width: 90%;
-    margin: auto;
-    div {
-      ul {
-        margin: auto;
-      }
-      div {
-        position: relative;
-        .prev,
-        .next {
-          position: absolute;
-          top: -385px;
-        }
-        .prev {
-          left: -40px;
-        }
-        .next {
-          right: -40px;
-        }
-      }
+    .onClick {
+      background: rgba(0, 0, 0, 1);
     }
   }
 }
@@ -105,10 +34,12 @@
   flex-wrap: wrap;
   height: 490px;
   overflow: hidden;
+
   div {
-    width: 436px;
+    width: 420px;
     height: 490px;
     padding: 0 14px;
+
     img {
       width: 408px;
       height: 365px;
@@ -116,11 +47,13 @@
       object-fit: cover;
       overflow: hidden;
     }
+
     h2 {
       margin-top: 19px;
       font-size: 24px;
       letter-spacing: -1px;
     }
+
     p {
       display: -webkit-box;
       width: 408px;
@@ -140,6 +73,7 @@
   font-weight: 800;
   text-align: center;
 }
+
 .linkBtn {
   display: block;
   width: 300px;
@@ -153,112 +87,32 @@
   cursor: pointer;
 }
 
-.mainCoupon {
-  background-color: #2f2f2f;
-  height: 350px;
-  div {
-    div {
-      @include flexBox(space-between, center, row);
-      width: 90%;
-      height: 100%;
-      margin: auto;
-      padding: 80px 0 30px 86px;
-      .coupon {
-        @include flexBox(space-around, center, column);
-        width: 410px;
-        height: 190px;
-        padding: 20px 0;
-        background-color: #fff;
-        border-radius: 20px;
-        h3 {
-          color: #6b90dc;
-          font-size: 15px;
-          font-weight: 800;
-        }
-        p:nth-child(2) {
-          font-size: 60px;
-          font-weight: 900;
-          letter-spacing: -1px;
-          span {
-            font-size: 46px;
-          }
-        }
-        p:last-child {
-          color: $--font-desc-gray;
-          font-style: italic;
-        }
-      }
-      .couponDesc {
-        @include flexBox(center, flex-start, column);
-        height: 150px;
-        padding: 0 38px;
-        h2 {
-          color: #fff;
-          font-size: 32px;
-        }
-        p {
-          margin-top: 12px;
-          color: rgba(255, 255, 255, 0.6);
-          font-size: 14px;
-        }
-        button {
-          margin: 16px 0 0 0;
-          color: #fff;
-        }
-      }
-    }
-  }
-  ul {
-    margin: auto;
-    width: 40px;
-  }
-}
-
-.mainGift {
-  div {
-    position: relative;
-    width: 90%;
-    margin: auto;
-    .prev,
-    .next {
-      position: absolute;
-      top: -300px;
-    }
-    .prev {
-      left: -80px;
-    }
-    .next {
-      right: -80px;
-    }
-  }
-  ul {
-    margin: 40px auto 0;
-    width: 30px;
-  }
-}
-
-.mainMiddleCard {
+.mainMediumCard {
   @include flexBox(space-between, center, row);
   flex-wrap: wrap;
-  width: 90%;
+  width: 1280px;
   height: 450px;
   margin: 0 auto 0px;
   overflow: hidden;
+
   div {
-    width: 90%;
+    width: 1280px;
     margin: auto;
     padding: 0 14px 60px;
     width: 300px;
     height: 480px;
+
     img {
       width: 100%;
       height: 365px;
       object-fit: cover;
       border-radius: 20px;
     }
+
     p:nth-child(2) {
       font-weight: 800;
     }
+
     p {
       display: -webkit-box;
       margin-top: 6px;
@@ -271,72 +125,8 @@
   }
 }
 
-.mainReview {
-  div {
-    width: 90%;
-    margin: auto;
-  }
-}
-
-.mainProducts {
-  div {
-    height: auto;
-    .mainGoods {
-      overflow: visible;
-    }
-  }
-}
-
-section {
-  position: relative;
-  .mainBottom {
-    position: absolute;
-    bottom: -480px;
-    left: 0;
-    right: 0;
-    height: 480px;
-    img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-    }
-    .mainBottomContent {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 480px;
-      margin: auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      div {
-        @include flexBox(space-between, center, column);
-        p {
-          padding: 8px;
-          font-size: 12px;
-        }
-        div {
-          @include flexBox(space-between, center, row);
-          button,
-          span {
-            margin: 24px 6px;
-            font-size: 14px;
-            font-weight: 800;
-            text-align: center;
-            line-height: 48px;
-            border: 1px solid $--border-line;
-            cursor: pointer;
-          }
-          button {
-            width: 300px;
-            height: 50px;
-            color: #fff;
-          }
-          span {
-            width: 50px;
-            height: 50px;
-          }
-        }
-      }
-    }
+@media screen and (max-width: 768px) {
+  .couponDesc {
+    display: none;
   }
 }

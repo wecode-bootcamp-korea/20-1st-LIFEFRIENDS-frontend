@@ -1,0 +1,28 @@
+@import '../../../../styles/Common.scss';
+
+.mainGift {
+  div {
+    position: relative;
+    width: 90%;
+    margin: auto;
+
+    .prev,
+    .next {
+      position: absolute;
+      top: -300px;
+    }
+
+    .prev {
+      left: -80px;
+    }
+
+    .next {
+      right: -80px;
+    }
+  }
+
+  ul {
+    width: 30px;
+    margin: 40px auto 0;
+  }
+}

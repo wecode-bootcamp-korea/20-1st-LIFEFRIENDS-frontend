@@ -10,7 +10,7 @@
   "eslint.alwaysShowStatus": true,
   "files.autoSave": "onFocusChange",
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#03c75a",
-    "titleBar.inactiveBackground": "#03c75a"
+    "titleBar.activeBackground": "#fdd90a",
+    "titleBar.inactiveBackground": "#fdd90a"
   }
 }
