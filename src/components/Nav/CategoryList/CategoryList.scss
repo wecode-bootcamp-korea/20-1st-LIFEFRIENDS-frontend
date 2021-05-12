@@ -1,49 +1,107 @@
 @import '../../../styles/Common.scss';
 
-.categoryList {
-  @include flexBox(space-around, center, row);
-  flex-wrap: wrap;
+.totalCategoryList {
+  border-bottom: 1px solid $--border-line;
 
-  .categoryMenu {
-    position: relative;
-    height: 50px;
-    font-size: 16px;
+  .categoryList {
+    @include flexBox(space-around, center, row);
+    flex-wrap: wrap;
+    font-family: '나눔고딕', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕',
+      sans-serif;
 
-    .categoryText {
-      &:hover {
-        font-weight: bolder;
-      }
-    }
-
-    .subMenuList {
-      display: none;
-      position: absolute;
-      left: -60px;
-      width: 170px;
-      margin: 10px auto;
-      padding: 10px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
-      background-color: white;
-      border-radius: 5%;
+    .categoryMenu {
+      position: relative;
+      height: 35px;
       font-size: 16px;
-      text-align: center;
-      z-index: 100;
 
-      .subMenu {
-        display: block;
-        margin: 15px;
-        text-decoration: none;
-        color: black;
+      .categoryText {
+        &:hover {
+          font-weight: bolder;
+        }
+      }
+
+      .subMenuList {
+        display: none;
+        position: absolute;
+        left: -60px;
+        width: 170px;
+        margin: 10px auto;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+        background-color: white;
+        border-radius: 5%;
+        font-size: 16px;
+        text-align: center;
+        z-index: 100;
+
+        .subMenu {
+          display: block;
+          margin: 15px;
+          text-decoration: none;
+          color: black;
+        }
       }
     }
-  }
-  .showMoreButton {
-    display: flex;
-    height: 50px;
-    font-size: 16px;
+
+    .showMoreButton {
+      display: flex;
+      height: 35px;
+      font-size: 16px;
+    }
+
+    .categoryMenu:hover .subMenuList {
+      display: block;
+    }
   }
 
-  .categoryMenu:hover .subMenuList {
-    display: block;
+  .categoryListNextLine {
+    @include flexBox(space-around, center, row);
+    flex-wrap: wrap;
+    width: 860px;
+    font-family: '나눔고딕', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕',
+      sans-serif;
+
+    .categoryMenuNextLine {
+      position: relative;
+      height: 35px;
+      font-size: 16px;
+
+      .categoryTextNextLine {
+        &:hover {
+          font-weight: bolder;
+        }
+      }
+
+      .subMenuListNextLine {
+        display: none;
+        position: absolute;
+        left: -60px;
+        width: 170px;
+        margin: 10px auto;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+        background-color: white;
+        border-radius: 5%;
+        font-size: 16px;
+        text-align: center;
+        z-index: 100;
+
+        .subMenuNextLine {
+          display: block;
+          margin: 15px;
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+    .showMoreButtonNextLine {
+      display: flex;
+      height: 50px;
+      font-size: 16px;
+    }
+
+    .categoryMenuNextLine:hover .subMenuListNextLine {
+      display: block;
+    }
   }
 }

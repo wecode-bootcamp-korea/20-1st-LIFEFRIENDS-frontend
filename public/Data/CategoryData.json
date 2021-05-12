@@ -34,7 +34,7 @@
       "categoryList": [
         {
           "categoryId": 1,
-          "categoryName": "미니 브라운앤프렌즈"
+          "categoryName": "브라운앤프렌즈"
         },
         {
           "categoryId": 2,
@@ -228,21 +228,26 @@
     },
     {
       "menuId": 14,
-      "menuName": "공지사항",
+      "menuName": "묻고 답하기",
       "categoryList": []
     },
     {
       "menuId": 15,
-      "menuName": "리뷰이벤트",
+      "menuName": "공지사항",
       "categoryList": []
     },
     {
       "menuId": 16,
-      "menuName": "쇼핑스토리",
+      "menuName": "리뷰이벤트",
       "categoryList": []
     },
     {
       "menuId": 17,
+      "menuName": "쇼핑스토리",
+      "categoryList": []
+    },
+    {
+      "menuId": 18,
       "menuName": "판매자정보",
       "categoryList": []
     }

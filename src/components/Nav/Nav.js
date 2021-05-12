@@ -1,9 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Category from './Category';
+import CategoryList from './CategoryList/CategoryList';
 import './Nav.scss';
 
 export class Navigator extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      categoryListData: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('Data/CategoryData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ categoryListData: data.categoryData });
+      });
+  }
+
   render() {
     return (
       <div className="navAndHeader">
@@ -43,7 +58,7 @@ export class Navigator extends React.Component {
               </div>
             </div>
           </nav>
-          <Category />
+          <CategoryList eachCategoryList={this.state.categoryListData} />
         </div>
       </div>
     );
