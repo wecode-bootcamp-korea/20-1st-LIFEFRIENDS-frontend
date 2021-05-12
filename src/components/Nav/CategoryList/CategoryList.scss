@@ -1,13 +1,13 @@
+@import '../../../styles/Common.scss';
+
 .categoryList {
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
+  @include flexBox(space-around, center, row);
   flex-wrap: wrap;
 
   .categoryMenu {
     position: relative;
-    font-size: 16px;
     height: 50px;
+    font-size: 16px;
 
     .categoryText {
       &:hover {
@@ -25,9 +25,9 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
       background-color: white;
       border-radius: 5%;
-      z-index: 100;
       font-size: 16px;
       text-align: center;
+      z-index: 100;
 
       .subMenu {
         display: block;
@@ -39,8 +39,8 @@
   }
   .showMoreButton {
     display: flex;
-    font-size: 16px;
     height: 50px;
+    font-size: 16px;
   }
 
   .categoryMenu:hover .subMenuList {

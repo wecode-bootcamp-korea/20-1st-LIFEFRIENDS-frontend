@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Nav.scss';
 import Category from './Category';
+import './Nav.scss';
 
 export class Navigator extends React.Component {
   render() {
     return (
-      <div className="all">
+      <div className="navAndHeader">
         <div className="lifeStoreNav">
           <header className="navHeader">
             <div className="navHeaderLeft">
@@ -18,7 +18,7 @@ export class Navigator extends React.Component {
               </a>
             </div>
             <div className="navHeaderRight">
-              <Link className="toLoginPage" to="/">
+              <Link className="toLoginPage" to="/menu">
                 <button className="loginButton">로그인</button>
               </Link>
               <a className="viewTotal" href="/#">
@@ -28,7 +28,7 @@ export class Navigator extends React.Component {
           </header>
           <nav className="navBody">
             <div className="logoAndSearch">
-              <Link className="logoLifeStore" to="/">
+              <Link className="logoLifeStore" to="/menu">
                 <button className="logoLifeStore">L I F E S T O R E</button>
               </Link>
               <div className="searchBox">

@@ -9,7 +9,6 @@ export class CategoryList extends React.Component {
       itemsToShow: 10,
       expanded: false,
     };
-    this.showMore = this.showMore.bind(this);
   }
 
   showMore() {
@@ -19,14 +18,13 @@ export class CategoryList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { eachCategoryList } = this.props;
 
     return (
       <div className="categoryList">
         {eachCategoryList.slice(0, this.state.itemsToShow).map(menuObj => {
           return (
-            <div className="categoryMenu">
+            <div key={menuObj.menuId} className="categoryMenu">
               {menuObj.categoryList.length > 0 ? (
                 <>
                   <Link to="/menu" className="categoryText">
@@ -35,12 +33,18 @@ export class CategoryList extends React.Component {
                   <i className="fa fa-caret-down"></i>
                 </>
               ) : (
-                <Link className="categoryText">{menuObj.menuName}</Link>
+                <Link to="/menu" className="categoryText">
+                  {menuObj.menuName}
+                </Link>
               )}
               {menuObj.categoryList.length > 0 && (
                 <div className="subMenuList">
                   {menuObj.categoryList.map(subMenuObj => (
-                    <Link to="/menu" className="subMenu">
+                    <Link
+                      key={subMenuObj.categoryId}
+                      to="/menu"
+                      className="subMenu"
+                    >
                       {subMenuObj.categoryName}
                     </Link>
                   ))}
@@ -49,7 +53,7 @@ export class CategoryList extends React.Component {
             </div>
           );
         })}
-        <button className="showMoreButton" onClick={this.showMore}>
+        <button className="showMoreButton" onClick={e => this.showMore()}>
           {this.state.expanded ? <span> 닫기 </span> : <span>더 보기</span>}
         </button>
       </div>
