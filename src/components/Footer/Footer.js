@@ -21,24 +21,26 @@ class Footer extends React.Component {
           <div className="notice">
             <i className="fas fa-exclamation-circle" />
             반품 배송비, 반품 배송주소 등은 해당 상품 페이지 내 안내를
-            참고해주세요cq
+            참고해주세요.
             <span>라이프 프렌즈 주식회사 고객센터 1577-7777</span>
           </div>
           <ul className="footerMenu">
             {footerMenu.map(item => {
-              return <li>{item}</li>;
+              return <li key={item}>{item}</li>;
             })}
           </ul>
           <div className="companyContact">
             <div className="lifer">
               <b>라이퍼㈜</b>
               <br />
-              사업자등록번호 123-45-678910 통신판매업 신고번호
+              사업자등록번호 123-45-678910 | 통신판매업 신고번호
               2020-서울선릉-301호
               <br />
-              대표이사 라이펄 서울시 강남구 선릉로 라이퍼 라이트그린플랜트 12345
+              대표이사 | 라이펄 서울시 강남구 선릉로 라이퍼 라이트그린플랜트
+              12345
               <br />
-              전화 1111-7777 이메일 helpcustomer@lifer.com 사업자등록정보 확인
+              전화 1111-7777 | 이메일 helpcustomer@lifer.com | 사업자등록정보
+              확인
               <br />
               호스팅 서비스 제공 : LIFER Business Platform
             </div>
@@ -66,7 +68,7 @@ class Footer extends React.Component {
             상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.
           </div>
           <div className="copyRights">
-            <img alt="life friends logo" src="" />
+            <span>L I F E R</span>
             <p>Copyright ©LIFER Corp.All Rights Reserved.</p>
           </div>
         </section>

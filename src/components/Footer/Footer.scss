@@ -11,7 +11,7 @@ $font-weight-medium: 400;
 $font-weight-bold: 600;
 
 .Footer {
-  width: 1280px;
+  width: 100vw;
   margin: 10px auto;
 
   .brandInfo {
@@ -54,9 +54,9 @@ $font-weight-bold: 600;
       li {
         padding: 0 10px;
         margin: 18px 0;
+        border-right: 1px solid $--border-line;
         font-size: $font-size-small;
         font-weight: $font-weight-medium;
-        border-right: 1px solid $--border-line;
 
         &:first-of-type {
           padding-left: 0;
@@ -67,10 +67,10 @@ $font-weight-bold: 600;
     .companyContact {
       @include flexBox(flex-start, flex-start, row);
       width: 1280px;
+      line-height: 24px;
       font-size: $font-size-small;
       font-weight: $font-weight-regular;
       color: $--font-desc-gray;
-      line-height: 24px;
 
       .lifer {
         height: 111px;
@@ -121,9 +121,8 @@ $font-weight-bold: 600;
       @include flexBox(flex-start, center, row);
       width: 1280px;
 
-      img {
-        width: 70px;
-        height: 11px;
+      span {
+        color: $--main-green;
       }
 
       p {
