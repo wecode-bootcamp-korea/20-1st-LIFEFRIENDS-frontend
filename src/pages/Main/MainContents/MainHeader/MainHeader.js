@@ -28,6 +28,7 @@ class MainHeader extends Component {
       .then(headerdata => {
         this.setState({ headerData: headerdata });
       });
+    setInterval(this.handleNextBtn, 3000);
   }
 
   changePage = e => {
@@ -46,7 +47,6 @@ class MainHeader extends Component {
   handlePrevBtn = () => {
     const { headerData, elNum } = this.state;
     let pageNum = elNum;
-    console.log(elNum);
     if (0 < elNum && elNum < headerData.length) {
       this.setState({
         elNum: pageNum - 1,
@@ -88,7 +88,6 @@ class MainHeader extends Component {
 
   render() {
     const { headerData, clickedPage, isOn } = this.state;
-    // setInterval(this.handleNextBtn, 2000);
 
     return (
       <header className="mainHeader">
