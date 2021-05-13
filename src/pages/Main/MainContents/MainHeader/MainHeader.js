@@ -4,7 +4,6 @@ import '../MainHeader/MainHeader.scss';
 class MainHeader extends Component {
   constructor() {
     super();
-    this.myRef = React.createRef();
     this.state = {
       headerData: [],
       clickedPage: [
@@ -111,17 +110,17 @@ class MainHeader extends Component {
         </div>
         <div>
           <p className="prev" onClick={this.handlePrevBtn}>
-            <i class="fas fa-chevron-left" />
+            <i className="fas fa-chevron-left" />
           </p>
           <p className="next" onClick={this.handleNextBtn}>
-            <i class="fas fa-chevron-right" />
+            <i className="fas fa-chevron-right" />
           </p>
         </div>
         <ul className="contentPageBtn">
           {headerData &&
             headerData.map(el => {
               return (
-                <li className={el.id}>
+                <li key={el.id} className={el.id}>
                   <button onClick={this.onClickPageBtn} />
                 </li>
               );

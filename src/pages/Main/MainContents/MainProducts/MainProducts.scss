@@ -1,12 +1,11 @@
 @import '../../../../styles/Common.scss';
 
 .mainProducts {
-  div {
-    height: auto;
+  padding: 100px 0 140px 0;
+  height: auto;
 
-    .mainGoods {
-      width: 90%;
-      overflow: visible;
-    }
+  .mainGoods {
+    width: 90%;
+    margin: auto;
   }
 }

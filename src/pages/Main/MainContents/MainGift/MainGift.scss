@@ -1,28 +1,33 @@
 @import '../../../../styles/Common.scss';
 
 .mainGift {
-  div {
+  height: 860px;
+  padding: 100px 0 140px 0;
+  overflow: hidden;
+
+  article {
     position: relative;
     width: 90%;
     margin: auto;
 
-    .prev,
-    .next {
-      position: absolute;
-      top: -300px;
+    ul {
+      margin: auto;
     }
 
-    .prev {
-      left: -80px;
-    }
+    div {
+      .prev,
+      .next {
+        position: absolute;
+        top: 260px;
+      }
 
-    .next {
-      right: -80px;
-    }
-  }
+      .prev {
+        left: -40px;
+      }
 
-  ul {
-    width: 30px;
-    margin: 40px auto 0;
+      .next {
+        right: -40px;
+      }
+    }
   }
 }

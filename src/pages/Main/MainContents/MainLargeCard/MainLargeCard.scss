@@ -1,0 +1,39 @@
+@import '../../../../styles/Common.scss';
+
+.mainLargeCard {
+  @include flexBox(space-between, center, row);
+  flex-wrap: wrap;
+  height: 490px;
+  overflow: hidden;
+
+  div {
+    width: 420px;
+    height: 490px;
+    padding: 0 14px;
+
+    img {
+      width: 408px;
+      height: 365px;
+      border-radius: 20px;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    h3 {
+      margin-top: 19px;
+      font-size: 24px;
+      letter-spacing: -1px;
+    }
+
+    p {
+      display: -webkit-box;
+      width: 408px;
+      margin-top: 6px;
+      font-size: 13px;
+      text-align: justify;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}

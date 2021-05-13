@@ -1,62 +1,47 @@
 @import '../../../../styles/Common.scss';
 
-section {
-  position: relative;
+.mainBottom {
+  width: 100%;
+  height: 480px;
+  margin: auto;
+  background: url('https://images.unsplash.com/photo-1610213880945-9b020ccc2843?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjIzfHxsZWdvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')
+    no-repeat fixed 50% 50% /100% 100%;
+  color: #fff;
 
-  .mainBottom {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -480px;
-    height: 480px;
+  .bottomContents {
+    position: relative;
+    top: 120px;
 
-    img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-    }
+    div {
+      @include flexBox(space-between, center, column);
 
-    .mainBottomContent {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 480px;
-      margin: auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #fff;
+      p {
+        padding: 8px;
+        font-size: 12px;
+      }
 
       div {
-        @include flexBox(space-between, center, column);
+        @include flexBox(space-between, center, row);
 
-        p {
-          padding: 8px;
-          font-size: 12px;
+        button,
+        span {
+          height: 50px;
+          margin: 24px 6px;
+          font-size: 14px;
+          font-weight: 800;
+          text-align: center;
+          line-height: 48px;
+          border: 1px solid $--border-line;
+          cursor: pointer;
         }
 
-        div {
-          @include flexBox(space-between, center, row);
+        button {
+          width: 300px;
+          color: #fff;
+        }
 
-          button,
-          span {
-            margin: 24px 6px;
-            font-size: 14px;
-            font-weight: 800;
-            text-align: center;
-            line-height: 48px;
-            border: 1px solid $--border-line;
-            cursor: pointer;
-          }
-
-          button {
-            width: 300px;
-            height: 50px;
-            color: #fff;
-          }
-
-          span {
-            width: 50px;
-            height: 50px;
-          }
+        span {
+          width: 50px;
         }
       }
     }

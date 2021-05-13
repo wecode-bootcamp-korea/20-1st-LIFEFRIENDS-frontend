@@ -1,31 +1,32 @@
 @import '../../../../styles/Common.scss';
 
 .mainNews {
+  padding: 100px 0;
+
   article {
     width: 90%;
+    height: 1000px;
     margin: auto;
 
+    ul {
+      margin: 80px auto;
+    }
+
     div {
-      ul {
-        margin: auto;
+      position: relative;
+
+      .prev,
+      .next {
+        position: absolute;
+        top: -380px;
       }
 
-      div {
-        position: relative;
+      .prev {
+        left: -40px;
+      }
 
-        .prev,
-        .next {
-          position: absolute;
-          top: -385px;
-        }
-
-        .prev {
-          left: -40px;
-        }
-
-        .next {
-          right: -40px;
-        }
+      .next {
+        right: -40px;
       }
     }
   }

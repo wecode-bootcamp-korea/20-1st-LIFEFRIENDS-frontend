@@ -5,18 +5,19 @@ import MainCoupon from './MainCoupon/MainCoupon';
 import MainGift from './MainGift/MainGift';
 import MainProducts from './MainProducts/MainProducts';
 import MainBottom from './MainBottom/MainBottom';
+import './MainContents.scss';
 
 class MainContents extends Component {
   render() {
     return (
-      <section>
+      <main>
         <MainHeader />
         <MainNews />
         <MainCoupon />
         <MainGift />
         <MainProducts />
         <MainBottom />
-      </section>
+      </main>
     );
   }
 }

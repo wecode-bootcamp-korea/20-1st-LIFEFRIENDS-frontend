@@ -1,7 +1,7 @@
 @import '../../../../styles/Common.scss';
 
 .mainHeader {
-  @include flexBox(center, center, column);
+  @include flexBox(flex-end, center, column);
   height: 700px;
 
   div {
@@ -9,7 +9,7 @@
     overflow: hidden;
 
     .carousel {
-      width: 1280px;
+      width: 90%;
 
       div {
         @include flexBox(space-between, flex-start, column);
@@ -41,6 +41,8 @@
           top: 0;
           left: 0;
           width: 100%;
+          // transition: all 0.3s ease-in-out;
+          // transform: scale(1.2);
 
           img {
             position: sticky;
@@ -49,8 +51,6 @@
             object-fit: cover;
             z-index: -1;
             opacity: 1;
-            transition: all 0.3s ease-in-out;
-            transform: scale(1.2);
           }
         }
       }
