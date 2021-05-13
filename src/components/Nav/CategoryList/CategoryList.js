@@ -28,13 +28,19 @@ export class CategoryList extends React.Component {
               <div key={menuObj.menuId} className="categoryMenu">
                 {menuObj.categoryList.length > 0 ? (
                   <>
-                    <Link to="/menu" className="categoryText">
+                    <Link
+                      to={`/product?menu=${menuObj.menuName}`}
+                      className="categoryText"
+                    >
                       {menuObj.menuName}
                     </Link>
                     <i className="fa fa-caret-down"></i>
                   </>
                 ) : (
-                  <Link to="/menu" className="categoryText">
+                  <Link
+                    to={`/product?menu=${menuObj.menuName}`}
+                    className="categoryText"
+                  >
                     {menuObj.menuName}
                   </Link>
                 )}
@@ -43,7 +49,7 @@ export class CategoryList extends React.Component {
                     {menuObj.categoryList.map(subMenuObj => (
                       <Link
                         key={subMenuObj.categoryId}
-                        to="/menu"
+                        to={`/product?menu=${menuObj.menuName}&category=${subMenuObj.categoryName}`}
                         className="subMenu"
                       >
                         {subMenuObj.categoryName}
@@ -64,13 +70,19 @@ export class CategoryList extends React.Component {
               <div key={menuObj.menuId} className="categoryMenuNextLine">
                 {menuObj.categoryList.length > 0 ? (
                   <>
-                    <Link to="/menu" className="categoryTextNextLine">
+                    <Link
+                      to={`/product?menu=${menuObj.menuName}`}
+                      className="categoryTextNextLine"
+                    >
                       {menuObj.menuName}
                     </Link>
                     <i className="fa fa-caret-down"></i>
                   </>
                 ) : (
-                  <Link to="/menu" className="categoryTextNextLine">
+                  <Link
+                    to={`/product?menu=${menuObj.menuName}`}
+                    className="categoryTextNextLine"
+                  >
                     {menuObj.menuName}
                   </Link>
                 )}
@@ -79,7 +91,7 @@ export class CategoryList extends React.Component {
                     {menuObj.categoryList.map(subMenuObj => (
                       <Link
                         key={subMenuObj.categoryId}
-                        to="/menu"
+                        to={`/product?menu=${menuObj.menuName}&category=${subMenuObj.categoryName}`}
                         className="subMenuNextLine"
                       >
                         {subMenuObj.categoryName}
@@ -90,9 +102,6 @@ export class CategoryList extends React.Component {
               </div>
             );
           })}
-          {/* <button className="showMoreButton1" onClick={e => this.showMore()}>
-            {this.state.expanded ? <span> 닫기 </span> : <span>더 보기</span>}
-          </button> */}
         </div>
       </div>
     );

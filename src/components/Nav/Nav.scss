@@ -1,5 +1,15 @@
 @import '../../styles/Common.scss';
 
+$font-size-supersmall: 12px;
+$font-size-extrasmall: 13px;
+$font-size-small: 14px;
+$font-size-regular: 15px;
+$font-size-medium: 16px;
+$font-weight-light: 200;
+$font-weight-regular: 300;
+$font-weight-medium: 400;
+$font-weight-bold: 600;
+
 @mixin marginHeaderLeftRight {
   margin-left: 10px;
   margin-right: 10px;
@@ -83,6 +93,66 @@
             position: absolute;
             right: 20px;
             top: 133px;
+          }
+
+          .searchListContainer {
+            padding: 16px 0;
+            position: absolute;
+            top: 160px;
+            right: 0;
+            z-index: 30;
+            width: 218px;
+            max-height: 450px;
+            background: white;
+            border: 1px solid $--font-desc-gray;
+            border-radius: 20px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.09);
+            overflow: hidden;
+            display: none;
+
+            &.open {
+              display: block;
+            }
+            li {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              padding-left: 12px;
+              width: 268px;
+              height: 64px;
+              cursor: pointer;
+
+              &:hover {
+                background: rgba(0, 0, 0, 0.03);
+                transition: all 0.2s ease;
+              }
+
+              .itemImg {
+                width: 54px;
+                height: 54px;
+                object-fit: cover;
+                border-radius: 4px;
+              }
+
+              div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 0 8px 0 8px;
+                width: 100%;
+                font-weight: $font-weight-medium;
+                word-break: break-all;
+
+                .productName {
+                  margin-bottom: 3px;
+                  font-size: $font-size-extrasmall;
+                  font-weight: $font-weight-medium;
+                  line-height: 18px;
+                  word-break: break-all;
+                }
+              }
+            }
           }
         }
       }
