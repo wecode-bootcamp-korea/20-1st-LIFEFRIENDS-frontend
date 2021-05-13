@@ -16,7 +16,7 @@ class Footer extends React.Component {
     ];
 
     return (
-      <footer className="Footer">
+      <footer className="footer">
         <section className="brandInfo">
           <div className="notice">
             <i className="fas fa-exclamation-circle" />
