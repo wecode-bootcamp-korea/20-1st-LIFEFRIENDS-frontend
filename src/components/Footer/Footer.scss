@@ -11,21 +11,22 @@ $font-weight-medium: 400;
 $font-weight-bold: 600;
 
 .Footer {
-  width: 1280px;
+  // width: 1280px;
   margin: 10px auto;
 
   .brandInfo {
     @include flexBox(center, center, column);
+    padding-left: 50px;
     font-family: '나눔고딕', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕',
       sans-serif;
     color: $--font-desc-gray;
 
     .notice {
       @include flexBox(flex-start, center, row);
-      margin-top: 60px;
-      padding-left: 20px;
       width: 1280px;
       height: 54px;
+      margin-top: 60px;
+      padding-left: 20px;
       background: #f6f8f9;
       color: $--font-desc-gray;
       font-size: $font-size-small;
@@ -76,18 +77,18 @@ $font-weight-bold: 600;
         height: 111px;
 
         b {
-          color: $--font-title-black;
           font-weight: $font-weight-bold;
+          color: $--font-title-black;
         }
       }
 
       .QnA {
-        margin-left: 100px;
         height: 111px;
+        margin-left: 100px;
 
         b {
-          color: $--font-title-black;
           font-weight: $font-weight-bold;
+          color: $--font-title-black;
         }
 
         span {
@@ -96,12 +97,12 @@ $font-weight-bold: 600;
       }
 
       .conflicts {
-        margin-left: 100px;
         height: 67px;
+        margin-left: 100px;
 
         b {
-          color: $--font-title-black;
           font-weight: $font-weight-bold;
+          color: $--font-title-black;
         }
 
         span {
@@ -111,8 +112,8 @@ $font-weight-bold: 600;
     }
 
     .companyGuideline {
-      margin: 56px 0 24px 0;
       width: 1280px;
+      margin: 56px 0 24px 0;
       font-size: $font-size-small;
       font-weight: $font-weight-regular;
     }
