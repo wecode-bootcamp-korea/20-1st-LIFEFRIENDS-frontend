@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "clicks": 50,
+    "imgUrl": "https://images.unsplash.com/photo-1534732806146-b3bf32171b48?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWluaSUyMHRveXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "name": "라인프렌즈 BT21 CHIMMY BABY 파자마 백참 인형 드림오브베이비",
+    "cost": 13000,
+    "reviewCount": 131,
+    "rating": 4.9,
+    "sold": 1234,
+    "created_at": 20200321
+  },
+  {
+    "id": 2,
+    "clicks": 40,
+    "imgUrl": "https://images.unsplash.com/photo-1581714716878-d03216848afd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
+    "name": "라인프렌즈 BT21 그린토이 세트",
+    "cost": 12900,
+    "reviewCount": 935,
+    "rating": 4.8,
+    "sold": 1432,
+    "created_at": 20190211
+  },
+  {
+    "id": 3,
+    "clicks": 20,
+    "imgUrl": "https://images.unsplash.com/photo-1558679908-541bcf1249ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA3fHxkb2xsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    "name": "BT21 COOKY 쿠션 (42cm)",
+    "cost": 38000,
+    "reviewCount": 578,
+    "rating": 5.0,
+    "sold": 231,
+    "created_at": 20190103
+  },
+  {
+    "id": 4,
+    "clicks": 80,
+    "imgUrl": "https://images.unsplash.com/photo-1590341328520-63256eb32bc3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTgxfHxkb2xsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "name": "라인프렌즈 BT21 BABY 핸드 워머 쿠션",
+    "cost": 27000,
+    "reviewCount": 648,
+    "rating": 4.9,
+    "sold": 12551,
+    "created_at": 20200421
+  }
+]
