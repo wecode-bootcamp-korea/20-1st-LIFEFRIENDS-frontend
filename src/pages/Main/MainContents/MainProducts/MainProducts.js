@@ -11,22 +11,22 @@ class MainProducts extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/mainGift.json')
+    fetch('http://10.58.7.181:8000/categories/토이')
       .then(response => response.json())
-      .then(giftdata => {
+      .then(productstData => {
         this.setState({
-          products: giftdata,
+          productstData: productstData.MESSAGE,
         });
       });
   }
 
   render() {
-    const { products } = this.state;
+    const { productstData } = this.state;
     return (
       <section className="mainProducts mainMiddleCards">
         <article className="mainGoods">
           <h2 className="title">마음껏 둘러보세요</h2>
-          <MainMediumCard giftData={products} />
+          <MainMediumCard giftData={productstData} />
         </article>
       </section>
     );

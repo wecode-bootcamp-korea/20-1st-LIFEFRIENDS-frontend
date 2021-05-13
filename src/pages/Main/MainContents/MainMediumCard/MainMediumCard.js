@@ -11,8 +11,8 @@ class MainMediumCard extends Component {
             return (
               <div key={el.id}>
                 <img alt={el.imgAlt} src={el.imgUrl} />
-                <p>{el.price}원</p>
-                <p>{el.desc}</p>
+                <p>{el.cost}원</p>
+                <p>{el.name}</p>
               </div>
             );
           })}

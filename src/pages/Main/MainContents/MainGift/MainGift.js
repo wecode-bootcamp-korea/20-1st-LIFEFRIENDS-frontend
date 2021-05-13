@@ -11,11 +11,11 @@ class MainGift extends Component {
   }
 
   componentDidMount() {
-    fetch('/data/mainGift.json')
+    fetch('http://10.58.7.181:8000/categories/선물추천')
       .then(response => response.json())
       .then(giftdata => {
         this.setState({
-          giftData: giftdata,
+          giftData: giftdata.MESSAGE,
         });
       });
   }
