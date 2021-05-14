@@ -4,17 +4,18 @@
   @include flexBox(flex-start, center, row);
   flex-wrap: wrap;
 
-  div {
+  .mediumCard {
     width: 320px;
     height: 540px;
     padding: 0 10px;
     background: url('../MainLargeCard/zoom-in.png');
     background-repeat: no-repeat;
     background-size: 100px;
+    background-position: 52% 50%;
 
     :hover {
-      opacity: 0.4;
-      transform: scale(1.4);
+      opacity: 0.2;
+      transform: scale(1.1);
     }
 
     img {

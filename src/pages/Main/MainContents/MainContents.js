@@ -15,8 +15,8 @@ class MainContents extends Component {
         <MainNews />
         <MainCoupon />
         <MainGift />
-        <MainProducts />
         <MainBottom />
+        <MainProducts />
       </main>
     );
   }

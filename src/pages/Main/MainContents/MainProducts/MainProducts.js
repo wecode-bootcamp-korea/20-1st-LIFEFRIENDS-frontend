@@ -7,18 +7,50 @@ class MainProducts extends Component {
     super();
     this.state = {
       productstData: [],
+      items: 8,
+      preItems: 0,
     };
   }
 
-  componentDidMount() {
-    fetch('http://10.58.7.181:8000/categories/토이')
+  getData = () => {
+    const { preItems, items } = this.state;
+    fetch('http://10.58.7.181:8000/categories/all')
       .then(response => response.json())
       .then(productstData => {
+        let dataToAdd = productstData.MESSAGE.slice(preItems, items);
         this.setState({
-          productstData: productstData.MESSAGE,
+          productstData: [...this.state.productstData, ...dataToAdd],
         });
       });
+  };
+
+  componentDidMount() {
+    this.getData();
+    window.addEventListener('scroll', this.infiniteScroll);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.infiniteScroll);
+  }
+
+  infiniteScroll = () => {
+    const { documentElement, body } = document;
+    const { items } = this.state;
+    const scrollHeight = Math.max(
+      documentElement.scrollHeight,
+      body.scrollHeight
+    );
+    const scrollTop = Math.max(documentElement.scrollTop, body.scrollTop);
+    const clientHeight = documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      this.setState({
+        preItems: items,
+        items: items + 8,
+      });
+      this.getData();
+    }
+  };
 
   render() {
     const { productstData } = this.state;
@@ -26,7 +58,7 @@ class MainProducts extends Component {
       <section className="mainProducts mainMiddleCards">
         <article className="mainGoods">
           <h2 className="title">마음껏 둘러보세요</h2>
-          <MainMediumCard giftData={productstData} />
+          <MainMediumCard Data={productstData} />
         </article>
       </section>
     );

@@ -1,50 +1,50 @@
-[{"MESSAGE": [{"id": 68, "name": "\ubbf8\ub2c8\ube0c\ub77c\uc6b4 \uc5bc\uad74 \ucfe0\uc158", "cost": 19000, "created_at": "2021-05-13T07:29:47.944Z", "clicks": 7, "imgUrl": "https://images.unsplash.com/photo-1618941026766-87a1bd06ef26?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQwfHxjdXNoaW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60", "imgAlt": "\ubbf8\ub2c8\ube0c\ub77c\uc6b4 \uc5bc\uad74 \ucfe0\uc158", "reviewCount": 0, "rating": 0, "sold": 0}, {"id": 59, "name": "CHIMMY BABY \ud30c\uc790\ub9c8 \ubc31\ucc38 \uc778\ud615 \ub4dc\ub9bc\uc624\ube0c\ubca0\uc774\ube44", "cost": 13000, "created_at": "2021-05-13T07:29:47.842Z", "clicks": 9, "imgUrl": "https://images.unsplash.com/photo-1590341328520-63256eb32bc3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTgxfHxkb2xsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60", "imgAlt": "CHIMMY BABY \ud30c\uc790\ub9c8 \ubc31\ucc38 \uc778\ud615 \ub4dc\ub9bc\uc624\ube0c\ubca0\uc774\ube44", "reviewCount": 0, "rating": 0, "sold": 0}, 
+[
   {
     "id": 1,
-    "title": "우리의 만남 청량함 가득",
+    "name": "우리의 만남 청량함 가득",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "imgAlt": "character lego",
     "imgUrl": "https://images.unsplash.com/photo-1591118731137-c01afa405891?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGxlZ298ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "price": 60000
+    "cost": 60000
   },
   {
     "id": 2,
-    "title": "우리의 만남 청량함 가득",
+    "name": "우리의 만남 청량함 가득",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "imgAlt": "character lego",
     "imgUrl": "https://images.unsplash.com/photo-1613834926943-9e4ac2945744?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODh8fGxlZ298ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "price": 45000
+    "cost": 45000
   },
   {
     "id": 3,
-    "title": "우리의 만남 청량함 가득",
+    "name": "우리의 만남 청량함 가득",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "imgAlt": "character lego",
     "imgUrl": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODV8fGxlZ298ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "price": 80000
+    "cost": 80000
   },
   {
     "id": 4,
-    "title": "우리의 만남 청량함 가득",
+    "name": "우리의 만남 청량함 가득",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "imgAlt": "character lego",
     "imgUrl": "https://images.unsplash.com/photo-1508245126183-fb439fec035f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTc0fHxsZWdvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "price": 60000
+    "cost": 60000
   },
   {
     "id": 5,
-    "title": "우리의 만남 청량함 가득",
+    "name": "우리의 만남 청량함 가득",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "imgAlt": "character lego",
     "imgUrl": "https://images.unsplash.com/photo-1526505262320-81542978f63b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGNoYXJhY3RlciUyMGxlZ298ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "price": 50000
+    "cost": 50000
   },
   {
     "id": 6,
-    "title": "우리의 만남 청량함 가득",
+    "name": "우리의 만남 청량함 가득",
     "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "imgAlt": "character lego",
     "imgUrl": "https://images.unsplash.com/photo-1526505262320-81542978f63b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGNoYXJhY3RlciUyMGxlZ298ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-    "price": 55000
+    "cost": 55000
   }
 ]
