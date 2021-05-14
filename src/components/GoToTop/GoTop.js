@@ -5,46 +5,37 @@ class GoTop extends React.Component {
   constructor() {
     super();
     this.state = {
-      intervalId: 0,
-      thePosition: false,
+      isVisible: false,
     };
   }
 
   componentDidMount() {
     document.addEventListener('scroll', () => {
-      if (window.scrollY > 170) {
-        this.setState({ thePosition: true });
+      if (window.scrollY > 300) {
+        this.setState({ isVisible: true });
       } else {
-        this.setState({ thePosition: false });
+        this.setState({ isVisible: false });
       }
     });
   }
 
-  onScrollStep = () => {
-    if (window.pageYOffset === 0) {
-      clearInterval(this.state.intervalId);
-    }
-    window.scroll(0, window.pageYOffset - this.props.scrollStepInPx);
-  };
-
-  scrollToTop = () => {
-    let intervalId = setInterval(this.onScrollStep);
-    this.setState({ intervalId: intervalId });
-  };
-
-  renderGoTopIcon = () => {
-    if (this.state.thePosition) {
-      return (
-        <button className="goToTop" onClick={this.scrollToTop}>
-          <i className="fas fa-chevron-up"></i>
-        </button>
-      );
-    }
+  scrolltoTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
   };
 
   render() {
-    return <>{this.renderGoTopIcon()}</>;
+    console.log(this.state.isVisible);
+    return (
+      <>
+        {this.state.isVisible && (
+          <button className="goToTop" onClick={this.scrolltoTop}>
+            <i className="fas fa-chevron-up"></i>
+          </button>
+        )}
+      </>
+    );
   }
 }
-
 export default GoTop;
