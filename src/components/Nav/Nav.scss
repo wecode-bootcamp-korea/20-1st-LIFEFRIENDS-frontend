@@ -86,7 +86,8 @@ $font-weight-bold: 600;
             margin-bottom: 22px;
             padding-left: 10px;
             border: 1px solid $--font-desc-gray;
-            border-radius: 20px;
+            border-radius: 10px;
+            font-size: 13px;
           }
 
           .searchButton {
@@ -98,14 +99,14 @@ $font-weight-bold: 600;
           .searchListContainer {
             padding: 16px 0;
             position: absolute;
-            top: 160px;
-            right: 0;
+            top: 161px;
+            right: 4px;
             z-index: 30;
             width: 218px;
             max-height: 450px;
             background: white;
             border: 1px solid $--font-desc-gray;
-            border-radius: 20px;
+            border-radius: 10px;
             box-shadow: 0 30px 90px rgba(0, 0, 0, 0.09);
             overflow: hidden;
             display: none;
@@ -114,12 +115,10 @@ $font-weight-bold: 600;
               display: block;
             }
             li {
-              display: flex;
-              justify-content: flex-start;
-              align-items: center;
-              padding-left: 12px;
+              @include flexBox(flex-start, center, row);
               width: 268px;
-              height: 64px;
+              height: 32px;
+              font-size: 13px;
               cursor: pointer;
 
               &:hover {
@@ -127,18 +126,8 @@ $font-weight-bold: 600;
                 transition: all 0.2s ease;
               }
 
-              .itemImg {
-                width: 54px;
-                height: 54px;
-                object-fit: cover;
-                border-radius: 4px;
-              }
-
               div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
+                @include flexBox(center, flex-start, column);
                 padding: 0 8px 0 8px;
                 width: 100%;
                 font-weight: $font-weight-medium;
@@ -146,9 +135,9 @@ $font-weight-bold: 600;
 
                 .productName {
                   margin-bottom: 3px;
-                  font-size: $font-size-extrasmall;
+                  font-size: 13px;
                   font-weight: $font-weight-medium;
-                  line-height: 18px;
+                  line-height: 13px;
                   word-break: break-all;
                 }
               }

@@ -11,14 +11,15 @@ export class Navigator extends React.Component {
       categoryListData: [],
       searchValue: '',
       searchList: [],
+      isLoggedIn: true,
     };
   }
 
   componentDidMount() {
-    fetch('Data/CategoryData.json')
+    fetch('http://10.58.3.83:8000/products/mainpage/menus')
       .then(res => res.json())
       .then(data => {
-        this.setState({ categoryListData: data.categoryData });
+        this.setState({ categoryListData: data.results });
       });
   }
 
@@ -28,12 +29,17 @@ export class Navigator extends React.Component {
     });
   };
 
+  // handleLoginStatus = () => {
+  //   this.props.history.push(`${!this.state.isloggedIn ? '/login' : '/'}`);
+  // };
+
   goToSearchResult = e => {
     e.preventDefault();
-    this.props.history.push(`/product?menu='${this.state.searchValue}'`);
+    this.state.history.push(`/product?menu='${this.state.searchValue}'`);
   };
 
   render() {
+    console.log(this.state.categoryListData);
     const filteredList = this.state.categoryListData.filter(category => {
       return (
         category.menuName
@@ -55,7 +61,18 @@ export class Navigator extends React.Component {
             </div>
             <div className="navHeaderRight">
               <Link className="toLoginPage" to="/menu">
-                <button className="loginButton">로그인</button>
+                <button className="loginButton">
+                  {this.state.isLoggedIn && (
+                    <span className="gnbBtn cart">
+                      <Link to={'/cart'}>장바구니</Link>
+                    </span>
+                  )}
+                  <span className="gnbBtn logIn">
+                    <Link to={this.state.isLoggedIn ? '/signup' : '/'}>
+                      {this.state.isLoggedIn ? '로그아웃' : '로그인'}
+                    </Link>
+                  </span>
+                </button>
               </Link>
               <a className="viewTotal" href="/#">
                 <i className="fas fa-th"></i>

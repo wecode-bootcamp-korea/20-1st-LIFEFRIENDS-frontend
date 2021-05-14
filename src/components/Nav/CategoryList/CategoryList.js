@@ -6,19 +6,21 @@ export class CategoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsToShow: 10,
+      itemsToShow: '',
       expanded: false,
+      disable: false,
     };
   }
 
-  showMore() {
+  showMore = () => {
     this.state.itemsToShow === 10
       ? this.setState({ itemsToShow: this.props.length, expanded: true })
       : this.setState({ itemsToShow: 10, expanded: false });
-  }
+  };
 
   render() {
     const { eachCategoryList } = this.props;
+    console.log(this.state.expanded);
 
     return (
       <div className="totalCategoryList">
@@ -60,8 +62,27 @@ export class CategoryList extends React.Component {
               </div>
             );
           })}
-          <button className="showMoreButton" onClick={e => this.showMore()}>
-            {this.state.expanded ? <span> 닫기 </span> : <span>더 보기</span>}
+          <button
+            className="showMoreButton"
+            disabled={this.state.expanded ? true : false}
+            onClick={e => this.showMore()}
+          >
+            <span className={this.state.expanded ? 'closed' : 'open'}>
+              {this.state.expanded ? <span> 닫기 </span> : <span>더 보기</span>}
+            </span>
+            <button
+              className="showMoreButton1"
+              disabled={this.state.expanded ? false : true}
+              onClick={e => this.showMore()}
+            >
+              <span className={this.state.expanded ? 'open' : 'closed'}>
+                {this.state.expanded ? (
+                  <span> 닫기 </span>
+                ) : (
+                  <span>더 보기</span>
+                )}
+              </span>
+            </button>
           </button>
         </div>
         <div className="categoryListNextLine">

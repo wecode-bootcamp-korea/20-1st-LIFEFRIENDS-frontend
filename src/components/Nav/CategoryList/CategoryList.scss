@@ -44,9 +44,36 @@
     }
 
     .showMoreButton {
+      position: relative;
       display: flex;
       height: 35px;
+      width: 49.609px;
       font-size: 16px;
+
+      span.closed {
+        display: none;
+      }
+      span.open {
+        display: block;
+      }
+      .showMoreButton1 {
+        position: absolute;
+        top: 30px;
+        display: flex;
+        height: 35px;
+        width: 49.609px;
+        font-size: 16px;
+
+        span {
+          font-size: 16px;
+        }
+        span.closed {
+          display: none;
+        }
+        span.open {
+          display: block;
+        }
+      }
     }
 
     .categoryMenu:hover .subMenuList {
@@ -98,5 +125,8 @@
     .categoryMenuNextLine:hover .subMenuListNextLine {
       display: block;
     }
+  }
+  i {
+    margin-left: 5px;
   }
 }
