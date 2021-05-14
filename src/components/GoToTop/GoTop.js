@@ -26,7 +26,6 @@ class GoTop extends React.Component {
   };
 
   render() {
-    console.log(this.state.isVisible);
     return (
       <>
         {this.state.isVisible && (
