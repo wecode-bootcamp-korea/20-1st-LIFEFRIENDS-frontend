@@ -8,6 +8,14 @@
     width: 320px;
     height: 540px;
     padding: 0 10px;
+    background: url('../MainLargeCard/zoom-in.png');
+    background-repeat: no-repeat;
+    background-size: 100px;
+
+    :hover {
+      opacity: 0.4;
+      transform: scale(1.4);
+    }
 
     img {
       width: 300px;

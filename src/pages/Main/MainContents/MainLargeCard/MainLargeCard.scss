@@ -10,13 +10,21 @@
     width: 420px;
     height: 490px;
     padding: 0 14px;
+    background: url('./zoom-in.png');
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: 52% 50%;
+
+    :hover {
+      opacity: 0.2;
+      transform: scale(1.1);
+    }
 
     img {
       width: 408px;
       height: 365px;
       border-radius: 20px;
       object-fit: cover;
-      overflow: hidden;
     }
 
     h3 {
