@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCart from './ProductCard/ProductCart';
 import SortingButton from './Sortingbutton/SortingButton';
+import PageButton from './PageButton/PageButton';
 import './Category.scss';
 import '../../styles/Reset.scss';
 
@@ -8,34 +9,67 @@ class Category extends React.Component {
   constructor() {
     super();
     this.state = {
-      sortingField: {
-        인기도순: 'views',
-        누적판매순: 'sold',
-        낮은가격순: 'cost',
-        최신등록순: 'created_at',
-        평점높은순: 'rating',
-      },
+      sortingField: [
+        {
+          id: 1,
+          title: '인기도순',
+          dataField: 'clicks',
+          manyToLittle: true,
+        },
+        {
+          id: 2,
+          title: '누적판매순',
+          dataField: 'sold',
+          manyToLittle: true,
+        },
+        {
+          id: 3,
+          title: '낮은가격순',
+          dataField: 'cost',
+          manyToLittle: false,
+        },
+        {
+          id: 4,
+          title: '최신등록순',
+          dataField: 'created_at',
+          manyToLittle: true,
+        },
+        {
+          id: 5,
+          title: '평점높은순',
+          dataField: 'rating',
+          manyToLittle: true,
+        },
+      ],
       sortingFieldTitle: '',
       productData: 0, //왜 빈 배열로 하면 &&함수 작동안함?
+      itemsOnEachPage: 8,
+      numberOfPages: [],
+      currentPage: 1,
     };
   }
 
-  //api 연결성공
+  // api 연결성공
   // componentDidMount = () => {
-  //   const { productData } = this.state;
-  //   fetch('http://10.58.7.181:8000/categories/토이', {
+  //   const { producData, itemsOnEachPage } = this.state;
+  //   fetch('http://10.58.7.181:8000/categories/토이?sort=POPULAR', {
   //     method: 'GET',
   //   })
   //     .then(res => res.json())
   //     .then(data => {
   //       this.setState({
   //         productData: data.MESSAGE,
+  //         numberOfPages: Array.from(
+  //           { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
+  //           (v, i) => i //원리 이해 필요
+  //         ),
   //       });
   //     });
   // };
 
+  //MockData 연결용
   componentDidMount = () => {
-    const { productData } = this.state;
+    const { productData, itemsOnEachPage } = this.state;
     fetch('http://localhost:3000/data/categoryData.json', {
       method: 'GET',
     })
@@ -43,23 +77,41 @@ class Category extends React.Component {
       .then(data => {
         this.setState({
           productData: data,
+          numberOfPages: Array.from(
+            { length: Math.ceil(data.length / itemsOnEachPage) },
+            (v, i) => i //원리 이해 필요
+          ),
         });
       });
   };
 
-  changeSortingField = sortingField => {
-    const { productData } = this.state;
+  changeSortingField = (sortingField, sortRule) => {
+    const { productData, itemsOnEachPage } = this.state;
     this.setState({
       productData: productData.sort(
-        (a, b) => b[sortingField] - a[sortingField]
+        sortRule === true
+          ? (a, b) => b[sortingField] - a[sortingField]
+          : (a, b) => a[sortingField] - b[sortingField]
       ),
     });
   };
 
+  pageChange = page => {
+    this.setState({
+      currentPage: page,
+    });
+  };
+
   render() {
-    const { productData, sortingField, sortingFieldTitle } = this.state;
-    const { changeSortingField } = this;
-    console.log(sortingField);
+    const {
+      productData,
+      sortingField,
+      numberOfPages,
+      currentPage,
+      itemsOnEachPage,
+    } = this.state;
+    const { changeSortingField, pageChange } = this;
+    // console.log(numberOfPages);
 
     return (
       <article className="category">
@@ -71,47 +123,43 @@ class Category extends React.Component {
         </div>
         <div className="filter">
           <ul className="sortButtonArea">
-            <SortingButton
-              sortingField={sortingField}
-              sortFunction={changeSortingField}
-            />
-            <SortingButton
-              sortingFieldTitle="누적판매순"
-              sortFunction={changeSortingField}
-            />
-            <SortingButton
-              sortingFieldTitle="낮은가격순"
-              sortFunction={changeSortingField}
-            />
-            <SortingButton
-              sortingFieldTitle="최신등록순"
-              sortFunction={changeSortingField}
-            />
-            <SortingButton
-              sortingFieldTitle="리뷰많은순"
-              sortFunction={changeSortingField}
-            />
-            <SortingButton
-              sortingFieldTitle="평점높은순"
-              sortFunction={changeSortingField}
-            />
+            {sortingField.map(data => {
+              return (
+                <SortingButton
+                  key={data.id}
+                  title={data.title}
+                  field={data.dataField}
+                  sortFunction={changeSortingField}
+                  sortingRule={data.manyToLittle}
+                />
+              );
+            })}
           </ul>
         </div>
         <div>
           <ul className="productList">
             {productData &&
-              productData.map(data => {
-                return <ProductCart key={data.id} data={data} />;
-              })}
+              productData
+                .slice(
+                  (currentPage - 1) * itemsOnEachPage,
+                  currentPage * itemsOnEachPage
+                )
+                .map(data => {
+                  return <ProductCart key={data.id} data={data} />;
+                })}
           </ul>
         </div>
         <div className="menuItem">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
+          {numberOfPages.map(num => {
+            return (
+              <PageButton
+                key={num}
+                page={num + 1}
+                pageChangeFunc={pageChange}
+                currentPage={currentPage}
+              />
+            );
+          })}
         </div>
       </article>
     );

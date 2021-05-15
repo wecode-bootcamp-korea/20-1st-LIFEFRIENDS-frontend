@@ -2,13 +2,15 @@ import React from 'react';
 
 class SortingButton extends React.Component {
   render() {
-    const { sortingField, sortFunction } = this.props;
+    const { key, title, field, sortFunction, sortingRule } = this.props;
     return (
-      <li>
-        {console.log(sortingField)}
-        {/* <button onClick={() => sortFunction(Object.keys(sortingField)[0])}> */}
-        {/* {Object.keys(sortingField)[0]} */}
-        {/* </button> */}
+      <li key={key}>
+        <button
+          className="sortButton"
+          onClick={() => sortFunction(field, sortingRule)}
+        >
+          {title}
+        </button>
       </li>
     );
   }

@@ -7,6 +7,18 @@ class ProductCart extends React.Component {
       <li className="productOnCategory" key={id}>
         <a href="http:://naver.com">
           <img alt="product01" src={imgUrl} />
+          <div className="hoverButtonBundle">
+            <img
+              className="hoverButton"
+              alt="heartButton"
+              src="/images/heart.png"
+            />
+            <img
+              className="hoverButton"
+              alt="heartButton"
+              src="/images/plus.png"
+            />
+          </div>
           <div className="betweenImgAndText">
             <strong>
               <p>{name}</p>

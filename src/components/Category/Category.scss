@@ -29,6 +29,9 @@
       display: flex;
       flex-direction: row;
       margin-top: 30px;
+
+      .sortButton {
+      }
     }
   }
 
@@ -53,19 +56,43 @@
   .productList {
     display: flex;
     flex-wrap: wrap;
-    // overflow: scroll;
   }
   .productOnCategory {
-    // flex-wrap: wrap;
     margin: 20px 0px;
     padding: 0px 18px;
     width: 316px;
+    position: relative;
     //이미지 맞추기
+
     img {
       width: 280px;
       height: 381px;
       object-fit: cover;
       background-size: cover;
+    }
+
+    .hoverButtonBundle {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 80px;
+      width: 90%;
+      height: 80%;
+      opacity: 0;
+      transition-duration: 0.5s;
+    }
+
+    .hoverButton {
+      width: 25%;
+      height: 25%;
+      margin: 10px 10px;
+      object-fit: contain;
+      position: relative;
+      top: 70%;
+    }
+
+    .hoverButtonBundle:hover {
+      opacity: 0.9;
     }
 
     .betweenImgAndText {
@@ -101,7 +128,15 @@
     justify-content: center;
     align-items: center;
     button {
-      margin: 15px;
+      padding: 12px 15px;
+    }
+
+    .buttonClicked {
+      background-color: grey;
+      color: white;
+    }
+    .buttonUnClicked {
+      color: black;
     }
   }
 }
