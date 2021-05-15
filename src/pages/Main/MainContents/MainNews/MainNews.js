@@ -44,7 +44,7 @@ class MainNews extends Component {
                 })}
             </ul>
           </div>
-          <Link to="/" className="linkBtn">
+          <Link to="/3000/product?menu=전체상품" className="linkBtn">
             쇼핑 스토리 전체 보기
           </Link>
         </article>

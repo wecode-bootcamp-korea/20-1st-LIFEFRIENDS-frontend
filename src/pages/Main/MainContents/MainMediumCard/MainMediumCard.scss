@@ -12,11 +12,10 @@
     background-repeat: no-repeat;
     background-size: 100px;
     background-position: 52% 50%;
-
-    :hover {
-      opacity: 0.2;
-      transform: scale(1.1);
-    }
+    // :hover {
+    //   opacity: 0.2;
+    //   transform: scale(1.1);
+    // }
 
     img {
       width: 300px;
@@ -26,7 +25,26 @@
       overflow: hidden;
     }
 
-    p:nth-child(2) {
+    .hoverButtonBundle {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      top: -90px;
+      opacity: 0;
+      transition-duration: 0.5s;
+    }
+
+    .hoverButton {
+      width: 25%;
+      height: 25%;
+      margin: -40px 10px;
+    }
+
+    .hoverButtonBundle:hover {
+      opacity: 0.9;
+    }
+
+    p:nth-child(3) {
       margin-top: 16px;
       font-weight: 800;
     }

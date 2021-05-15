@@ -7,9 +7,9 @@
   overflow: hidden;
 
   div {
-    width: 420px;
+    width: 430px;
     height: 490px;
-    padding: 0 14px;
+    padding: 14px 14px;
     background: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Finger_heart.png');
     background-repeat: no-repeat;
     background-size: 150px;
@@ -17,7 +17,7 @@
 
     :hover {
       opacity: 0.2;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     img {
@@ -36,7 +36,7 @@
     p {
       display: -webkit-box;
       width: 408px;
-      margin-top: 6px;
+      margin-top: 12px;
       font-size: 13px;
       text-align: justify;
       -webkit-line-clamp: 3;

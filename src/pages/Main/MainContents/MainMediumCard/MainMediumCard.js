@@ -25,11 +25,29 @@ class MainMediumCard extends Component {
         {Data &&
           Data.map(el => {
             return (
-              <div className="mediumCard" key={el.id}>
-                <img alt={el.imgAlt} src={el.imgUrl} onClick={this.openModal} />
-                <p>{el.cost}원</p>
-                <p>{el.name}</p>
-              </div>
+              <>
+                <div className="mediumCard" key={el.id}>
+                  <img
+                    alt={el.imgAlt}
+                    src={el.imgUrl}
+                    onClick={this.openModal}
+                  />
+                  <div className="hoverButtonBundle">
+                    <img
+                      className="hoverButton"
+                      alt="heartButton"
+                      src="/images/heart.png"
+                    />
+                    <img
+                      className="hoverButton"
+                      alt="heartButton"
+                      src="/images/plus.png"
+                    />
+                  </div>
+                  <p>{el.cost}원</p>
+                  <p>{el.name}</p>
+                </div>
+              </>
             );
           })}
         <Modal
