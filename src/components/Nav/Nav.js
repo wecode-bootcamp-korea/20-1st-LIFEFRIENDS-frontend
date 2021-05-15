@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import CategoryList from './CategoryList/CategoryList';
+import LoginAndLogout from '../Nav/LoginAndLogout/LoginAndLogout';
 import './Nav.scss';
 
 export class Navigator extends React.Component {
@@ -11,12 +12,11 @@ export class Navigator extends React.Component {
       categoryListData: [],
       searchValue: '',
       searchList: [],
-      isLoggedIn: true,
     };
   }
 
   componentDidMount() {
-    fetch('http://10.58.3.83:8000/products/mainpage/menus')
+    fetch('/Data/CategoryData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({ categoryListData: data.results });
@@ -29,9 +29,9 @@ export class Navigator extends React.Component {
     });
   };
 
-  // handleLoginStatus = () => {
-  //   this.props.history.push(`${!this.state.isloggedIn ? '/login' : '/'}`);
-  // };
+  handleLoginStatus = () => {
+    this.props.history.push(`${!this.state.isloggedIn ? '/login' : '/'}`);
+  };
 
   goToSearchResult = e => {
     e.preventDefault();
@@ -39,7 +39,6 @@ export class Navigator extends React.Component {
   };
 
   render() {
-    console.log(this.state.categoryListData);
     const filteredList = this.state.categoryListData.filter(category => {
       return (
         category.menuName
@@ -59,25 +58,32 @@ export class Navigator extends React.Component {
                 라이퍼쇼핑
               </a>
             </div>
-            <div className="navHeaderRight">
-              <Link className="toLoginPage" to="/menu">
-                <button className="loginButton">
-                  {this.state.isLoggedIn && (
-                    <span className="gnbBtn cart">
-                      <Link to={'/cart'}>장바구니</Link>
-                    </span>
-                  )}
-                  <span className="gnbBtn logIn">
-                    <Link to={this.state.isLoggedIn ? '/signup' : '/'}>
-                      {this.state.isLoggedIn ? '로그아웃' : '로그인'}
-                    </Link>
-                  </span>
+            <LoginAndLogout />
+            {/* <div className="navHeaderRight">
+              <div className="loginButtonAndCart">
+                <button className="goToLogIn">
+                  <Link to={this.state.isLoggedIn ? '/signup' : '/'}>
+                    {this.state.isLoggedIn ? '로그아웃' : '로그인'}
+                  </Link>
                 </button>
-              </Link>
+                {this.state.isLoggedIn && (
+                  <>
+                    <button className="goToPickStore">
+                      <Link to={'/cart'}>찜한스토어</Link>
+                    </button>
+                    <button className="goToMypage">
+                      <Link to={'/cart'}>마이페이지</Link>
+                    </button>
+                    <button className="goToCart">
+                      <Link to={'/cart'}>장바구니</Link>
+                    </button>
+                  </>
+                )}
+              </div>
               <a className="viewTotal" href="/#">
                 <i className="fas fa-th"></i>
               </a>
-            </div>
+            </div> */}
           </header>
           <nav className="navBody">
             <div className="logoAndSearch">

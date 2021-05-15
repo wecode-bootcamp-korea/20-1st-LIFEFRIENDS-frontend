@@ -15,6 +15,13 @@ $font-weight-bold: 600;
   margin-right: 10px;
 }
 
+%cartMypageMypickButton {
+  margin-right: 10px;
+  padding: 3px;
+  font-size: 15px;
+  color: $--font-desc-gray;
+}
+
 .navAndHeader {
   width: 1280px;
   margin: 10px auto;
@@ -43,24 +50,33 @@ $font-weight-bold: 600;
         }
       }
 
-      .navHeaderRight {
-        .toLoginPage {
-          @include marginHeaderLeftRight();
+      // .navHeaderRight {
+      //   @include flexBox(space-between, center, row);
+      //   .loginButtonAndCart {
+      //     @include marginHeaderLeftRight();
 
-          .loginButton {
-            margin-right: 10px;
-            padding: 3px;
-            border: 1px solid $--border-line;
-            font-size: 15px;
-            color: $--font-desc-gray;
-          }
+      //     .goToLogIn {
+      //       @extend %cartMypageMypickButton;
+      //     }
 
-          .viewTotal {
-            @include marginHeaderLeftRight();
-            font-size: 15px;
-          }
-        }
-      }
+      //     .goToPickStore {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .goToMypage {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .goToCart {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .viewTotal {
+      //       @include marginHeaderLeftRight();
+      //       font-size: 15px;
+      //     }
+      //   }
+      // }
     }
     .navBody {
       .logoAndSearch {
