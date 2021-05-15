@@ -28,7 +28,7 @@
         margin: 10px auto;
         padding: 10px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
-        background-color: white;
+        background-color: rgb(255, 255, 255);
         border-radius: 5%;
         font-size: 16px;
         text-align: center;
@@ -47,11 +47,11 @@
       position: relative;
       display: flex;
       height: 35px;
-      width: 49.609px;
+      width: 70px;
       font-size: 16px;
 
       span.closed {
-        display: none;
+        display: block;
       }
       span.open {
         display: block;
@@ -68,7 +68,7 @@
           font-size: 16px;
         }
         span.closed {
-          display: none;
+          display: block;
         }
         span.open {
           display: block;

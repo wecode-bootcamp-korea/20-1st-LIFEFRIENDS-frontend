@@ -20,7 +20,6 @@ export class CategoryList extends React.Component {
 
   render() {
     const { eachCategoryList } = this.props;
-    console.log(this.state.expanded);
 
     return (
       <div className="totalCategoryList">
@@ -64,13 +63,21 @@ export class CategoryList extends React.Component {
           })}
           <button
             className="showMoreButton"
-            disabled={this.state.expanded ? true : false}
+            // disabled={this.state.expanded ? true : false}
             onClick={e => this.showMore()}
           >
             <span className={this.state.expanded ? 'closed' : 'open'}>
-              {this.state.expanded ? <span> 닫기 </span> : <span>더 보기</span>}
+              {this.state.expanded ? (
+                <span>
+                   닫기<i className="fas fa-angle-up"></i>
+                </span>
+              ) : (
+                <span>
+                  더 보기<i class="fas fa-angle-down"></i>
+                </span>
+              )}
             </span>
-            <button
+            {/* <button
               className="showMoreButton1"
               disabled={this.state.expanded ? false : true}
               onClick={e => this.showMore()}
@@ -82,7 +89,7 @@ export class CategoryList extends React.Component {
                   <span>더 보기</span>
                 )}
               </span>
-            </button>
+            </button> */}
           </button>
         </div>
         <div className="categoryListNextLine">

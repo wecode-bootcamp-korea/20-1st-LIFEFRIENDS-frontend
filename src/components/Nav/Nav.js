@@ -55,35 +55,11 @@ export class Navigator extends React.Component {
                 LIEFER
               </a>
               <a className="toMoveNaverShopping" href="/#">
+                <i className="fas fa-shopping-bag" />
                 라이퍼쇼핑
               </a>
             </div>
             <LoginAndLogout />
-            {/* <div className="navHeaderRight">
-              <div className="loginButtonAndCart">
-                <button className="goToLogIn">
-                  <Link to={this.state.isLoggedIn ? '/signup' : '/'}>
-                    {this.state.isLoggedIn ? '로그아웃' : '로그인'}
-                  </Link>
-                </button>
-                {this.state.isLoggedIn && (
-                  <>
-                    <button className="goToPickStore">
-                      <Link to={'/cart'}>찜한스토어</Link>
-                    </button>
-                    <button className="goToMypage">
-                      <Link to={'/cart'}>마이페이지</Link>
-                    </button>
-                    <button className="goToCart">
-                      <Link to={'/cart'}>장바구니</Link>
-                    </button>
-                  </>
-                )}
-              </div>
-              <a className="viewTotal" href="/#">
-                <i className="fas fa-th"></i>
-              </a>
-            </div> */}
           </header>
           <nav className="navBody">
             <div className="logoAndSearch">

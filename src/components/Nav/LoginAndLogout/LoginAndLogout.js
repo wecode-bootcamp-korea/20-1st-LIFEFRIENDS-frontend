@@ -10,8 +10,9 @@ export class LoginAndLogout extends React.Component {
   }
   changeLogout = () => {
     localStorage.removeItem('access_token');
-    // localStorage.removeItem('name');
-    // localStorage.removeItem('email');
+    localStorage.removeItem('name');
+    localStorage.removeItem('id');
+    localStorage.removeItem('email');
     // this.props.histoty.push('/');
   };
 
@@ -20,20 +21,21 @@ export class LoginAndLogout extends React.Component {
       <div className="LoginAndLogout">
         {localStorage.access_token ? (
           <div className="loggedIn">
-            <button className="logoutButton" onClick={this.changeLogout}>
-              <Link to="/menu">
-                {localStorage.getItem('name')}님{' '}
-                <i className="fa fa-caret-down"></i>{' '}
-              </Link>
+            <span className="loggedInInfo">
+              {localStorage.getItem('name')}님
+              <i className="fa fa-caret-down"></i>
               <div className="loggedInBox">
                 <p className="loggedInUserName">
                   {localStorage.getItem('name')}님
                 </p>
                 <p className="loggedInUserEmail">
-                  {localStorage.getItem('email')}님
+                  {localStorage.getItem('email')}
                 </p>
+                <button className="logoutButton" onClick={this.changeLogout}>
+                  <Link to="/nav">로그아웃</Link>
+                </button>
               </div>
-            </button>
+            </span>
             <button className="goToPickStore">
               <Link to={'/picked'}>찜한스토어</Link>
             </button>

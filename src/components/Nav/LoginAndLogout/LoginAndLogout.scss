@@ -17,39 +17,66 @@ $font-weight-bold: 600;
 
 %cartMypageMypickButton {
   margin-right: 10px;
-  padding: 3px;
   font-size: 15px;
   color: $--font-desc-gray;
 }
 
 .LoginAndLogout {
   @include flexBox(space-between, center, row);
-  .loggedIn {
+  .loggedInInfo {
     @include marginHeaderLeftRight();
-
-    .logoutButton {
-      @extend %cartMypageMypickButton;
-    }
-
-    .goToPickStore {
-      @extend %cartMypageMypickButton;
-    }
-
-    .goToMypage {
-      @extend %cartMypageMypickButton;
-    }
-
-    .goToCart {
-      @extend %cartMypageMypickButton;
-    }
+    position: relative;
   }
-  .goToLogin {
-    .loginButton {
-      @extend %cartMypageMypickButton;
-    }
+
+  i {
+    margin-left: 3px;
   }
-  .viewTotal {
-    @include marginHeaderLeftRight();
-    font-size: 15px;
+
+  .loggedInBox {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: -45px;
+    z-index: 999;
+    background-color: white;
+    color: $--font-desc-gray;
+    border-bottom: 1px solid $--border-line;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+    text-align: center;
+    line-height: 30px;
+    padding: 10px;
   }
+  .loggedInInfo:hover .loggedInBox {
+    display: block;
+  }
+}
+
+.logoutButton {
+  @extend %cartMypageMypickButton;
+}
+
+.goToPickStore {
+  @extend %cartMypageMypickButton;
+}
+
+.goToMypage {
+  @extend %cartMypageMypickButton;
+}
+
+.goToCart {
+  @extend %cartMypageMypickButton;
+}
+
+.loggedInbox {
+  display: none;
+}
+.goToLogin {
+  .loginButton {
+    @extend %cartMypageMypickButton;
+  }
+}
+.viewTotal {
+  @include marginHeaderLeftRight();
+  font-size: 15px;
 }
