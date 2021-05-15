@@ -1,0 +1,53 @@
+.loginOption {
+  .loginStatusBox {
+    margin: 5px auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e4e4e5;
+
+    .keepLogin {
+      width: 50%;
+      text-align: left;
+
+      .fa-check-circle {
+        margin-right: 3px;
+        vertical-align: middle;
+        font-size: 2em;
+        font-weight: 100;
+      }
+      .loginStatusBefore {
+        color: #e4e4e5;
+      }
+      .loginStatusAfter {
+        color: #03c75a;
+      }
+    }
+    .ipSecurity {
+      width: 50%;
+      font-size: 15px;
+      text-align: right;
+
+      .ipOnOff {
+        font-weight: bold;
+        margin-left: 5px;
+      }
+
+      .ipOn {
+        color: #03c75a;
+      }
+    }
+  }
+
+  .findInfoList {
+    width: 100%;
+    padding-top: 10px;
+    text-align: center;
+
+    .findInfo {
+      padding: 0 5px;
+      border-right: 1px solid #e4e4e5;
+      color: #8e8e8e;
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+}

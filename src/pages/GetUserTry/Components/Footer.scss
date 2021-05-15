@@ -1,0 +1,22 @@
+.Footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  font-size: 11px;
+
+  .footerList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    li {
+      margin: 0 3px;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import GetUserHeader from './GetUserHeader';
-import GetUserFooter from './GetUserFooter';
+import GetUserBackground from '../GetUserBackground';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -26,8 +25,19 @@ class Login extends React.Component {
       }),
     })
       .then(res => {
-        if (res.status === 200) {
-          return res.json();
+        switch (res.status) {
+          case 400:
+            alert('아이디 또는 비밀번호를 입력해주세요');
+            break;
+
+          case 401:
+            alert('비밀번호를 확인해주세요');
+            // res.json();
+            break;
+
+          case 200:
+            res.json();
+            break;
         }
       })
       .then(res => {
@@ -35,9 +45,7 @@ class Login extends React.Component {
           // save localstroage
           localStorage.setItem('MESSAGE', res['ACCESS_TOKEN']);
           // push to main
-          this.props.history.push('https://naver.com');
-        } else {
-          alert('');
+          this.props.history.push('./Main');
         }
       });
   };
@@ -65,13 +73,9 @@ class Login extends React.Component {
     const pwValid = pwRegx.test(pw);
     const loginValid = idValid && pwValid;
 
-    // console.log('pwValid >>> ', pwValid);
-    // console.log(pw);
-    // console.log('loginValid >>> ', loginValid);
-
     return (
       <div className="login">
-        <GetUserHeader />
+        <GetUserBackground />
         <main className="loginContents">
           <div className="loginContentsWrap">
             <form
@@ -124,7 +128,7 @@ class Login extends React.Component {
                 로그인 상태 유지
               </button>
               <button className="ipSecurity" onClick={this.handleClick}>
-                IP 보안{' '}
+                IP 보안
                 {active ? (
                   <span className="ipOnOff ipOn">ON</span>
                 ) : (
@@ -145,7 +149,6 @@ class Login extends React.Component {
             </div>
           </div>
         </main>
-        <GetUserFooter />
       </div>
     );
   }
