@@ -2,13 +2,22 @@
   position: fixed;
   bottom: 45px;
   right: 30px;
-  width: 90px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   line-height: 46px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  color: #030303;
+  background: #ffffff;
+  border: 1px solid #dbdddf;
   font-size: 20px;
   text-align: center;
-  z-index: 10;
+  z-index: 999;
+
+  &:hover {
+    background: rgb(241, 243, 245);
+  }
+
+  i {
+    display: flex;
+    justify-content: center;
+  }
 }
