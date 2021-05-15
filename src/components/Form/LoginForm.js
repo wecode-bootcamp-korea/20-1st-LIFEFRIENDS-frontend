@@ -1,7 +1,8 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PageLayout from '../Layout/PageLayout';
 import LoginInput from './Inputs/LoginInput';
 import Button from './Button/Button';
-import PageLayout from '../Layout/PageLayout';
 import './LoginForm.scss';
 
 export default class LoginForm extends Component {
@@ -67,7 +68,7 @@ export default class LoginForm extends Component {
           <a href="#" className="findInfo forgotPw">
             비밀번호 찾기
           </a>
-          <a href="#" className="findInfo signUp">
+          <a href="./signup" className="findInfo signUp">
             회원가입
           </a>
         </div>

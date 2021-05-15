@@ -35,8 +35,7 @@ export default class Login extends Component {
 
           case 200:
             alert('sucess login');
-            res.json();
-            break;
+            return res.json();
         }
       })
       .then(res => {

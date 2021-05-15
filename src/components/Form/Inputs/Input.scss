@@ -1,3 +1,5 @@
+@import '../../../styles/Common.scss';
+
 .InputBox {
   margin-bottom: 8px;
 
@@ -9,12 +11,12 @@
     border: 1px solid #dadada;
 
     &:focus {
-      border: 1px solid #03c75e;
+      border: 1px solid $--main-green;
     }
   }
 
   .InputError {
-    display: block;
+    // display: block;
     margin: 5px 0;
     font-size: 13px;
     text-align: left;

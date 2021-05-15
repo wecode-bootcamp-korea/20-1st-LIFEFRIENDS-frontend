@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import PageLayout from '../../components/Layout/PageLayout';
-import SignUpForm from '../../components/Form/LoginForm';
 
 export default class SignUp extends Component {
   constructor() {
@@ -14,12 +13,12 @@ export default class SignUp extends Component {
   render() {
     return (
       <PageLayout>
-        <SignUpForm
+        {/* <SignUpForm
           type="SignUp"
           text="회원가입"
           data={signUpData}
           {...this.state}
-        />
+        /> */}
       </PageLayout>
     );
   }
