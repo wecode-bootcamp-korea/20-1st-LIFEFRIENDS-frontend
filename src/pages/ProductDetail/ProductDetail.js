@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddReview from './AddReview/AddReview';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -18,8 +19,7 @@ class ProductDetail extends Component {
           <section>
             <div className="content">
               <div className="reviewPreview">세용님</div>
-              세용님
-              <div className="addReview">유림</div>
+              <AddReview />
             </div>
           </section>
         </article>

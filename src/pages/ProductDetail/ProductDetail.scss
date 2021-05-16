@@ -4,6 +4,7 @@
   article {
     width: 1020px;
     margin: 216px auto 0;
+
     .product {
       header {
         height: 40px;
@@ -36,10 +37,6 @@
         border: 0.1px solid $--border-line;
         .reviewPreview {
           height: 290px;
-        }
-
-        .addReview {
-          background-color: rebeccapurple;
         }
       }
     }
