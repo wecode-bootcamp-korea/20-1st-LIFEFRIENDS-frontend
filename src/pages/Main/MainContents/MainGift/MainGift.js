@@ -36,13 +36,13 @@ class MainGift extends Component {
     const { giftData, getData, cnt, items, target } = this.state;
     const pageSize = Math.round(document.documentElement.clientWidth * 0.8);
     const targeta = Math.round(pageSize / 230);
-    if (giftData.length <= cnt) return;
+    if (0 >= cnt) return;
     let dataToChange = getData.splice(cnt, target);
-    console.log(giftData.length, giftData, 'cnt', cnt);
+    console.log(giftData.length, giftData, -target, 'Prevcnt', cnt);
 
     this.setState({
       getData: giftData,
-      cnt: cnt + target,
+      cnt: cnt - target,
       items: dataToChange,
     });
   };
@@ -53,7 +53,7 @@ class MainGift extends Component {
     const targeta = Math.round(pageSize / 230);
     if (giftData.length <= cnt) return;
     let dataToChange = getData.splice(cnt, target);
-    console.log(giftData.length, giftData, 'cnt', cnt);
+    console.log(giftData.length, giftData, 'Nextcnt', cnt);
 
     this.setState({
       getData: giftData,

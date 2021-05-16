@@ -8,14 +8,6 @@
     width: 320px;
     height: 540px;
     padding: 0 10px;
-    background: url('../MainLargeCard/zoom-in.png');
-    background-repeat: no-repeat;
-    background-size: 100px;
-    background-position: 52% 50%;
-    // :hover {
-    //   opacity: 0.2;
-    //   transform: scale(1.1);
-    // }
 
     img {
       width: 300px;
@@ -42,6 +34,7 @@
 
     .hoverButtonBundle:hover {
       opacity: 0.9;
+      transform: scale(1.1);
     }
 
     p:nth-child(3) {
