@@ -50,29 +50,11 @@
       width: 70px;
       font-size: 16px;
 
-      span.closed {
+      span.menuClosed {
         display: block;
       }
-      span.open {
+      span.menuoOpen {
         display: block;
-      }
-      .showMoreButton1 {
-        position: absolute;
-        top: 30px;
-        display: flex;
-        height: 35px;
-        width: 49.609px;
-        font-size: 16px;
-
-        span {
-          font-size: 16px;
-        }
-        span.closed {
-          display: block;
-        }
-        span.open {
-          display: block;
-        }
       }
     }
 

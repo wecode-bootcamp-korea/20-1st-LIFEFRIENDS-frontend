@@ -66,7 +66,7 @@ export class CategoryList extends React.Component {
             // disabled={this.state.expanded ? true : false}
             onClick={e => this.showMore()}
           >
-            <span className={this.state.expanded ? 'closed' : 'open'}>
+            <span className={this.state.expanded ? 'menuClosed' : 'menuoOpen'}>
               {this.state.expanded ? (
                 <span>
                    닫기<i className="fas fa-angle-up"></i>
