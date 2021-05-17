@@ -58,7 +58,7 @@ class MainProducts extends Component {
       <section className="mainProducts mainMiddleCards">
         <article className="mainGoods">
           <h2 className="title">마음껏 둘러보세요</h2>
-          <MainMediumCard Data={productstData} />
+          <MainMediumCard data={productstData} />
         </article>
       </section>
     );

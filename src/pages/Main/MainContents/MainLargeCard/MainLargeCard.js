@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import '../MainLargeCard/MainLargeCard.scss';
 
 class MainLargeCard extends Component {
-  goToPage = e => {
-    console.log(e.target);
-    // this.props.history.push('/');
-  };
-
   render() {
     const { mainNews } = this.props;
     return (
@@ -14,7 +9,7 @@ class MainLargeCard extends Component {
         {mainNews &&
           mainNews.map(el => {
             return (
-              <div key={el.id} onClick={this.goToPage}>
+              <div key={el.id}>
                 <img alt={el.imgAlt} src={el.imgUrl} />
                 <h3>{el.title}</h3>
                 <p>{el.desc}</p>

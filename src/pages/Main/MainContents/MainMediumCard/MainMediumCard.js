@@ -19,11 +19,11 @@ class MainMediumCard extends Component {
   };
 
   render() {
-    const { Data } = this.props;
+    const { data } = this.props;
     return (
       <div className="mainMediumCard ">
-        {Data &&
-          Data.map(el => {
+        {data &&
+          data.map(el => {
             return (
               <>
                 <div className="mediumCard" key={el.id}>

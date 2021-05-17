@@ -7,7 +7,7 @@ class MainBottom extends Component {
       <section className="mainBottom">
         <div className="bottomContents">
           <h2 className="title">LIFE FRIENDS</h2>
-          <div>
+          <div className="bottomContent">
             <p>끝없는 득템의 재미</p>
             <p>LIFE FRIENDS 공식 브랜드 스토어</p>
             <p>#LIFEFRIENDS #Character #Goods</p>

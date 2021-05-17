@@ -26,24 +26,6 @@ class MainNews extends Component {
         <article>
           <h2 className="title">주목할만한 소식</h2>
           <MainLargeCard mainNews={mainNews} />
-          <div>
-            <p className="prev">
-              <i className="fas fa-chevron-left" />
-            </p>
-            <p className="next">
-              <i className="fas fa-chevron-right" />
-            </p>
-            <ul className="contentPageBtn">
-              {mainNews &&
-                mainNews.map(el => {
-                  return (
-                    <li key={el.id}>
-                      <button />
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
           <Link to="/3000/product?menu=전체상품" className="linkBtn">
             쇼핑 스토리 전체 보기
           </Link>

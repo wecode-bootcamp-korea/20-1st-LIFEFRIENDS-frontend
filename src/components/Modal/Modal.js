@@ -6,17 +6,17 @@ export class Modal extends Component {
     const { open, close, title, content } = this.props;
     return (
       <div className={open ? 'openModal modal' : 'modal'}>
-        {open ? (
+        {open && (
           <section>
-            <header>
+            <div className="header">
               {title}
               <button className="close" onClick={close}>
                 <i className="fas fa-times"></i>
               </button>
-            </header>
+            </div>
             <main>{content}</main>
           </section>
-        ) : null}
+        )}
       </div>
     );
   }

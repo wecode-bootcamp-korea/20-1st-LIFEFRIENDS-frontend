@@ -9,69 +9,67 @@ class MainGift extends Component {
     this.sliderRef = React.createRef();
     this.state = {
       giftData: [],
-      getData: [],
       items: [],
-      target: Math.round(this.pageSize / 230) - 1,
+      pageSize: Math.round(document.documentElement.clientWidth * 0.8),
+      target: Math.ceil(this.pageSize / 230) - 2,
       cnt: 0,
       modalOn: false,
     };
   }
 
   componentDidMount() {
-    const { cnt, target, items, giftData } = this.state;
-    // fetch('http://10.58.7.181:8000/categories/선물추천')
-    fetch('/data/mainGift.json')
+    const { target } = this.state;
+    fetch('http://10.58.7.181:8000/categories/선물추천')
       .then(response => response.json())
       .then(giftdata => {
         this.setState({
-          giftData: giftdata,
-          getData: giftdata,
+          giftData: giftdata.MESSAGE,
           items: giftdata,
           cnt: target,
         });
       });
   }
 
-  handlePrevBtn = () => {
-    const { giftData, getData, cnt, items, target } = this.state;
-    const pageSize = Math.round(document.documentElement.clientWidth * 0.8);
-    const targeta = Math.round(pageSize / 230);
-    if (0 >= cnt) return;
-    let dataToChange = getData.splice(cnt, target);
-    console.log(giftData.length, giftData, -target, 'Prevcnt', cnt);
-
-    this.setState({
-      getData: giftData,
-      cnt: cnt - target,
-      items: dataToChange,
-    });
+  handlePrevBtn = e => {
+    const { giftData, target, cnt } = this.state;
+    if (cnt <= 0) {
+      this.setState({
+        cnt: cnt + target,
+      });
+      e.preventDefault();
+    } else {
+      let dataToChange = giftData.slice(cnt - target, cnt + target);
+      this.setState({
+        cnt: cnt - target,
+        items: dataToChange,
+      });
+    }
   };
 
-  handleNextBtn = () => {
-    const { giftData, getData, cnt, items, target } = this.state;
-    // const pageSize = Math.round(document.documentElement.clientWidth * 0.8);
-    // const targeta = Math.round(pageSize / 230);
-    // if (giftData.length <= cnt) return;
-    let dataToChange = getData.splice(cnt, target);
-    console.log(giftData.length, giftData, 'Nextcnt', cnt);
-    // return dataToChange;
-    this.setState({
-      getData: giftData,
-      cnt: cnt + target,
-      items: dataToChange,
-    });
+  handleNextBtn = e => {
+    const { giftData, cnt, target } = this.state;
+    if (giftData.length <= cnt) {
+      this.setState({
+        cnt: cnt - target,
+      });
+      e.preventDefault();
+    } else {
+      let dataToChange = giftData.slice(cnt, cnt + target);
+      this.setState({
+        cnt: cnt + target,
+        items: dataToChange,
+      });
+    }
   };
 
   render() {
-    const { items, cnt, giftData } = this.state;
-    console.log('render ', items);
-    console.log('cnt ', cnt, 'items ', items, 'giftData', giftData);
+    const { items } = this.state;
     return (
       <section className="mainGift mainMiddleCards">
         <article>
           <h2 className="title">선물하기 좋은 제품</h2>
           <MainMediumCard
-            Data={giftData}
+            data={items}
             openModal={this.openModal}
             ref={this.sliderRef}
           />

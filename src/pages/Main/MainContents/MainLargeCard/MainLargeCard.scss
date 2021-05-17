@@ -1,7 +1,7 @@
 @import '../../../../styles/Common.scss';
 
 .mainLargeCard {
-  @include flexBox(space-between, center, row);
+  @include flexBox(center, center, row);
   flex-wrap: wrap;
   height: 490px;
   overflow: hidden;
