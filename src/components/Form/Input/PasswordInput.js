@@ -10,12 +10,7 @@ export default class PasswordInput extends Component {
           <label className="inputLabel" hatmlFor="nameInput">
             비밀번호
           </label>
-          <input
-            className="Input"
-            type="password"
-            placeholder="type in pasword here"
-            required
-          />
+          <input className="Input" type="password" required />
           <p className="InputError errorPw">
             8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.
           </p>

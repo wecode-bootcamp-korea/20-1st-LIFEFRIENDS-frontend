@@ -13,7 +13,6 @@ export default class PhoneInput extends Component {
           <input
             className="Input phoneInput"
             type="text"
-            placeholder="type in phone number here"
             maxlength="13"
             required
           />
