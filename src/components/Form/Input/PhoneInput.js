@@ -17,7 +17,7 @@ export default class PhoneInput extends Component {
             type="text"
             maxLength="13"
             onChange={handleInput}
-            name="phone_number"
+            name="phone"
             required
           />
           <button className="commonButton getVerifyNum">인증번호 받기</button>

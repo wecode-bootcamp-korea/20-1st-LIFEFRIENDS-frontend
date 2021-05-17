@@ -5,29 +5,28 @@ export default class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
+      id: '',
+      pw: '',
       name: '',
-      birth_date: '',
+      birth: '',
       gender: '',
-      phone_number: '',
+      phone: '',
     };
   }
 
   goToLogin = e => {
     e.preventDefault();
     const LOGINAPI = '';
-    const { email, password, name, birth_date, gender, phone_number } =
-      this.state;
+    const { id, pw, name, birth, gender, phone } = this.state;
     fetch(LOGINAPI, {
       method: 'POST',
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email: id,
+        password: pw,
         name: name,
-        birth_date: birth_date,
+        birth_date: birth,
         gender: gender,
-        phone_number: phone_number,
+        phone_number: phone,
       }),
     })
       .then(res => {

@@ -12,7 +12,7 @@ export default class PasswordInput extends Component {
           </label>
           <input
             className="Input"
-            type="password"
+            type="pw"
             onChange={handleInput}
             name="password"
             required

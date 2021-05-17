@@ -14,7 +14,7 @@ export default class BirthInput extends Component {
         <input
           className="Input dateInput"
           type="date"
-          name="birth_date"
+          name="birth"
           onChange={handleInput}
         />
       </div>

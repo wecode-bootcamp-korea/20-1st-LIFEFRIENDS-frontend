@@ -18,15 +18,15 @@ export default class SignUpForm extends Component {
     return (
       <PageLayout>
         <form className="signUpForm" onSubmit={goToLogin}>
-          <IdInput handleInput={handleInput} signUpState={signUpState.email} />
+          <IdInput handleInput={handleInput} signUpState={signUpState.id} />
           <PasswordInput
             handleInput={handleInput}
-            signUpState={signUpState.password}
+            signUpState={signUpState.pw}
           />
           <NameInput handleInput={handleInput} signUpState={signUpState.name} />
           <BirthInput
             handleInput={handleInput}
-            signUpState={signUpState.birth_date}
+            signUpState={signUpState.birth}
           />
           <GenderInput
             handleInput={handleInput}
@@ -34,7 +34,7 @@ export default class SignUpForm extends Component {
           />
           <PhoneInput
             handleInput={handleInput}
-            signUpState={signUpState.phone_number}
+            signUpState={signUpState.phone}
           />
           <Button text={text} type={type} />
         </form>

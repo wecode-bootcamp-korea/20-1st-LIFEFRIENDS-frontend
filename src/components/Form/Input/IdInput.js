@@ -13,7 +13,7 @@ export default class IdInput extends Component {
           className="Input"
           type="text"
           onChange={handleInput}
-          name="email"
+          name="id"
           required
         />
         <p className="InputError errorPw">
