@@ -25,6 +25,10 @@ class GoTop extends React.Component {
     });
   };
 
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.scrolltoTop);
+  };
+
   render() {
     return (
       <>
