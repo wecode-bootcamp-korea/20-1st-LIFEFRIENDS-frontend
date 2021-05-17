@@ -13,17 +13,29 @@ import './Button/Button.scss';
 
 export default class SignUpForm extends Component {
   render() {
-    const { text, type } = this.props;
+    const { text, type, signUpState, goToLogin, handleInput } = this.props;
 
     return (
       <PageLayout>
-        <form className="signUpForm" action="#">
-          <IdInput />
-          <PasswordInput />
-          <NameInput />
-          <BirthInput />
-          <GenderInput />
-          <PhoneInput />
+        <form className="signUpForm" onSubmit={goToLogin}>
+          <IdInput handleInput={handleInput} signUpState={signUpState.email} />
+          <PasswordInput
+            handleInput={handleInput}
+            signUpState={signUpState.password}
+          />
+          <NameInput handleInput={handleInput} signUpState={signUpState.name} />
+          <BirthInput
+            handleInput={handleInput}
+            signUpState={signUpState.birth_date}
+          />
+          <GenderInput
+            handleInput={handleInput}
+            signUpState={signUpState.gender}
+          />
+          <PhoneInput
+            handleInput={handleInput}
+            signUpState={signUpState.phone_number}
+          />
           <Button text={text} type={type} />
         </form>
       </PageLayout>

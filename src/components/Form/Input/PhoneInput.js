@@ -3,7 +3,9 @@ import './Input.scss';
 
 export default class PhoneInput extends Component {
   render() {
-    const {} = this.props;
+    const { handleInput, signUpState } = this.props;
+    console.log(signUpState);
+
     return (
       <div className="InputBox signUpInputBox">
         <label className="inputLabel" hatmlFor="nameInput">
@@ -13,7 +15,9 @@ export default class PhoneInput extends Component {
           <input
             className="Input phoneInput"
             type="text"
-            maxlength="13"
+            maxLength="13"
+            onChange={handleInput}
+            name="phone_number"
             required
           />
           <button className="commonButton getVerifyNum">인증번호 받기</button>

@@ -3,14 +3,20 @@ import './Input.scss';
 
 export default class PasswordInput extends Component {
   render() {
-    const {} = this.props;
+    const { handleInput, signUpState } = this.props;
     return (
       <>
         <div className="InputBox signUpInputBox">
           <label className="inputLabel" hatmlFor="nameInput">
             비밀번호
           </label>
-          <input className="Input" type="password" required />
+          <input
+            className="Input"
+            type="password"
+            onChange={handleInput}
+            name="password"
+            required
+          />
           <p className="InputError errorPw">
             8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.
           </p>
