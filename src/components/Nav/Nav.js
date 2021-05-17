@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import CategoryList from './CategoryList/CategoryList';
 import LoginAndLogout from '../Nav/LoginAndLogout/LoginAndLogout';
 import './Nav.scss';
-
 export class Navigator extends React.Component {
   constructor() {
     super();
@@ -16,7 +14,9 @@ export class Navigator extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/Data/CategoryData.json')
+    fetch('/Data/CategoryData.json', {
+      method: 'Get',
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({ categoryListData: data.results });
@@ -29,23 +29,22 @@ export class Navigator extends React.Component {
     });
   };
 
-  handleLoginStatus = () => {
-    this.props.history.push(`${!this.state.isloggedIn ? '/login' : '/'}`);
-  };
-
   goToSearchResult = e => {
     e.preventDefault();
     this.state.history.push(`/product?menu='${this.state.searchValue}'`);
   };
 
   render() {
-    const filteredList = this.state.categoryListData.filter(category => {
-      return (
-        category.menuName
-          .toLowerCase()
-          .includes(this.state.searchValue.toLowerCase()) && category
-      );
-    });
+    const filteredList =
+      this.state.categoryListData &&
+      this.state.categoryListData.filter(category => {
+        return (
+          category.menuName
+            .toLowerCase()
+            .includes(this.state.searchValue.toLowerCase()) && category
+        );
+      });
+    const filterLength = filteredList && filteredList.length;
     return (
       <div className="navAndHeader">
         <div className="lifeStoreNav">
@@ -55,7 +54,6 @@ export class Navigator extends React.Component {
                 LIEFER
               </a>
               <a className="toMoveNaverShopping" href="/#">
-                <i className="fas fa-shopping-bag" />
                 라이퍼쇼핑
               </a>
             </div>
@@ -80,10 +78,10 @@ export class Navigator extends React.Component {
                 </form>
                 <ul
                   className={`searchListContainer ${
-                    this.state.searchValue && filteredList.length && 'open'
+                    this.state.searchValue && filterLength && 'open'
                   }`}
                 >
-                  {filteredList.length > 0 &&
+                  {filterLength > 0 &&
                     filteredList.map(category => {
                       return (
                         <li key={category.menuId}>
@@ -108,5 +106,4 @@ export class Navigator extends React.Component {
     );
   }
 }
-
-export default withRouter(Navigator);
+export default Navigator;

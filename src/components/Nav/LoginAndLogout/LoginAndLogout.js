@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import './LoginAndLogout.scss';
 
 export class LoginAndLogout extends React.Component {
@@ -13,7 +12,6 @@ export class LoginAndLogout extends React.Component {
     localStorage.removeItem('name');
     localStorage.removeItem('id');
     localStorage.removeItem('email');
-    // this.props.histoty.push('/');
   };
 
   render() {
@@ -32,7 +30,7 @@ export class LoginAndLogout extends React.Component {
                   {localStorage.getItem('email')}
                 </p>
                 <button className="logoutButton" onClick={this.changeLogout}>
-                  <Link to="/nav">로그아웃</Link>
+                  <Link to="/main">로그아웃</Link>
                 </button>
               </div>
             </span>
@@ -61,4 +59,4 @@ export class LoginAndLogout extends React.Component {
   }
 }
 
-export default withRouter(LoginAndLogout);
+export default LoginAndLogout;

@@ -1,15 +1,5 @@
 @import '../../../styles/Common.scss';
 
-$font-size-supersmall: 12px;
-$font-size-extrasmall: 13px;
-$font-size-small: 14px;
-$font-size-regular: 15px;
-$font-size-medium: 16px;
-$font-weight-light: 200;
-$font-weight-regular: 300;
-$font-weight-medium: 400;
-$font-weight-bold: 600;
-
 @mixin marginHeaderLeftRight {
   margin-left: 10px;
   margin-right: 10px;
@@ -23,32 +13,36 @@ $font-weight-bold: 600;
 
 .LoginAndLogout {
   @include flexBox(space-between, center, row);
+
   .loggedInInfo {
     @include marginHeaderLeftRight();
     position: relative;
+    // width: 82px;
+    &:hover {
+      .loggedInBox {
+        display: block;
+      }
+    }
+
+    .loggedInBox {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      z-index: 999;
+      background-color: white;
+      color: $--font-desc-gray;
+      border-bottom: 1px solid $--border-line;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+      text-align: center;
+      line-height: 30px;
+      padding: 10px;
+    }
   }
 
   i {
     margin-left: 3px;
-  }
-
-  .loggedInBox {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: -45px;
-    z-index: 999;
-    background-color: white;
-    color: $--font-desc-gray;
-    border-bottom: 1px solid $--border-line;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
-    text-align: center;
-    line-height: 30px;
-    padding: 10px;
-  }
-  .loggedInInfo:hover .loggedInBox {
-    display: block;
   }
 }
 
@@ -71,11 +65,13 @@ $font-weight-bold: 600;
 .loggedInbox {
   display: none;
 }
+
 .goToLogin {
   .loginButton {
     @extend %cartMypageMypickButton;
   }
 }
+
 .viewTotal {
   @include marginHeaderLeftRight();
   font-size: 15px;
