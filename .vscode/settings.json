@@ -3,7 +3,7 @@
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
   },
 
   "javascript.format.enable": false,
@@ -11,6 +11,12 @@
   "files.autoSave": "onFocusChange",
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#fdd90a",
-    "titleBar.inactiveBackground": "#fdd90a",
+    "titleBar.inactiveBackground": "#fdd90a"
+  },
+  "[jsonc]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace"
   }
 }
