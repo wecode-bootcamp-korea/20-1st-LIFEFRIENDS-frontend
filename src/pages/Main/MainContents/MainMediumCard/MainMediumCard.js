@@ -27,11 +27,7 @@ class MainMediumCard extends Component {
             return (
               <>
                 <div className="mediumCard" key={el.id}>
-                  <img
-                    alt={el.imgAlt}
-                    src={el.imgUrl}
-                    onClick={this.openModal}
-                  />
+                  <img alt={el.imgAlt} src={el.imgUrl} />
                   <div className="hoverButtonBundle">
                     <img
                       className="hoverButton"
@@ -39,6 +35,7 @@ class MainMediumCard extends Component {
                       src="/images/heart.png"
                     />
                     <img
+                      onClick={this.openModal}
                       className="hoverButton"
                       alt="heartButton"
                       src="/images/plus.png"

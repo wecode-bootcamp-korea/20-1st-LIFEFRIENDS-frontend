@@ -49,12 +49,12 @@ class MainGift extends Component {
 
   handleNextBtn = () => {
     const { giftData, getData, cnt, items, target } = this.state;
-    const pageSize = Math.round(document.documentElement.clientWidth * 0.8);
-    const targeta = Math.round(pageSize / 230);
-    if (giftData.length <= cnt) return;
+    // const pageSize = Math.round(document.documentElement.clientWidth * 0.8);
+    // const targeta = Math.round(pageSize / 230);
+    // if (giftData.length <= cnt) return;
     let dataToChange = getData.splice(cnt, target);
     console.log(giftData.length, giftData, 'Nextcnt', cnt);
-
+    // return dataToChange;
     this.setState({
       getData: giftData,
       cnt: cnt + target,
@@ -66,13 +66,12 @@ class MainGift extends Component {
     const { items, cnt, giftData } = this.state;
     console.log('render ', items);
     console.log('cnt ', cnt, 'items ', items, 'giftData', giftData);
-
     return (
       <section className="mainGift mainMiddleCards">
         <article>
           <h2 className="title">선물하기 좋은 제품</h2>
           <MainMediumCard
-            Data={items}
+            Data={giftData}
             openModal={this.openModal}
             ref={this.sliderRef}
           />
