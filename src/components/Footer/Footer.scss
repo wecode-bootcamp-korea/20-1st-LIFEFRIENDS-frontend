@@ -16,7 +16,7 @@ $font-weight-bold: 600;
   .brandInfo {
     @include flexBox(center, center, column);
     padding-left: 50px;
-    font-family: '나눔고딕', 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕',
+    font-family: ‘나눔고딕’, ‘Nanum Gothic’, ‘Malgun Gothic’, ‘맑은 고딕’,
       sans-serif;
     color: $--font-desc-gray;
 
@@ -63,7 +63,6 @@ $font-weight-bold: 600;
         }
       }
     }
-
     .companyContact {
       @include flexBox(flex-start, flex-start, row);
       width: 1280px;
@@ -80,7 +79,6 @@ $font-weight-bold: 600;
           color: $--font-title-black;
         }
       }
-
       .QnA {
         height: 111px;
         margin-left: 100px;
@@ -94,7 +92,6 @@ $font-weight-bold: 600;
           font-weight: $font-weight-medium;
         }
       }
-
       .conflicts {
         height: 67px;
         margin-left: 100px;
@@ -120,6 +117,7 @@ $font-weight-bold: 600;
     .copyRights {
       @include flexBox(flex-start, center, row);
       width: 1280px;
+      margin-bottom: 110px;
 
       span {
         color: $--main-green;

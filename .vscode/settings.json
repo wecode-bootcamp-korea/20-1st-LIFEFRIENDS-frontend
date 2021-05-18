@@ -12,11 +12,5 @@
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#fdd90a",
     "titleBar.inactiveBackground": "#fdd90a"
-  },
-  "[jsonc]": {
-    "editor.quickSuggestions": {
-      "strings": true
-    },
-    "editor.suggest.insertMode": "replace"
   }
 }

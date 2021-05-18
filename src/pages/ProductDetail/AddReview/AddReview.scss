@@ -46,6 +46,7 @@
     }
 
     .average {
+      @include flexBox(space-between, center, column);
       width: 152px;
       height: 133px;
 
@@ -63,6 +64,7 @@
     }
 
     .totalReview {
+      @include flexBox(space-between, center, column);
       width: 152px;
       height: 133px;
     }
@@ -90,11 +92,10 @@
 
       ul {
         @include flexBox(center, center, row);
-
         .ratioBar {
           width: 8px;
           height: 62px;
-          margin: 0 20px;
+          margin: 20px;
           background-color: $--heart-color;
 
           .ratioValue {
@@ -108,6 +109,7 @@
             top: 25px;
             left: -7px;
             width: 30px;
+            margin: 0;
           }
         }
       }
@@ -115,6 +117,7 @@
   }
 
   .rating {
+    @include flexBox(space-around, center, column);
     height: 150px;
 
     div {
