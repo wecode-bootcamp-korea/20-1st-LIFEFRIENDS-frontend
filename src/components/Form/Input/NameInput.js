@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 export default class NameInput extends Component {
   render() {
-    const { handleInput, nameValid } = this.props;
+    const { handleInput, warn } = this.props;
 
     return (
       <div className="InputBox signUpInputBox">
@@ -16,7 +16,7 @@ export default class NameInput extends Component {
           name="name"
         />
         <div className="errorBox">
-          {!nameValid && (
+          {warn && (
             <p className="InputError errorPw">올바른 이름 값을 입력해주세요.</p>
           )}
         </div>

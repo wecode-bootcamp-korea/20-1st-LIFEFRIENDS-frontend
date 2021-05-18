@@ -42,7 +42,7 @@ export default class SignUp extends Component {
             alert('값을 확인해주세요.');
             break;
 
-          case 200:
+          case 201:
             alert('회원가입 성공');
             return res.json();
 
@@ -51,9 +51,7 @@ export default class SignUp extends Component {
         }
       })
       .then(res => {
-        if (res) {
-          //save localstorage
-          localStorage.setItem('MESSAGE', res['ACCESS_TOKEM']);
+        if (res.status === 201) {
           //push to Login
           this.props.history.push('./Login');
         }

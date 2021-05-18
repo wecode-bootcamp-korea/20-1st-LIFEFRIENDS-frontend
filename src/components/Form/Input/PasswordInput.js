@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 export default class PasswordInput extends Component {
   render() {
-    const { handleInput, signUpPwState, signUpRePwState, pwValid } = this.props;
+    const { handleInput, signUpPwState, signUpRePwState, warn } = this.props;
     return (
       <>
         <div className="InputBox signUpInputBox">
@@ -16,7 +16,7 @@ export default class PasswordInput extends Component {
             name="password"
           />
           <div className="errorBox">
-            {!pwValid && (
+            {warn && (
               <p className="InputError errorPw">
                 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.
               </p>

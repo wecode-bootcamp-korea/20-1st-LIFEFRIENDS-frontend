@@ -14,7 +14,7 @@ import validator from '../../utils/InputValidator';
 export default class SignUpForm extends Component {
   render() {
     const { text, type, signUpState, goToLogin, handleInput } = this.props;
-    const { email } = signUpState;
+    const { email, password, name, verifying_number } = signUpState;
     return (
       <PageLayout>
         <form className="signUpForm" onSubmit={goToLogin}>
@@ -26,17 +26,17 @@ export default class SignUpForm extends Component {
             handleInput={handleInput}
             signUpPwState={signUpState.password}
             signUpRePwState={signUpState.re_password}
-            pwValid={validator.pw(signUpState.password)}
+            warn={password && !validator.password(password)}
           />
           <NameInput
             handleInput={handleInput}
-            nameValid={validator.name(signUpState.name)}
+            warn={name && !validator.name(name)}
           />
           <BirthInput handleInput={handleInput} />
           <GenderInput handleInput={handleInput} />
           <PhoneInput
             handleInput={handleInput}
-            signUpVerifyingState={signUpState.verifying_number}
+            warn={verifying_number && !(verifying_number === '3564')}
           />
           <Button text={text} type={type} />
         </form>
@@ -44,14 +44,3 @@ export default class SignUpForm extends Component {
     );
   }
 }
-
-// const idRegx = /^[0-9a-z\-\_]{5,20}$/;
-// const pwRegx =
-//   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
-// const nameRegx = /^[가-힣a-zA-Z]+$/;
-
-// const validator = {
-//   id: input => idRegx.test(input),
-//   pw: input => pwRegx.test(input),
-//   name: input => nameRegx.test(input),
-// };

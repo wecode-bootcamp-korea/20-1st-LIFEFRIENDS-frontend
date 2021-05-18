@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 export default class PhoneInput extends Component {
   render() {
-    const { handleInput, signUpVerifyingState } = this.props;
+    const { handleInput, warn } = this.props;
 
     return (
       <div className="InputBox signUpInputBox">
@@ -33,7 +33,7 @@ export default class PhoneInput extends Component {
           name="verifying_number"
         />
         <div className="errorBox">
-          {!(signUpVerifyingState === '3564') && (
+          {warn && (
             <p className="InputError errorPw">인증번호가 일치하지 않습니다.</p>
           )}
         </div>
