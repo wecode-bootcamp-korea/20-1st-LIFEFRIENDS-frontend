@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CategoryList from './CategoryList/CategoryList';
 import LoginAndLogout from '../Nav/LoginAndLogout/LoginAndLogout';
 import './Nav.scss';
+
 export class Navigator extends React.Component {
   constructor() {
     super();
@@ -27,11 +28,6 @@ export class Navigator extends React.Component {
     this.setState({
       searchValue: e.target.value,
     });
-  };
-
-  goToSearchResult = e => {
-    e.preventDefault();
-    this.state.history.push(`/product?menu='${this.state.searchValue}'`);
   };
 
   render() {
@@ -65,17 +61,15 @@ export class Navigator extends React.Component {
                 <button className="logoLifeStore">L I F E S T O R E</button>
               </Link>
               <div className="searchBox">
-                <form onSubmit={this.goToSearchResult}>
-                  <input
-                    className="search"
-                    type="text"
-                    placeholder="검색어를 입력해보세요"
-                    onChange={this.handleSearchValue}
-                  />
-                  <button className="searchButton">
-                    <i className="fas fa-search"></i>
-                  </button>
-                </form>
+                <input
+                  className="search"
+                  type="text"
+                  placeholder="검색어를 입력해보세요"
+                  onChange={this.handleSearchValue}
+                />
+                <button className="searchButton">
+                  <i className="fas fa-search"></i>
+                </button>
                 <ul
                   className={`searchListContainer ${
                     this.state.searchValue && filterLength && 'open'
@@ -87,7 +81,7 @@ export class Navigator extends React.Component {
                         <li key={category.menuId}>
                           <div>
                             <Link
-                              to={`/product?menu=${category.menuName}`}
+                              to={`/menu/${category.menuName}`}
                               className="categoryName"
                             >
                               {category.menuName}

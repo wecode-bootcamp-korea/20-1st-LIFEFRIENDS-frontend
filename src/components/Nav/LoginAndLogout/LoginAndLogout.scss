@@ -14,10 +14,20 @@
 .LoginAndLogout {
   @include flexBox(space-between, center, row);
 
+  .loggedIn {
+    @include flexBox(space-between, center, row);
+    i {
+      padding-right: 10px;
+    }
+  }
+
   .loggedInInfo {
-    @include marginHeaderLeftRight();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    // width: 82px;
+    cursor: pointer;
+
     &:hover {
       .loggedInBox {
         display: block;
@@ -27,22 +37,17 @@
     .loggedInBox {
       display: none;
       position: absolute;
-      top: 20px;
-      right: -30px;
-      z-index: 999;
-      background-color: white;
+      top: 18px;
+      line-height: 30px;
+      padding: 10px;
       color: $--font-desc-gray;
+      background-color: white;
       border-bottom: 1px solid $--border-line;
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
       text-align: center;
-      line-height: 30px;
-      padding: 10px;
+      z-index: 999;
     }
-  }
-
-  i {
-    margin-left: 3px;
   }
 }
 

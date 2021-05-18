@@ -9,7 +9,6 @@ export class CategoryList extends React.Component {
       itemsToShow: '',
       expanded: false,
     };
-    console.log(this.state.itemsToShow);
   }
 
   goToMenuList = i => {
@@ -49,8 +48,8 @@ export class CategoryList extends React.Component {
                         }}
                       >
                         {menuObj.menuName}
+                        <i className="fa fa-caret-down"></i>
                       </span>
-                      <i className="fa fa-caret-down"></i>
                     </>
                   ) : (
                     <span
@@ -117,8 +116,8 @@ export class CategoryList extends React.Component {
                         }}
                       >
                         {menuObj.menuName}
+                        <i className="fa fa-caret-down"></i>
                       </span>
-                      <i className="fa fa-caret-down"></i>
                     </>
                   ) : (
                     <span

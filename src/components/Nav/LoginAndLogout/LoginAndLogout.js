@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import './LoginAndLogout.scss';
 
 export class LoginAndLogout extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
   changeLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('name');
@@ -21,7 +17,6 @@ export class LoginAndLogout extends React.Component {
           <div className="loggedIn">
             <span className="loggedInInfo">
               {localStorage.getItem('name')}님
-              <i className="fa fa-caret-down"></i>
               <div className="loggedInBox">
                 <p className="loggedInUserName">
                   {localStorage.getItem('name')}님
@@ -34,6 +29,7 @@ export class LoginAndLogout extends React.Component {
                 </button>
               </div>
             </span>
+            <i className="fa fa-caret-down"></i>
             <button className="goToPickStore">
               <Link to={'/picked'}>찜한스토어</Link>
             </button>
