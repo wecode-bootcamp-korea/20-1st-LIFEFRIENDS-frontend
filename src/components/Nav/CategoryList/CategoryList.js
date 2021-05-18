@@ -6,7 +6,7 @@ export class CategoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsToShow: '',
+      itemsToShow: 10,
       expanded: false,
     };
   }
@@ -24,13 +24,15 @@ export class CategoryList extends React.Component {
   };
 
   showMore = () => {
+    const { eachCategoryList } = this.props;
     this.state.itemsToShow === 10
-      ? this.setState({ itemsToShow: this.props.length, expanded: true })
+      ? this.setState({ itemsToShow: eachCategoryList.length, expanded: true })
       : this.setState({ itemsToShow: 10, expanded: false });
   };
 
   render() {
     const { eachCategoryList } = this.props;
+    console.log(this.state);
 
     return (
       <div className="totalCategoryList">
