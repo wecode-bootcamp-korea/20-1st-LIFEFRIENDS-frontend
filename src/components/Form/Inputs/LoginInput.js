@@ -4,7 +4,6 @@ import './Input.scss';
 export default class LoginInput extends Component {
   render() {
     const { handleInput, name, type, text, error, loginState } = this.props;
-    console.log(loginState);
     return (
       <div className="InputBox">
         <input

@@ -5,8 +5,8 @@ export default class Login extends Component {
   constructor() {
     super();
     this.state = {
-      id: '',
-      pw: '',
+      email: '',
+      password: '',
       statusActive: false,
       ipActive: false,
     };
@@ -15,12 +15,12 @@ export default class Login extends Component {
   goToMain = e => {
     e.preventDefault();
     const API = 'http://172.16.20.241:8000/users/login';
-    const { id, pw } = this.state;
+    const { email, password } = this.state;
     fetch(API, {
       method: 'POST',
       body: JSON.stringify({
-        email: id,
-        password: pw,
+        email,
+        password,
       }),
     })
       .then(res => {
@@ -91,13 +91,13 @@ const loginData = [
   {
     type: 'text',
     text: '아이디',
-    name: 'id',
+    name: 'email',
     error: '아이디를 확인해주세요.',
   },
   {
     type: 'password',
     text: '비밀번호',
-    name: 'pw',
+    name: 'password',
     error: '비밀번호를 확인해주세요.',
   },
 ];

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageLayout from '../Layout/PageLayout';
 import LoginInput from './Inputs/LoginInput';
 import Button from './Button/Button';
+import validator from '../../utils/InputValidator';
 import './LoginForm.scss';
 
 export default class LoginForm extends Component {
@@ -18,8 +19,8 @@ export default class LoginForm extends Component {
       handleIp,
     } = this.props;
 
-    const loginValid =
-      validator.id(loginState.id) && validator.pw(loginState.pw);
+    const { email, password } = loginState;
+    const loginValid = validator.email(email) && validator.password(password);
 
     return (
       <PageLayout>
@@ -27,7 +28,6 @@ export default class LoginForm extends Component {
           {loginData.map(input => (
             <LoginInput
               handleInput={handleInput}
-              handleValid={validator[input.name]}
               loginState={loginState}
               key={input.name}
               value={loginState.id}
@@ -35,6 +35,7 @@ export default class LoginForm extends Component {
               type={input.type}
               text={input.text}
               error={input.error}
+              validator={validator}
             />
           ))}
           <Button text={text} type={type} loginValid={loginValid} />
@@ -62,26 +63,23 @@ export default class LoginForm extends Component {
         </div>
 
         <div className="findInfoList">
-          <a href="#" className="findInfo forgotId">
-            아이디 찾기
-          </a>
-          <a href="#" className="findInfo forgotPw">
-            비밀번호 찾기
-          </a>
-          <a href="./signup" className="findInfo signUp">
-            회원가입
-          </a>
+          <Link to="#" className="findInfo forgotId" />
+          아이디 찾기
+          <Link to="#" className="findInfo forgotPw" />
+          비밀번호 찾기
+          <Link to="./signup" className="findInfo signUp" />
+          회원가입
         </div>
       </PageLayout>
     );
   }
 }
 
-const pwRegx =
-  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+// const pwRegx =
+//   /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
 
-const validator = {
-  name: input => input.length <= 6,
-  id: input => input.length >= 5 && input.length <= 20,
-  pw: input => pwRegx.test(input),
-};
+// const validator = {
+//   name: input => input.length <= 6,
+//   id: input => input.length >= 5 && input.length <= 20,
+//   pw: input => pwRegx.test(input),
+// };
