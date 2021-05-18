@@ -1,0 +1,47 @@
+@import '../../styles/Common.scss';
+
+.productDetail {
+  article {
+    width: 1020px;
+    margin: 216px auto 0;
+    .product {
+      header {
+        height: 40px;
+        text-align: right;
+        font-size: 12px;
+        line-height: 3;
+
+        span {
+          font-weight: 800;
+        }
+      }
+      div {
+        @include flexBox(center, center, row);
+        border: 0.1px solid $--border-line;
+
+        .productPreview {
+          width: 50%;
+          height: 868px;
+        }
+
+        .addProduct {
+          width: 50%;
+          height: 868px;
+        }
+      }
+    }
+
+    section:nth-child(2) {
+      .content {
+        border: 0.1px solid $--border-line;
+        .reviewPreview {
+          height: 290px;
+        }
+
+        .addReview {
+          background-color: rebeccapurple;
+        }
+      }
+    }
+  }
+}
