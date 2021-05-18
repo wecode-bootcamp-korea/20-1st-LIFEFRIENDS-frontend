@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 export default class IdInput extends Component {
   render() {
-    const { handleInput, idValid } = this.props;
+    const { handleInput, warn } = this.props;
     return (
       <div className="InputBox signUpInputBox">
         <label className="inputLabel" htmlFor="idInput">
@@ -15,7 +15,7 @@ export default class IdInput extends Component {
           name="email"
         />
         <div className="errorBox">
-          {!idValid && (
+          {warn && (
             <p className="InputError errorPw">
               5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.
             </p>

@@ -9,17 +9,18 @@ import PhoneInput from './Input/PhoneInput';
 import Button from './Button/Button';
 import './SignUpForm.scss';
 import './Input/Input.scss';
+import validator from '../../utils/InputValidator';
 
 export default class SignUpForm extends Component {
   render() {
     const { text, type, signUpState, goToLogin, handleInput } = this.props;
-
+    const { email } = signUpState;
     return (
       <PageLayout>
         <form className="signUpForm" onSubmit={goToLogin}>
           <IdInput
             handleInput={handleInput}
-            idValid={validator.id(signUpState.email)}
+            warn={email && !validator.email(email)}
           />
           <PasswordInput
             handleInput={handleInput}
@@ -44,13 +45,13 @@ export default class SignUpForm extends Component {
   }
 }
 
-const idRegx = /^[0-9a-z\-\_]{5,20}$/;
-const pwRegx =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
-const nameRegx = /^[가-힣a-zA-Z]+$/;
+// const idRegx = /^[0-9a-z\-\_]{5,20}$/;
+// const pwRegx =
+//   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
+// const nameRegx = /^[가-힣a-zA-Z]+$/;
 
-const validator = {
-  id: input => idRegx.test(input),
-  pw: input => pwRegx.test(input),
-  name: input => nameRegx.test(input),
-};
+// const validator = {
+//   id: input => idRegx.test(input),
+//   pw: input => pwRegx.test(input),
+//   name: input => nameRegx.test(input),
+// };
