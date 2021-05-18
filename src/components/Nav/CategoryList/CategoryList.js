@@ -40,29 +40,18 @@ export class CategoryList extends React.Component {
             eachCategoryList.slice(0, 10).map(menuObj => {
               return (
                 <div key={menuObj.menuId} className="categoryMenu">
-                  {menuObj.categoryList.length > 0 ? (
-                    <>
-                      <span
-                        className="categoryText"
-                        onClick={() => {
-                          this.goToMenuList(menuObj.menuId - 1);
-                        }}
-                      >
-                        {menuObj.menuName}
-                        <i className="fa fa-caret-down"></i>
-                      </span>
-                    </>
-                  ) : (
-                    <span
-                      to={`/product?menu=${menuObj.menuName}`}
-                      className="categoryText"
-                      onClick={() => {
-                        this.goToMenuList(menuObj.menuId - 1);
-                      }}
-                    >
-                      {menuObj.menuName}
-                    </span>
-                  )}
+                  <span
+                    className="categoryText"
+                    onClick={() => {
+                      this.goToMenuList(menuObj.menuId - 1);
+                    }}
+                  >
+                    {menuObj.menuName}
+                    {menuObj.categoryList.length > 0 && (
+                      <i className="fa fa-caret-down"></i>
+                    )}
+                  </span>
+
                   {menuObj.categoryList.length > 0 && (
                     <div className="subMenuList">
                       {menuObj.categoryList.map(subMenuObj => (
@@ -108,28 +97,17 @@ export class CategoryList extends React.Component {
             eachCategoryList.slice(11, this.state.itemsToShow).map(menuObj => {
               return (
                 <div key={menuObj.menuId} className="categoryMenuNextLine">
-                  {menuObj.categoryList.length > 0 ? (
-                    <>
-                      <span
-                        className="categoryTextNextLine"
-                        onClick={() => {
-                          this.goToMenuList(menuObj.menuId - 1);
-                        }}
-                      >
-                        {menuObj.menuName}
-                        <i className="fa fa-caret-down"></i>
-                      </span>
-                    </>
-                  ) : (
-                    <span
-                      className="categoryTextNextLine"
-                      onClick={() => {
-                        this.goToMenuList(menuObj.menuId - 1);
-                      }}
-                    >
-                      {menuObj.menuName}
-                    </span>
-                  )}
+                  <span
+                    className="categoryTextNextLine"
+                    onClick={() => {
+                      this.goToMenuList(menuObj.menuId - 1);
+                    }}
+                  >
+                    {menuObj.menuName}
+                    {menuObj.categoryList.length > 0 && (
+                      <i className="fa fa-caret-down"></i>
+                    )}
+                  </span>
                   {menuObj.categoryList.length > 0 && (
                     <div className="subMenuListNextLine">
                       {menuObj.categoryList.map(subMenuObj => (
