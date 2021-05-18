@@ -13,7 +13,9 @@ export default class Footer extends Component {
           <li>고객센터</li>
         </ul>
         <address>
-          <a className="footerLogo">NAVER</a>
+          <a href="https://naver.com" className="footerLogo">
+            NAVER
+          </a>
           <em className="copyRight">
             Copyright <span className="copyrightBold">© NAVER Corp.</span> All
             Rights Reserved.

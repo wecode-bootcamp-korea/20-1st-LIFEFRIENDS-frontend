@@ -9,7 +9,6 @@ import PhoneInput from './Input/PhoneInput';
 import Button from './Button/Button';
 import './SignUpForm.scss';
 import './Input/Input.scss';
-import './Button/Button.scss';
 
 export default class SignUpForm extends Component {
   render() {
@@ -18,23 +17,25 @@ export default class SignUpForm extends Component {
     return (
       <PageLayout>
         <form className="signUpForm" onSubmit={goToLogin}>
-          <IdInput handleInput={handleInput} signUpState={signUpState.id} />
+          <IdInput
+            handleInput={handleInput}
+            idValid={validator.id(signUpState.email)}
+          />
           <PasswordInput
             handleInput={handleInput}
-            signUpState={signUpState.pw}
+            signUpPwState={signUpState.password}
+            signUpRePwState={signUpState.re_password}
+            pwValid={validator.pw(signUpState.password)}
           />
-          <NameInput handleInput={handleInput} signUpState={signUpState.name} />
-          <BirthInput
+          <NameInput
             handleInput={handleInput}
-            signUpState={signUpState.birth}
+            nameValid={validator.name(signUpState.name)}
           />
-          <GenderInput
-            handleInput={handleInput}
-            signUpState={signUpState.gender}
-          />
+          <BirthInput handleInput={handleInput} />
+          <GenderInput handleInput={handleInput} />
           <PhoneInput
             handleInput={handleInput}
-            signUpState={signUpState.phone}
+            signUpVerifyingState={signUpState.verifying_number}
           />
           <Button text={text} type={type} />
         </form>
@@ -42,3 +43,14 @@ export default class SignUpForm extends Component {
     );
   }
 }
+
+const idRegx = /^[0-9a-z\-\_]{5,20}$/;
+const pwRegx =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
+const nameRegx = /^[가-힣a-zA-Z]+$/;
+
+const validator = {
+  id: input => idRegx.test(input),
+  pw: input => pwRegx.test(input),
+  name: input => nameRegx.test(input),
+};

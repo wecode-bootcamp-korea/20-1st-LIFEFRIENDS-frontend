@@ -5,34 +5,37 @@ export default class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      id: '',
-      pw: '',
+      email: '',
+      password: '',
+      re_password: '',
       name: '',
-      birth: '',
+      birth_date: '',
       gender: '',
-      phone: '',
+      phone_number: '',
+      verifying_number: '',
     };
   }
 
   goToLogin = e => {
     e.preventDefault();
-    const LOGINAPI = '';
-    const { id, pw, name, birth, gender, phone } = this.state;
-    fetch(LOGINAPI, {
+    const SIGNUPAPI = 'http://10.58.7.181:8000/users/signup';
+    const { email, password, name, birth_date, gender, phone_number } =
+      this.state;
+    fetch(SIGNUPAPI, {
       method: 'POST',
       body: JSON.stringify({
-        email: id,
-        password: pw,
-        name: name,
-        birth_date: birth,
-        gender: gender,
-        phone_number: phone,
+        email,
+        password,
+        name,
+        birth_date,
+        gender,
+        phone_number,
       }),
     })
       .then(res => {
         switch (res.status) {
           case 400:
-            alert('값을 입력해주세요.');
+            alert('값을 확인해주세요.');
             break;
 
           case 401:
@@ -42,6 +45,9 @@ export default class SignUp extends Component {
           case 200:
             alert('회원가입 성공');
             return res.json();
+
+          default:
+            alert('잘못된 접근입니다. 경로를 다시한번 확인해주세요.');
         }
       })
       .then(res => {

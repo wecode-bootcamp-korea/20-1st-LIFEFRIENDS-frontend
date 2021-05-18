@@ -1,13 +1,12 @@
 import { Component } from 'react';
-import './Input.scss';
 
 export default class NameInput extends Component {
   render() {
-    const { handleInput, signUpState } = this.props;
+    const { handleInput, nameValid } = this.props;
 
     return (
       <div className="InputBox signUpInputBox">
-        <label className="inputLabel" hatmlFor="nameInput">
+        <label className="inputLabel" htmlFor="nameInput">
           이름
         </label>
         <input
@@ -15,9 +14,12 @@ export default class NameInput extends Component {
           type="text"
           onChange={handleInput}
           name="name"
-          required
         />
-        <p className="InputError errorPw">필수 정보입니다.</p>
+        <div className="errorBox">
+          {!nameValid && (
+            <p className="InputError errorPw">올바른 이름 값을 입력해주세요.</p>
+          )}
+        </div>
       </div>
     );
   }
