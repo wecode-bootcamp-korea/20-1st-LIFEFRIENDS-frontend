@@ -10,14 +10,16 @@ class GoTop extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        this.setState({ isVisible: true });
-      } else {
-        this.setState({ isVisible: false });
-      }
-    });
+    document.addEventListener('scroll', this.showButton);
   }
+
+  showButton = () => {
+    if (window.scrollY > 300) {
+      this.setState({ isVisible: true });
+    } else {
+      this.setState({ isVisible: false });
+    }
+  };
 
   scrolltoTop = () => {
     window.scrollTo({
@@ -26,7 +28,7 @@ class GoTop extends React.Component {
   };
 
   componentWillUnmount = () => {
-    document.removeEventListener('scroll', this.scrolltoTop);
+    document.removeEventListener('scroll', this.showButton);
   };
 
   render() {
