@@ -23,21 +23,3 @@ export default class SignUp extends Component {
     );
   }
 }
-
-const signUpData = [
-  {
-    type: 'name',
-    text: '이름',
-    error: '',
-  },
-  {
-    type: 'email',
-    text: '이메일',
-    error: '',
-  },
-  {
-    type: 'password',
-    text: '비밀번호',
-    error: '',
-  },
-];

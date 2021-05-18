@@ -24,6 +24,7 @@ export default class Login extends Component {
       }),
     })
       .then(res => {
+        // eslint-disable-next-line default-case
         switch (res.status) {
           case 400:
             alert('아이디 또는 비밀번호를 입력해주세요');
