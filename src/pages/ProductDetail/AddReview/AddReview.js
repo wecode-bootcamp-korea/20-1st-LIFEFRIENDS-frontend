@@ -42,7 +42,6 @@ class AddReview extends Component {
     const dataValue = e.target.dataset.value;
     const targetList = e.target.parentNode.childNodes;
     for (let i = 0; i < targetList.length; i++) {
-      // console.log(targetList[i].className.includes('redstar'));
       if (targetList[i].className.includes('redstar')) {
         targetList[i].className = 'fas fa-star';
       } else {
