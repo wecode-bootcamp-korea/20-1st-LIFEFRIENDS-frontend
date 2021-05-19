@@ -1,4 +1,5 @@
 import React from 'react';
+import GoTop from '../GoToTop/GoTop';
 import './Footer.scss';
 
 class Footer extends React.Component {
@@ -72,6 +73,7 @@ class Footer extends React.Component {
             <p>Copyright ©LIFER Corp.All Rights Reserved.</p>
           </div>
         </section>
+        <GoTop />
       </footer>
     );
   }
