@@ -6,8 +6,8 @@ class AddProduct extends Component {
     return (
       <div className="addProduct">
         <header className="titleBox">
-          <h1 className="addProductTitle">LINE FRENDS X CASETIFY</h1>
-          <h1 className="addProductPrice">44,000</h1>
+          <div className="addProductTitle">LINE FRENDS X CASETIFY</div>
+          <div className="addProductPrice">44,000</div>
         </header>
 
         <section className="addProductPoint">
@@ -22,19 +22,18 @@ class AddProduct extends Component {
               <p>440원</p>
             </div>
           </div>
-        </section>
-
-        <section className="deliveryFeeBox">
-          <p className="deliveryFee deliveryText">
-            택배배송 | <span className="bold">3000원</span>
-            <span className="textBlue">(주문시 결제)</span>
-          </p>
-          <p className="freeDelivery deliveryText">
-            30,000원 이상 구매 시 무료
-          </p>
-          <p className="showSaveDeliveryFee deliveryText">
-            <span className="textBlue">배송비 절약상품 보기</span>
-          </p>
+          <div className="deliveryFeeBox">
+            <p className="deliveryFee deliveryText">
+              택배배송 | <span className="bold">3000원</span>
+              <span className="textBlue">(주문시 결제)</span>
+            </p>
+            <p className="freeDelivery deliveryText">
+              30,000원 이상 구매 시 무료
+            </p>
+            <p className="showSaveDeliveryFee deliveryText">
+              <span className="textBlue">배송비 절약상품 보기</span>
+            </p>
+          </div>
         </section>
 
         <div className="selectSizeBox">
