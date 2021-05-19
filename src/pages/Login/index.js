@@ -42,11 +42,7 @@ export default class Login extends Component {
       .then(res => {
         if (res) {
           // save localstroage
-          localStorage.setItem(
-            'MESSAGE',
-            res['ACCESS_TOKEN'],
-            res['USER_INFO']
-          );
+          localStorage.setItem('AUTHORIZATION', res['ACCESS_TOKEN']);
           // push to main
           this.props.history.push('./');
         }
