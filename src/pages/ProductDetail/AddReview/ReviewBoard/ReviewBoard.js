@@ -41,11 +41,13 @@ class ReviewBoard extends Component {
       // node[num].style.backgroundClip = 'text';
       // node[num].style.color = 'transparent';
 
-      node[
-        num
-      ].style.background = `linear-gradient(to right, #f84f50 70%, #888888 30%)`;
-      node[num].style.backgroundClip = 'text';
-      node[num].style.color = 'transparent';
+      // node[
+      //   num
+      // ].style.background = `linear-gradient(to right, #f84f50 ${point}0%, #888888 ${
+      //   10 - point
+      // }0%)`;
+      // node[num].style.backgroundClip = 'text';
+      // node[num].style.color = 'transparent';
 
       node[num].className = 'fas fa-star pointstar';
     }
