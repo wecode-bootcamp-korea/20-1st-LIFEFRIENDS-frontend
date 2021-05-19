@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddProduct from './AddProduct/AddProduct';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -8,11 +9,11 @@ class ProductDetail extends Component {
         <article>
           <section className="product">
             <header>
-              홈 > 캐릭터 > <span>BT21</span> (총 198개) | 다른상품보기
+              홈 {'>'} 캐릭터 {'>'} <span>BT21</span> (총 198개) | 다른상품보기
             </header>
             <div>
               <div className="productPreview">준현님</div>
-              <div className="addProduct">가람님</div>
+              <AddProduct />
             </div>
           </section>
           <section>
