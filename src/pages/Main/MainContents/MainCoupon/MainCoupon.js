@@ -5,13 +5,35 @@ class MainCoupon extends Component {
   constructor() {
     super();
     this.state = {
-      coupontData: '',
+      coupontData: {},
+      userName: '',
     };
   }
 
+  initializeUserInfo = () => {
+    const loggedInfo = localStorage.getItem('AUTHORIZATION');
+    fetch('http://172.16.20.241:8000/users/user', {
+      method: 'GET',
+      headers: {
+        AUTHORIZATION: loggedInfo,
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.MESSAGE === 'SUCCESS') {
+          this.setState({
+            userName: data.USER_INFO.user_name,
+          });
+        } else if (data.MESSAGE === 'LOGIN_REQUIRED') {
+          this.setState({
+            userName: '고객',
+          });
+        }
+      });
+  };
+
   componentDidMount() {
-    fetch('http://10.58.3.83:8000/mainpages/coupons/40%')
-      // fetch('/data/coupon.json')
+    fetch('http://172.16.20.134:8000/users/coupon/40%')
       .then(response => response.json())
       .then(coupondata => {
         this.setState({
@@ -19,10 +41,11 @@ class MainCoupon extends Component {
         });
         console.log(this.state.couponData);
       });
+    this.initializeUserInfo();
   }
 
   render() {
-    const { couponData } = this.state;
+    const { couponData, userName } = this.state;
     return (
       <section className="mainCoupon">
         <div>
@@ -34,11 +57,8 @@ class MainCoupon extends Component {
             <p>Brand Store Coupon</p>
           </div>
           <div className="couponDesc">
-            <h2>LIFE FRIENDS 고객님을 위한 혜택</h2>
-            <p>
-              스토어찜 고객에게 드리는 혜택! {couponData}
-              장바구니 할인
-            </p>
+            <h2>{userName}님을 위한 혜택</h2>
+            <p>스토어찜 고객에게 드리는 혜택! {couponData} 장바구니 할인</p>
             <button className="linkBtn">쿠폰받기</button>
           </div>
         </div>

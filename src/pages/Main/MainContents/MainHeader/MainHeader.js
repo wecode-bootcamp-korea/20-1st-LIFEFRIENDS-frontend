@@ -75,16 +75,18 @@ class MainHeader extends Component {
     }
   };
 
-  // changeBtnColor = e => {
-  //   if (e.target.className === '') {
-  //     e.target.className = 'onClick';
-  //   }
-  // };
+  changeBtnColor = e => {
+    const { headerData } = this.state;
+    const targetList = e.target.parentNode.parentNode.childNodes;
+    for (let i = 0; i < headerData.length; i++) {
+      console.log(targetList[i].childNodes[0], e.target);
 
-  // onClickPageBtn = e => {
-  //   this.changePage(e);
-  //   this.changeBtnColor(e);
-  // };
+      if (targetList[i].childNodes[0].className === 'onClick') {
+        targetList[i].childNodes[0].className = '';
+      }
+      e.target.className = 'onClick';
+    }
+  };
 
   render() {
     const { headerData, clickedPage } = this.state;
@@ -122,7 +124,7 @@ class MainHeader extends Component {
           {headerData &&
             headerData.map(el => {
               return (
-                <li key={el.id} className={el.id}>
+                <li key={el.id} className={el.id} onClick={this.changeBtnColor}>
                   <button onClick={this.changePage} />
                 </li>
               );

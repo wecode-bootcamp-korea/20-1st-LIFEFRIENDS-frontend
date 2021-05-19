@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddReview from './AddReview/AddReview';
+import AddProduct from './AddProduct/AddProduct';
 import './ProductDetail.scss';
 import { ReviewPreview } from './ReviewPreview/ReviewPreview';
 import './ReviewPreview/ReviewPreview.scss';
@@ -15,7 +16,7 @@ class ProductDetail extends Component {
             </header>
             <div className="productInfoBox">
               <div className="productPreview">준현님</div>
-              <div className="addProduct">가람님</div>
+              <AddProduct />
             </div>
           </section>
           <section>
