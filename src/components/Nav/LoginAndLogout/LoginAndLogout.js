@@ -3,26 +3,45 @@ import { Link } from 'react-router-dom';
 import './LoginAndLogout.scss';
 
 export class LoginAndLogout extends React.Component {
+  istAllInputValid = () => {
+    const tokenValue = localStorage.getItem('AUTHORIZATION');
+    fetch('http://172.16.20.241:8000/users/user', {
+      method: 'GET',
+      headers: { AUTHORIZATION: tokenValue },
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.MESSAGE === 'SUCCESS') {
+          localStorage.setItem('user_name', res.USER_INFO.user_name);
+          localStorage.setItem('user_email', res.USER_INFO.user_email);
+        }
+        if (res.result === 'INVALID_USER') {
+          return alert('비밀번호 또는 이메일이 잘 못 되었습니다.');
+        }
+      });
+  };
+
   changeLogout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('name');
-    localStorage.removeItem('id');
-    localStorage.removeItem('email');
+    localStorage.removeItem('AUTHORIZATION');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_email');
   };
 
   render() {
+    this.istAllInputValid();
     return (
       <div className="LoginAndLogout">
-        {localStorage.access_token ? (
+        {localStorage.AUTHORIZATION ? (
           <div className="loggedIn">
             <span className="loggedInInfo">
-              {localStorage.getItem('name')}님
+              {localStorage.getItem('user_name')}님
               <div className="loggedInBox">
                 <p className="loggedInUserName">
-                  {localStorage.getItem('name')}님
+                  {localStorage.getItem('user_name')}님
                 </p>
                 <p className="loggedInUserEmail">
-                  {localStorage.getItem('email')}
+                  {localStorage.getItem('user_email')}
                 </p>
                 <button className="logoutButton" onClick={this.changeLogout}>
                   <Link to="/main">로그아웃</Link>
