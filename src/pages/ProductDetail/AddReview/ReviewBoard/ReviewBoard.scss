@@ -1,0 +1,97 @@
+@import '../../../../styles/Common.scss';
+
+.board {
+  @include flexBox(space-around, center, row);
+  width: 1020px;
+  height: 210px;
+  padding: 35px 0 29px 32px;
+  background-color: #f8f9fb;
+
+  .subtitle {
+    margin: 10px 20px;
+    font-size: 14px;
+  }
+
+  .average {
+    @include flexBox(space-between, center, column);
+    width: 152px;
+    height: 133px;
+
+    div {
+      margin: 10px;
+
+      .fa-star {
+        color: #ebe9e9;
+        // background: linear-gradient(
+        //   to right,
+        //   #f84f50 70%,
+        //   #888888 30%
+        // );
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+      }
+
+      .pointstar {
+        background: linear-gradient(to right, #f84f50 70%, #888888 30%);
+        background-clip: text;
+        color: transparent;
+      }
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .totalReview {
+    @include flexBox(space-between, center, column);
+    width: 152px;
+    height: 133px;
+  }
+
+  div > strong {
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .totalReview > p:nth-child(2) {
+    margin-bottom: 10px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .totalReview > p:nth-child(3) {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .ratio {
+    width: 270px;
+    height: 133px;
+
+    ul {
+      @include flexBox(center, center, row);
+      .ratioBar {
+        width: 8px;
+        height: 62px;
+        margin: 20px;
+        background-color: $--heart-color;
+
+        .ratioValue {
+          width: 8px;
+          height: 70%;
+          background-color: $--font-desc-gray;
+        }
+
+        p {
+          position: relative;
+          top: 25px;
+          left: -7px;
+          width: 30px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
