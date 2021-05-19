@@ -1,10 +1,10 @@
 @import '../../styles/Common.scss';
 .category {
-  width: 1280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
+  width: 1280px;
+  margin: 250px auto;
 
   .categorybox {
     margin: 50px 0px 13px;
@@ -30,7 +30,9 @@
       flex-direction: row;
       margin-top: 30px;
 
-      .sortButton {
+      li .sortButtonOn {
+        font-weight: bold;
+        color: black;
       }
     }
   }
@@ -48,8 +50,8 @@
       //외안됨? 후우 나중에 클릭에 따라서 체크박스 만들때 다시보기
       width: 1px;
       height: 12px;
-      background-color: #e1e1e1;
       margin-top: -6px;
+      background-color: #e1e1e1;
       content: '';
     }
   }
@@ -58,10 +60,10 @@
     flex-wrap: wrap;
   }
   .productOnCategory {
+    position: relative;
     margin: 20px 0px;
     padding: 0px 18px;
     width: 316px;
-    position: relative;
     //이미지 맞추기
 
     img {
@@ -86,9 +88,9 @@
       width: 25%;
       height: 25%;
       margin: 10px 10px;
+      top: 70%;
       object-fit: contain;
       position: relative;
-      top: 70%;
     }
 
     .hoverButtonBundle:hover {
@@ -100,8 +102,8 @@
     }
 
     p {
-      font-weight: bold;
       white-space: nowrap;
+      font-weight: bold;
       overflow: hidden; //왜 글씨 위에 잘리냐
       text-overflow: ellipsis;
     }
@@ -110,8 +112,8 @@
       margin-top: 20px;
 
       span {
-        font-size: 12px;
         margin: 0px 4px 0px 0px;
+        font-size: 12px;
       }
 
       .greyfont {

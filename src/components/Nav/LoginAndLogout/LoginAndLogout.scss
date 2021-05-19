@@ -1,0 +1,55 @@
+@import '../../../styles/Common.scss';
+
+$font-size-supersmall: 12px;
+$font-size-extrasmall: 13px;
+$font-size-small: 14px;
+$font-size-regular: 15px;
+$font-size-medium: 16px;
+$font-weight-light: 200;
+$font-weight-regular: 300;
+$font-weight-medium: 400;
+$font-weight-bold: 600;
+
+@mixin marginHeaderLeftRight {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+%cartMypageMypickButton {
+  margin-right: 10px;
+  padding: 3px;
+  font-size: 15px;
+  color: $--font-desc-gray;
+}
+
+.LoginAndLogout {
+  @include flexBox(space-between, center, row);
+  .loggedIn {
+    @include marginHeaderLeftRight();
+
+    .logoutButton {
+      @extend %cartMypageMypickButton;
+    }
+
+    .goToPickStore {
+      @extend %cartMypageMypickButton;
+    }
+
+    .goToMypage {
+      @extend %cartMypageMypickButton;
+    }
+
+    .goToCart {
+      @extend %cartMypageMypickButton;
+    }
+  }
+  .goToLogin {
+    .loginButton {
+      @extend %cartMypageMypickButton;
+    }
+  }
+  .viewTotal {
+    @include marginHeaderLeftRight();
+    font-size: 15px;
+  }
+}

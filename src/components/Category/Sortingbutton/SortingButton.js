@@ -2,11 +2,20 @@ import React from 'react';
 
 class SortingButton extends React.Component {
   render() {
-    const { key, title, field, sortFunction, sortingRule } = this.props;
+    const {
+      key,
+      title,
+      field,
+      sortFunction,
+      sortingRule,
+      currentSortingField,
+    } = this.props;
     return (
       <li key={key}>
         <button
-          className="sortButton"
+          className={
+            currentSortingField === field ? 'sortButtonOn' : 'sortButtonOff'
+          }
           onClick={() => sortFunction(field, sortingRule)}
         >
           {title}

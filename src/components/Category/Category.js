@@ -3,7 +3,6 @@ import ProductCart from './ProductCard/ProductCart';
 import SortingButton from './Sortingbutton/SortingButton';
 import PageButton from './PageButton/PageButton';
 import './Category.scss';
-import '../../styles/Reset.scss';
 
 class Category extends React.Component {
   constructor() {
@@ -41,8 +40,9 @@ class Category extends React.Component {
           manyToLittle: true,
         },
       ],
-      sortingFieldTitle: '',
-      productData: 0, //왜 빈 배열로 하면 &&함수 작동안함?
+      currentSortingField: '',
+      productDataOrigin: 0,
+      productData: 0,
       itemsOnEachPage: 8,
       numberOfPages: [],
       currentPage: 1,
@@ -50,49 +50,53 @@ class Category extends React.Component {
   }
 
   // api 연결성공
-  // componentDidMount = () => {
-  //   const { producData, itemsOnEachPage } = this.state;
-  //   fetch('http://10.58.7.181:8000/categories/토이?sort=POPULAR', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         productData: data.MESSAGE,
-  //         numberOfPages: Array.from(
-  //           { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
-  //           (v, i) => i //원리 이해 필요
-  //         ),
-  //       });
-  //     });
-  // };
-
-  //MockData 연결용
   componentDidMount = () => {
-    const { productData, itemsOnEachPage } = this.state;
-    fetch('http://localhost:3000/data/categoryData.json', {
-      method: 'GET',
-    })
+    const { producData, itemsOnEachPage } = this.state;
+    fetch(
+      `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data,
+          productDataOrigin: data.MESSAGE,
+          productData: data.MESSAGE,
           numberOfPages: Array.from(
-            { length: Math.ceil(data.length / itemsOnEachPage) },
+            { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
             (v, i) => i //원리 이해 필요
           ),
         });
       });
   };
 
+  componentDidUpdate = (prevProps, prevState) => {
+    const { producData, itemsOnEachPage } = this.state;
+    if (prevProps.location.search !== this.props.location.search)
+      fetch(
+        `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            productData: data.MESSAGE,
+            numberOfPages: Array.from(
+              { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
+              (v, i) => i //원리 이해 필요
+            ),
+          });
+        });
+  };
+
   changeSortingField = (sortingField, sortRule) => {
-    const { productData, itemsOnEachPage } = this.state;
+    const { productDataOrigin, currentSortingField } = this.state;
     this.setState({
-      productData: productData.sort(
-        sortRule === true
-          ? (a, b) => b[sortingField] - a[sortingField]
-          : (a, b) => a[sortingField] - b[sortingField]
-      ),
+      productData:
+        productDataOrigin &&
+        productDataOrigin.sort(
+          sortRule === true
+            ? (a, b) => b[sortingField] - a[sortingField]
+            : (a, b) => a[sortingField] - b[sortingField]
+        ),
+      currentSortingField: sortingField,
     });
   };
 
@@ -109,16 +113,20 @@ class Category extends React.Component {
       numberOfPages,
       currentPage,
       itemsOnEachPage,
+      currentSortingField,
     } = this.state;
+    const { categoryStatus, location } = this.props;
     const { changeSortingField, pageChange } = this;
-    // console.log(numberOfPages);
 
     return (
       <article className="category">
         <div className="categorybox">
-          <span className="categoryName">토이</span>
+          <span className="categoryName">
+            {location.search.slice(location.search.indexOf('=') + 1)}
+          </span>
           <span className="categoryLocation">
-            홈 > 토이(총 {productData.length}개) > 전체
+            홈 > {location.search.slice(location.search.indexOf('=') + 1)}(총{' '}
+            {productData.length}개) > 전체
           </span>
         </div>
         <div className="filter">
@@ -131,6 +139,7 @@ class Category extends React.Component {
                   field={data.dataField}
                   sortFunction={changeSortingField}
                   sortingRule={data.manyToLittle}
+                  currentSortingField={currentSortingField}
                 />
               );
             })}
