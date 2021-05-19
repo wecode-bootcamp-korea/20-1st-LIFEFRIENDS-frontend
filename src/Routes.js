@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
-import Login from './pages/Login/Index';
-import SignUp from './pages/SignUp/Index';
+import Login from './pages/Login/index';
+import SignUp from './pages/SignUp/index';
 import Footer from './components/Footer/Footer';
 
 class Routes extends React.Component {
