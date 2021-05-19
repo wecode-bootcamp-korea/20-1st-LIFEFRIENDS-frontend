@@ -125,8 +125,8 @@ class Category extends React.Component {
             {location.search.slice(location.search.indexOf('=') + 1)}
           </span>
           <span className="categoryLocation">
-            홈 > {location.search.slice(location.search.indexOf('=') + 1)}(총{' '}
-            {productData.length}개) > 전체
+            홈 {'>'} {location.search.slice(location.search.indexOf('=') + 1)}
+            {productData.length}개) {'>'} 전체
           </span>
         </div>
         <div className="filter">
