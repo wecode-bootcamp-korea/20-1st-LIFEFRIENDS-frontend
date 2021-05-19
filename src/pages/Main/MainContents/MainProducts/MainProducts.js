@@ -6,7 +6,7 @@ class MainProducts extends Component {
   constructor() {
     super();
     this.state = {
-      productstData: [],
+      productstData: 0,
       items: 8,
       preItems: 0,
     };

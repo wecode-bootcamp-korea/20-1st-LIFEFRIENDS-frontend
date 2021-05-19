@@ -1,0 +1,144 @@
+@import '../../styles/Common.scss';
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1280px;
+  margin: 250px auto;
+
+  .categorybox {
+    margin: 50px 0px 13px;
+  }
+
+  .categoryName {
+    text-align: left;
+    padding-left: 18px;
+    font-size: 22px;
+  }
+
+  .categoryLocation {
+    text-align: right;
+    display: inline-block;
+    width: 95%;
+    color: $--font-desc-gray;
+    font-size: 14px;
+  }
+
+  .filter {
+    .sortButtonArea {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px;
+
+      li .sortButtonOn {
+        font-weight: bold;
+        color: black;
+      }
+    }
+  }
+
+  li {
+    padding: 0 12px;
+    list-style: none;
+    font-size: 13px;
+
+    button {
+      color: $--font-desc-gray;
+    }
+
+    button::before {
+      //외안됨? 후우 나중에 클릭에 따라서 체크박스 만들때 다시보기
+      width: 1px;
+      height: 12px;
+      margin-top: -6px;
+      background-color: #e1e1e1;
+      content: '';
+    }
+  }
+  .productList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .productOnCategory {
+    position: relative;
+    margin: 20px 0px;
+    padding: 0px 18px;
+    width: 316px;
+    //이미지 맞추기
+
+    img {
+      width: 280px;
+      height: 381px;
+      object-fit: cover;
+      background-size: cover;
+    }
+
+    .hoverButtonBundle {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 80px;
+      width: 90%;
+      height: 80%;
+      opacity: 0;
+      transition-duration: 0.5s;
+    }
+
+    .hoverButton {
+      width: 25%;
+      height: 25%;
+      margin: 10px 10px;
+      top: 70%;
+      object-fit: contain;
+      position: relative;
+    }
+
+    .hoverButtonBundle:hover {
+      opacity: 0.9;
+    }
+
+    .betweenImgAndText {
+      padding: 14px 0px 0px;
+    }
+
+    p {
+      white-space: nowrap;
+      font-weight: bold;
+      overflow: hidden; //왜 글씨 위에 잘리냐
+      text-overflow: ellipsis;
+    }
+
+    .reviewAndScore {
+      margin-top: 20px;
+
+      span {
+        margin: 0px 4px 0px 0px;
+        font-size: 12px;
+      }
+
+      .greyfont {
+        color: $--font-desc-gray;
+      }
+
+      .bluefont {
+        color: #6b90dc;
+      }
+    }
+  }
+  .menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      padding: 12px 15px;
+    }
+
+    .buttonClicked {
+      background-color: grey;
+      color: white;
+    }
+    .buttonUnClicked {
+      color: black;
+    }
+  }
+}

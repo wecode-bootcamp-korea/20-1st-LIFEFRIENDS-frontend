@@ -8,8 +8,8 @@ class MainGift extends Component {
     this.pageSize = Math.round(document.documentElement.clientWidth * 0.8);
     this.sliderRef = React.createRef();
     this.state = {
-      giftData: [],
-      items: [],
+      giftData: 0,
+      items: 0,
       pageSize: Math.round(document.documentElement.clientWidth * 0.8),
       target: Math.ceil(this.pageSize / 230) - 2,
       cnt: 0,
@@ -19,12 +19,12 @@ class MainGift extends Component {
 
   componentDidMount() {
     const { target } = this.state;
-    fetch('http://10.58.7.181:8000/categories/선물추천')
+    fetch('http://10.58.7.181:8000/products/categories?&menu=선물추천')
       .then(response => response.json())
       .then(giftdata => {
         this.setState({
           giftData: giftdata.MESSAGE,
-          items: giftdata,
+          items: giftdata.MESSAGE,
           cnt: target,
         });
       });

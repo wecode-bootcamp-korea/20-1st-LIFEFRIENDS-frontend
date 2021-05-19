@@ -117,7 +117,7 @@ $font-weight-bold: 600;
     .copyRights {
       @include flexBox(flex-start, center, row);
       width: 1280px;
-      margin-bottom: 110px;
+      margin-bottom: 100px;
 
       span {
         color: $--main-green;

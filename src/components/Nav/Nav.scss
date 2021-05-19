@@ -1,0 +1,167 @@
+@import '../../styles/Common.scss';
+
+$font-size-supersmall: 12px;
+$font-size-extrasmall: 13px;
+$font-size-small: 14px;
+$font-size-regular: 15px;
+$font-size-medium: 16px;
+$font-weight-light: 200;
+$font-weight-regular: 300;
+$font-weight-medium: 400;
+$font-weight-bold: 600;
+
+@mixin marginHeaderLeftRight {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+%cartMypageMypickButton {
+  margin-right: 10px;
+  padding: 3px;
+  font-size: 15px;
+  color: $--font-desc-gray;
+}
+
+.navAndHeader {
+  z-index: 100;
+  width: 1280px;
+  margin: 10px auto;
+
+  .lifeStoreNav {
+    position: absolute;
+    top: 0;
+    width: 1280px;
+    margin: 10px auto;
+
+    .navHeader {
+      @include flexBox(space-between, center, row);
+      margin-top: 13px;
+      padding: 10px;
+      border-bottom: 1px solid $--border-line;
+      color: $--font-desc-gray;
+      font-size: 15px;
+
+      .navHeaderLeft {
+        .toMoveNaverPage {
+          @include marginHeaderLeftRight();
+        }
+
+        .toMoveNaverShopping {
+          @include marginHeaderLeftRight();
+        }
+      }
+
+      // .navHeaderRight {
+      //   @include flexBox(space-between, center, row);
+      //   .loginButtonAndCart {
+      //     @include marginHeaderLeftRight();
+
+      //     .goToLogIn {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .goToPickStore {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .goToMypage {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .goToCart {
+      //       @extend %cartMypageMypickButton;
+      //     }
+
+      //     .viewTotal {
+      //       @include marginHeaderLeftRight();
+      //       font-size: 15px;
+      //     }
+      //   }
+      // }
+    }
+    .navBody {
+      .logoAndSearch {
+        @include flexBox(center, center, row);
+
+        .logoLifeStore {
+          @include flexBox(center, center, row);
+          margin-top: 30px;
+          margin-bottom: 22px;
+          font-size: 34px;
+          color: $--font-title-black;
+          font-weight: bolder;
+        }
+
+        .searchBox {
+          .search {
+            position: absolute;
+            right: 5px;
+            top: 70px;
+            height: 40px;
+            width: 218px;
+            margin-top: 50px;
+            margin-bottom: 22px;
+            padding-left: 10px;
+            border: 1px solid $--font-desc-gray;
+            border-radius: 10px;
+            font-size: 13px;
+          }
+
+          .searchButton {
+            position: absolute;
+            right: 20px;
+            top: 133px;
+          }
+
+          .searchListContainer {
+            padding: 16px 0;
+            position: absolute;
+            top: 161px;
+            right: 4px;
+            z-index: 30;
+            width: 218px;
+            max-height: 450px;
+            background: white;
+            border: 1px solid $--font-desc-gray;
+            border-radius: 10px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.09);
+            overflow: hidden;
+            display: none;
+
+            &.open {
+              display: block;
+            }
+            li {
+              @include flexBox(flex-start, center, row);
+              width: 268px;
+              height: 32px;
+              font-size: 13px;
+              cursor: pointer;
+
+              &:hover {
+                background: rgba(0, 0, 0, 0.03);
+                transition: all 0.2s ease;
+              }
+
+              div {
+                @include flexBox(center, flex-start, column);
+                padding: 0 8px 0 8px;
+                width: 100%;
+                font-weight: $font-weight-medium;
+                word-break: break-all;
+
+                .productName {
+                  margin-bottom: 3px;
+                  font-size: 13px;
+                  font-weight: $font-weight-medium;
+                  line-height: 13px;
+                  word-break: break-all;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,8 +3,6 @@
 .mainMediumCard {
   @include flexBox(center, center, row);
   flex-wrap: wrap;
-  transform: translateX(0px);
-  transition: all 2 ease-in-out;
 
   .mediumCard {
     width: 320px;

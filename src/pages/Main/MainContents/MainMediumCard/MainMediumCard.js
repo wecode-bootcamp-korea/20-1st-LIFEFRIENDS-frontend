@@ -20,6 +20,7 @@ class MainMediumCard extends Component {
 
   render() {
     const { data } = this.props;
+    console.log(data);
     return (
       <div className="mainMediumCard ">
         {data &&
@@ -35,7 +36,9 @@ class MainMediumCard extends Component {
                       src="/images/heart.png"
                     />
                     <img
-                      onClick={this.openModal}
+                      onClick={() => {
+                        this.openModal();
+                      }}
                       className="hoverButton"
                       alt="heartButton"
                       src="/images/plus.png"
