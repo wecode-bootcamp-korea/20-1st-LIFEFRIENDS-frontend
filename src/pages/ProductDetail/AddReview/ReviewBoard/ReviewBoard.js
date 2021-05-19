@@ -47,7 +47,7 @@ class ReviewBoard extends Component {
       node[num].style.backgroundClip = 'text';
       node[num].style.color = 'transparent';
 
-      // node[num].className = 'fas fa-star pointstar';
+      node[num].className = 'fas fa-star pointstar';
     }
   };
 

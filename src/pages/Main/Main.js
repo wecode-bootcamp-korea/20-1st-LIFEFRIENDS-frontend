@@ -6,16 +6,6 @@ import Footer from '../../components/Footer/Footer';
 
 class Main extends Component {
   constructor() {
-    super();
-    this.state = {
-      mode: 'main',
-    };
-  }
-
-  HandlePageChange = e => {
-    console.log(e.target.value);
-  };
-
   render() {
     return (
       <>

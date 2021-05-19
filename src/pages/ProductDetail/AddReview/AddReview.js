@@ -116,7 +116,6 @@ class AddReview extends Component {
   render() {
     const { ratingValue, reviewText, mapValue } = this.state;
     const isValid = 10 <= reviewText.length;
-    console.log(mapValue);
     return (
       <div className="addReview">
         <h2>상품 리뷰</h2>
@@ -131,6 +130,7 @@ class AddReview extends Component {
             {mapValue.map(el => {
               return (
                 <i
+                  key={el}
                   className="fas fa-star"
                   data-value={el}
                   onMouseOver={this.mouseOverHandler}
