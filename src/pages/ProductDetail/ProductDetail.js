@@ -11,7 +11,7 @@ class ProductDetail extends Component {
             <header>
               홈 {'>'} 캐릭터 {'>'} <span>BT21</span> (총 198개) | 다른상품보기
             </header>
-            <div>
+            <div className="productInfoBox">
               <div className="productPreview">준현님</div>
               <AddProduct />
             </div>
