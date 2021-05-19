@@ -53,7 +53,7 @@ class Category extends React.Component {
   componentDidMount = () => {
     const { producData, itemsOnEachPage } = this.state;
     fetch(
-      `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+      `http://172.16.20.241:8000/products/categories${this.props.location.search}`
     )
       .then(res => res.json())
       .then(data => {
@@ -71,19 +71,21 @@ class Category extends React.Component {
   componentDidUpdate = (prevProps, prevState) => {
     const { producData, itemsOnEachPage } = this.state;
     if (prevProps.location.search !== this.props.location.search)
-      fetch(
-        `http://10.58.7.181:8000/products/categories${this.props.location.search}`
-      )
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            productData: data.MESSAGE,
-            numberOfPages: Array.from(
-              { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
-              (v, i) => i //원리 이해 필요
-            ),
-          });
-        });
+      this.props.location.search == '?&menu=전체상품'
+        ? fetch(`http://172.16.20.241:8000/products/categories`)
+        : fetch(
+            `http://172.16.20.241:8000/products/categories${this.props.location.search}`
+          )
+            .then(res => res.json())
+            .then(data => {
+              this.setState({
+                productData: data.MESSAGE,
+                numberOfPages: Array.from(
+                  { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
+                  (v, i) => i //원리 이해 필요
+                ),
+              });
+            });
   };
 
   changeSortingField = (sortingField, sortRule) => {
@@ -125,7 +127,7 @@ class Category extends React.Component {
             {location.search.slice(location.search.indexOf('=') + 1)}
           </span>
           <span className="categoryLocation">
-            홈 {'>'} {location.search.slice(location.search.indexOf('=') + 1)}
+            홈 {'>'} {location.search.slice(location.search.indexOf('=') + 1)}(
             {productData.length}개) {'>'} 전체
           </span>
         </div>

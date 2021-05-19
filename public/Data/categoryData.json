@@ -48,23 +48,23 @@
       "categoryList": [
         {
           "categoryId": 1,
-          "categoryName": "문구"
+          "categoryName": "BABY 문구"
         },
         {
           "categoryId": 2,
-          "categoryName": "리빙"
+          "categoryName": "BABY 리빙"
         },
         {
           "categoryId": 3,
-          "categoryName": "디지털"
+          "categoryName": "BABY 디지털"
         },
         {
           "categoryId": 4,
-          "categoryName": "패션잡화"
+          "categoryName": "BABY 패션잡화"
         },
         {
           "categoryId": 5,
-          "categoryName": "인형&쿠션"
+          "categoryName": "BABY 인형쿠션"
         }
       ]
     },
@@ -101,15 +101,15 @@
       "categoryList": [
         {
           "categoryId": 1,
-          "categoryName": "다이어리 / 플래너"
+          "categoryName": "다이어리,플래너"
         },
         {
           "categoryId": 2,
-          "categoryName": "노트 / 메모지"
+          "categoryName": "노트,메모지"
         },
         {
           "categoryId": 3,
-          "categoryName": "필기류 / 케이스"
+          "categoryName": "필기류,케이스"
         },
         {
           "categoryId": 4,
@@ -117,7 +117,7 @@
         },
         {
           "categoryId": 5,
-          "categoryName": "스티커 시리즈"
+          "categoryName": "스티커시리즈"
         }
       ]
     },
@@ -161,7 +161,7 @@
         },
         {
           "categoryId": 4,
-          "categoryName": "양말 / 슬리퍼"
+          "categoryName": "양말,슬리퍼"
         }
       ]
     },
@@ -183,11 +183,11 @@
         },
         {
           "categoryId": 4,
-          "categoryName": "모자 / 마스크"
+          "categoryName": "모자,마스크"
         },
         {
           "categoryId": 5,
-          "categoryName": "지갑 / 파우치"
+          "categoryName": "지갑,파우치"
         }
       ]
     },
@@ -197,15 +197,15 @@
       "categoryList": [
         {
           "categoryId": 1,
-          "categoryName": "패브릭 / 홈데코"
+          "categoryName": "패브릭,홈데코"
         },
         {
           "categoryId": 2,
-          "categoryName": "식기 / 텀블러"
+          "categoryName": "식기,텀블러"
         },
         {
           "categoryId": 3,
-          "categoryName": "주방 / 욕실"
+          "categoryName": "주방,욕실"
         },
         {
           "categoryId": 4,
