@@ -54,7 +54,6 @@ class AddReview extends Component {
     this.setState({
       ratingValue: dataValue,
     });
-    console.log(e.target);
   };
 
   handleReviewText = e => {
@@ -142,7 +141,7 @@ class AddReview extends Component {
           </div>
         </section>
         <div className="rating">
-          <strong className="title">상품은 만족하셨나요?</strong>
+          <strong className="reviewTitle">상품은 만족하셨나요?</strong>
           <div>
             <i
               className="fas fa-star"
@@ -184,7 +183,7 @@ class AddReview extends Component {
           <p>선택하세요</p>
         </div>
         <article className="addReviewArticle">
-          <strong className="title">
+          <strong className="reviewTitle">
             만족도 5점을 주셨네요
             <br />
             어떤 점이 좋았나요?
