@@ -35,9 +35,6 @@ export default class SignUp extends Component {
       .then(res => {
         switch (res.status) {
           case 400:
-            alert('값을 확인해주세요.');
-            break;
-
           case 401:
             alert('값을 확인해주세요.');
             break;

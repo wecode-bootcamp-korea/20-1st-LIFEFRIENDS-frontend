@@ -7,9 +7,9 @@ import BirthInput from './Input/BirthInput';
 import GenderInput from './Input/GenderInput';
 import PhoneInput from './Input/PhoneInput';
 import Button from './Button/Button';
+import validator from '../../utils/InputValidator';
 import './SignUpForm.scss';
 import './Input/Input.scss';
-import validator from '../../utils/InputValidator';
 
 export default class SignUpForm extends Component {
   render() {
