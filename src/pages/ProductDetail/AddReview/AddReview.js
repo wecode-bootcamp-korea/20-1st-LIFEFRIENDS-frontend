@@ -96,25 +96,29 @@ class AddReview extends Component {
     });
   };
 
-  handlePost = e => {
-    const { reviewText, reviewImgUrl, ratingValue } = this.state;
-    e.preventDefault();
+  uploadReviewData = () => {
+    const {reviewData, atingValue, reviewText, reviewImgUrl} = this.state;
     fetch('', {
       method: 'POST',
-      body: JSON.stringify({
-        reviewText: reviewText,
-        reviewImgUrl: reviewImgUrl,
-        reviewValue: ratingValue,
-      }),
+      headers: {
+        key: reviewData,
+        key1: atingValue,
+        key2: reviewText,
+        key3: reviewImgUrl,
+      },
     })
-      .then(response => response.json())
-      .then(() => {
-        alert('리뷰가 등록되었습니다.😄');
+    .then(response => response.json())
+      .then(data => {
+        if (data.MESSAGE === 'SUCCESS') {
+          alert('리뷰가 등록되었습니다 👍'),
+        } else if (data.MESSAGE === 'FAILED') {
+          alert('리뷰가 등록되지 않았습니다. 다시 시도해주세요 🥲'),
+        }
       });
   };
 
   render() {
-    const { ratingValue, reviewText, mapValue } = this.state;
+    const { ratingValue, reviewText, reviewData } = this.state;
     const isValid = 10 <= reviewText.length;
     return (
       <div className="addReview">
@@ -123,7 +127,12 @@ class AddReview extends Component {
           상품을 구매하신 분들이 작성하신 리뷰입니다. 리뷰 작성 시 포인트가
           적립됩니다.
         </p>
-        <ReviewBoard mapValue={mapValue} />
+        <ReviewBoard
+          reviewData={reviewData}
+          atingValue={atingValue}
+          reviewText={reviewText}
+          reviewImgUrl={reviewImgUrl}
+        />
         <div className="rating">
           <strong className="reviewTitle">상품은 만족하셨나요?</strong>
           <div>
@@ -172,7 +181,7 @@ class AddReview extends Component {
           <button
             disabled={isValid ? false : true}
             className={isValid ? 'activeBtn' : ''}
-            onClick={this.handlePost}
+            onClick={this.uploadReviewData}
           >
             등록
           </button>

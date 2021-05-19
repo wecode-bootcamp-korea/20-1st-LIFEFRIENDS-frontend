@@ -55,6 +55,7 @@ class ReviewBoard extends Component {
 
   render() {
     const { avgValue, mapValue } = this.state;
+    const { reviewData } = this.props;
     return (
       <section className="board">
         <div className="average">
@@ -73,7 +74,7 @@ class ReviewBoard extends Component {
           <p>
             <i class="far fa-comment-dots" />
           </p>
-          <p>80</p>
+          <p>{reviewData}</p>
         </div>
         <div className="ratio">
           <strong className="subtitle">평점 비율</strong>

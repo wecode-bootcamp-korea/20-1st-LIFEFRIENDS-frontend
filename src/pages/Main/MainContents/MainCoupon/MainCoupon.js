@@ -10,7 +10,7 @@ class MainCoupon extends Component {
     };
   }
 
-  initializeUserInfo = () => {
+  handleUserInfo = () => {
     const loggedInfo = localStorage.getItem('AUTHORIZATION');
     fetch('http://172.16.20.241:8000/users/user', {
       method: 'GET',
@@ -41,7 +41,7 @@ class MainCoupon extends Component {
         });
         console.log(this.state.couponData);
       });
-    this.initializeUserInfo();
+    this.handleUserInfo();
   }
 
   render() {
