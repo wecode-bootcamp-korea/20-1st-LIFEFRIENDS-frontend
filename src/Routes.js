@@ -4,8 +4,9 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import Category from './components/Category/Category';
 import Nav from './components/Nav/Nav';
-import productdetail from './pages/ProductDetail/ProductDetail';
+
 import ProductDetail from './pages/ProductDetail/ProductDetail';
+import Footer from './components/Footer/Footer';
 
 class Routes extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class Routes extends React.Component {
           <Route exact path="/categories" component={Category} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/productdetail" component={ProductDetail} />
+          <Route exact path="/footer" component={Footer} />
         </Switch>
       </Router>
     );

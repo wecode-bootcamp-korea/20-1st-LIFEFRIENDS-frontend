@@ -1,5 +1,3 @@
-@import '../../../../styles/Common.scss';
-
 .mainHeader {
   @include flexBox(flex-end, center, column);
   height: 750px;
