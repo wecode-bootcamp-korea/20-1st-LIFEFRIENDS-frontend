@@ -22,10 +22,7 @@ export class LoginAndLogout extends React.Component {
   };
 
   changeLogout = () => {
-    localStorage.removeItem('AUTHORIZATION');
-    localStorage.removeItem('user_name');
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('user_email');
+    localStorage.clear();
   };
 
   render() {
@@ -44,7 +41,7 @@ export class LoginAndLogout extends React.Component {
                   {localStorage.getItem('user_email')}
                 </p>
                 <button className="logoutButton" onClick={this.changeLogout}>
-                  <Link to="/main">로그아웃</Link>
+                  <Link to="/">로그아웃</Link>
                 </button>
               </div>
             </span>

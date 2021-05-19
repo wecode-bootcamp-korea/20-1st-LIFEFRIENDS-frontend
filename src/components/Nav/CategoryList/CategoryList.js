@@ -11,15 +11,17 @@ export class CategoryList extends React.Component {
     };
   }
 
-  goToMenuList = i => {
-    const { eachCategoryList } = this.props;
-    this.props.history.push(`menu/${eachCategoryList[i].menuName}`);
-  };
-
-  goToCategoryList = (i, j) => {
+  goToMenuList = menuIndex => {
     const { eachCategoryList } = this.props;
     this.props.history.push(
-      `menu/${eachCategoryList[i].menuName}/${eachCategoryList[i].categoryList[j].categoryName}`
+      `/categories?&menu=${eachCategoryList[menuIndex].menuName}`
+    );
+  };
+
+  goToCategoryList = (menuIndex, categoryIndex) => {
+    const { eachCategoryList } = this.props;
+    this.props.history.push(
+      `/categories?&theme=${eachCategoryList[menuIndex].categoryList[categoryIndex].categoryName}`
     );
   };
 
