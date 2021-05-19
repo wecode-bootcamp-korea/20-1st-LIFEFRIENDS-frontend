@@ -30,12 +30,10 @@ export default class LoginForm extends Component {
               handleInput={handleInput}
               loginState={loginState}
               key={input.name}
-              value={loginState.id}
               name={input.name}
               type={input.type}
               text={input.text}
               error={input.error}
-              validator={validator}
             />
           ))}
           <Button text={text} type={type} loginValid={loginValid} />
@@ -63,23 +61,17 @@ export default class LoginForm extends Component {
         </div>
 
         <div className="findInfoList">
-          <Link to="#" className="findInfo forgotId" />
-          아이디 찾기
-          <Link to="#" className="findInfo forgotPw" />
-          비밀번호 찾기
-          <Link to="./signup" className="findInfo signUp" />
-          회원가입
+          <Link to="#" className="findInfo forgotId">
+            아이디 찾기
+          </Link>
+          <Link to="#" className="findInfo forgotPw">
+            비밀번호 찾기
+          </Link>
+          <Link to="./signup" className="findInfo signUp">
+            회원가입
+          </Link>
         </div>
       </PageLayout>
     );
   }
 }
-
-// const pwRegx =
-//   /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
-
-// const validator = {
-//   name: input => input.length <= 6,
-//   id: input => input.length >= 5 && input.length <= 20,
-//   pw: input => pwRegx.test(input),
-// };

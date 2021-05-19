@@ -7,21 +7,11 @@ export default class Input extends Component {
     return (
       <>
         {type === 'Login' && (
-          <button
-            className={`commonButton ${loginValid && 'buttonActive'}`}
-            disabled={!loginValid}
-          >
+          <button className="commonButton" disabled={!loginValid}>
             {text}
           </button>
         )}
-        {type === 'SignUp' && (
-          <button
-          // className={`commonButton ${loginValid && 'buttonActive'}`}
-          // disabled={!loginValid}
-          >
-            {text}
-          </button>
-        )}
+        {type === 'SignUp' && <button className="commonButton">{text}</button>}
       </>
     );
   }

@@ -44,7 +44,7 @@ export default class Login extends Component {
           // save localstroage
           localStorage.setItem('MESSAGE', res['ACCESS_TOKEN']);
           // push to main
-          this.props.history.push('./Main');
+          this.props.history.push('./');
         }
       });
   };
@@ -56,7 +56,6 @@ export default class Login extends Component {
     });
   };
 
-  //Need to put keep login status function using token but how to?
   handleStatus = () => {
     const { statusActive } = this.state;
     this.setState({
@@ -92,12 +91,12 @@ const loginData = [
     type: 'text',
     text: '아이디',
     name: 'email',
-    error: '아이디를 확인해주세요.',
+    error: '아이디를 입력해주세요.',
   },
   {
     type: 'password',
     text: '비밀번호',
     name: 'password',
-    error: '비밀번호를 확인해주세요.',
+    error: '비밀번호를 입력해주세요.',
   },
 ];
