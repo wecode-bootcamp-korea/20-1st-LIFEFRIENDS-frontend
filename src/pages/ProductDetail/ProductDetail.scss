@@ -16,7 +16,8 @@
         }
       }
       div {
-        @include flexBox(center, center, row);
+        display: flex;
+        flex-wrap: wrap;
         border: 0.1px solid $--border-line;
 
         .productPreview {
