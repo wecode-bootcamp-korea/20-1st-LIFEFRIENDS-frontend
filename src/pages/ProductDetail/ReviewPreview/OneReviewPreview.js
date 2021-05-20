@@ -9,27 +9,36 @@ class OneReviewPreview extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.changeAverage();
+  }
+
   changeAverage = () => {
-    const { avgValue } = this.props;
+    const { rating } = this.props;
     const node = this.myRef.count && this.myRef.current.childNodes;
-    const num = Number(String(avgValue).substr(0, 1));
-    const point = Number(String(avgValue).substr(2, 1));
-    for (let i = 0; i < num; i++) {
-      node[i].style.color = '#F84F50';
-    }
-    for (let i = 0; i < 6 - num; i++) {
+    const num = Number(String(rating).substr(0, 1));
+    const point = Number(String(rating).substr(2, 1));
+    if (isNaN(rating)) return;
+
+    if (num === 5) {
+      for (let i = 0; i < num; i++) {
+        node[i].style.color = '#f84f50';
+      }
+    } else {
+      for (let i = 0; i < num; i++) {
+        node[i].style.color = '#f84f50';
+      }
       node[
-        num
-      ].style.background = `linear-gradient(to right, #F84F50 ${num}0%, #EBE9E9 ${
+        num + 1
+      ].style.background = `linear-gradient(to right, #f84f50 ${point}0%, #ebe9e9 ${
         10 - point
       }0%)`;
-      node[num].style.WebkitBackgroundClip = 'text';
-      node[num].style.color = 'transparent';
+      node[num + 1].style.WebkitBackgroundClip = 'text';
+      node[num + 1].style.color = 'transparent';
     }
   };
 
   render() {
-    this.changeAverage();
     const { mapValue } = this.state;
     const { user_name, created_at, product_size, text, review_image, rating } =
       this.props.reviewData;

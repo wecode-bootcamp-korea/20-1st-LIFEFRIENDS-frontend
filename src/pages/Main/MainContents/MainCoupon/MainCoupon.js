@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../../../../components/Modal/Modal';
 import '../MainCoupon/MainCoupon.scss';
+import { GET_AUTHORIZATION_API, GET_COUPON_API } from '../../../../config';
 
 class MainCoupon extends Component {
   constructor() {
@@ -14,7 +15,7 @@ class MainCoupon extends Component {
 
   initializeUserInfo = () => {
     const loggedInfo = localStorage.getItem('AUTHORIZATION');
-    fetch('http://172.16.20.241:8000/users/user', {
+    fetch(GET_AUTHORIZATION_API, {
       method: 'GET',
       headers: {
         AUTHORIZATION: loggedInfo,
@@ -35,7 +36,8 @@ class MainCoupon extends Component {
   };
 
   componentDidMount() {
-    fetch('http://172.16.20.134:8000/users/coupon/40%')
+    // fetch('http://172.16.20.134:8000/users/coupon/40%')
+    fetch(GET_COUPON_API)
       .then(response => response.json())
       .then(coupondata => {
         this.setState({

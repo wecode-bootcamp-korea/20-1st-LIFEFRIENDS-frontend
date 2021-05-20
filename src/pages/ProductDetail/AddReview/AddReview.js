@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReviewBoard from './ReviewBoard/ReviewBoard';
 import './AddReview.scss';
+import { GET_REVIEW_API } from '../../../config';
 
 class AddReview extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class AddReview extends Component {
   uploadReviewData = () => {
     const loggedInfo = localStorage.getItem('AUTHORIZATION');
     const { ratingValue, reviewText, reviewImgUrl } = this.state;
-    fetch('http://10.58.7.181:8000/reviews/1', {
+    fetch(`${GET_REVIEW_API}/1`, {
       method: 'POST',
       headers: {
         AUTHORIZATION: loggedInfo,
@@ -115,6 +116,7 @@ class AddReview extends Component {
     const { ratingValue, reviewText, mapValue } = this.state;
     const { reviewData, ratio } = this.props;
     const isValid = 10 <= reviewText.length;
+
     return (
       <div className="addReview">
         <h2>상품 리뷰</h2>

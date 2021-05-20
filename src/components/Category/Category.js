@@ -5,6 +5,7 @@ import ProductCart from './ProductCard/ProductCart';
 import SortingButton from './Sortingbutton/SortingButton';
 import PageButton from './PageButton/PageButton';
 import './Category.scss';
+import { GET_CATEGORY_API } from '../../config';
 
 class Category extends React.Component {
   constructor() {
@@ -56,8 +57,11 @@ class Category extends React.Component {
   componentDidMount = () => {
     const { itemsOnEachPage } = this.state;
     fetch(
-      `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+      `${GET_CATEGORY_API}/products/categories${this.props.location.search}`
     )
+      // fetch(
+      //   `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+      // )
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -75,10 +79,14 @@ class Category extends React.Component {
     const { itemsOnEachPage } = this.state;
     if (prevProps.location.search !== this.props.location.search)
       this.props.location.search === '?&menu=전체상품'
-        ? fetch(`http://10.58.7.181:8000/products/categories`)
-        : fetch(
-            `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+        ? fetch(`${GET_CATEGORY_API}/products/categories`)
+        : // fetch(`http://10.58.7.181:8000/products/categories`)
+          fetch(
+            `${GET_CATEGORY_API}/products/categories${this.props.location.search}`
           )
+            // fetch(
+            //   `http://10.58.7.181:8000/products/categories${this.props.location.search}`
+            // )
             .then(res => res.json())
             .then(data => {
               this.setState({

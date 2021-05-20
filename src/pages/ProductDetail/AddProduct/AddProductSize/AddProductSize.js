@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../../../../components/Modal/Modal';
+import { GET_CART_API } from '../../../../config';
 
 class AddProductSize extends Component {
   constructor() {
@@ -15,7 +16,8 @@ class AddProductSize extends Component {
     e.preventDefault();
 
     const tokenValue = localStorage.getItem('AUTHORIZATION');
-    const API = 'http://10.58.7.181:8000/orders/cart';
+    const API = GET_CART_API;
+    // const API = 'http://10.58.7.181:8000/orders/c÷art';
     const { number, sizeValue } = this.state;
     const { product_id } = this.props;
 

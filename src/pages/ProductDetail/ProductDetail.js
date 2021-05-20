@@ -7,6 +7,7 @@ import AddProduct from './AddProduct/AddProduct';
 import { ReviewPreview } from './ReviewPreview/ReviewPreview';
 import './ProductDetail.scss';
 import './ReviewPreview/ReviewPreview.scss';
+import { GET_PRODUCT_API, GET_REVIEW_API } from '../../config';
 
 class ProductDetail extends Component {
   constructor() {
@@ -22,7 +23,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.2.190:8000/products?id=${this.props.match.params.id}`)
+    fetch(`${GET_PRODUCT_API}?id=${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -31,7 +32,8 @@ class ProductDetail extends Component {
           copiedproductData: data,
         })
       );
-    fetch(`http://10.58.7.181:8000/reviews/${this.props.match.params.id}`)
+    // fetch(`http://10.58.7.181:8000/reviews/${this.props.match.params.id}`)
+    fetch(`${GET_REVIEW_API}/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -63,7 +65,7 @@ class ProductDetail extends Component {
                   PreviewData={PreviewData}
                   ReviewData={ReviewData}
                 />
-                <AddProduct />
+                <AddProduct key={key} copiedproductData={copiedproductData} />
               </div>
             </section>
             <section>

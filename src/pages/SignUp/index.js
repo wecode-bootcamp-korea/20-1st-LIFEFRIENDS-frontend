@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import SignUpForm from '../../components/Form/SignUpForm';
+import { GET_SIGNUP_API } from '../../config';
 
 export default class SignUp extends Component {
   constructor() {
@@ -18,7 +19,8 @@ export default class SignUp extends Component {
 
   goToLogin = e => {
     e.preventDefault();
-    const SIGNUPAPI = 'http://10.58.7.181:8000/users/signup';
+    // const SIGNUPAPI = 'http://10.58.7.181:8000/users/signup';
+    const SIGNUPAPI = GET_SIGNUP_API;
     const { email, password, name, birth_date, gender, phone_number } =
       this.state;
     fetch(SIGNUPAPI, {

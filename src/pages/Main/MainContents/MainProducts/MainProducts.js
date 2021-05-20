@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MainMediumCard from '../MainMediumCard/MainMediumCard';
 import '../MainProducts/MainProducts.scss';
+import { GET_CATEGORY_API } from '../../../../config';
 
 class MainProducts extends Component {
   constructor() {
@@ -11,18 +12,6 @@ class MainProducts extends Component {
     };
   }
 
-  getData = () => {
-    const { num } = this.state;
-    fetch(`http://10.58.7.181:8000/products/categories?size=10&page=${num}`)
-      .then(response => response.json())
-      .then(productstdata => {
-        this.setState({
-          productstData: productstdata.MESSAGE,
-          num: num + 1,
-        });
-      });
-  };
-
   componentDidMount() {
     this.getData();
     window.addEventListener('scroll', this.infiniteScroll);
@@ -31,6 +20,18 @@ class MainProducts extends Component {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.infiniteScroll);
   }
+
+  getData = () => {
+    const { num } = this.state;
+    fetch(`${GET_CATEGORY_API}/categories?size=10&page=${num}`)
+      .then(response => response.json())
+      .then(productstdata => {
+        this.setState({
+          productstData: productstdata.MESSAGE,
+          num: num + 1,
+        });
+      });
+  };
 
   infiniteScroll = () => {
     const { documentElement, body } = document;
@@ -43,7 +44,7 @@ class MainProducts extends Component {
     const clientHeight = documentElement.clientHeight;
 
     if (scrollTop + clientHeight >= scrollHeight) {
-      fetch(`http://10.58.7.181:8000/products/categories?size=10&page=${num}`)
+      fetch(`${GET_CATEGORY_API}/categories?size=10&page=${num}`)
         .then(response => response.json())
         .then(productstdata => {
           this.setState({
@@ -53,7 +54,7 @@ class MainProducts extends Component {
             ],
           });
         });
-      this.getData();
+      // this.getData();
     }
   };
 

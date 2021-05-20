@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './LoginAndLogout.scss';
+import { GET_AUTHORIZATION_API } from '../../../config';
 
 export class LoginAndLogout extends React.Component {
   isAllInputValid = () => {
     const tokenValue = localStorage.getItem('AUTHORIZATION');
-    fetch('http://172.16.20.241:8000/users/user', {
+    // fetch('http://10.58.7.181:8000/users/user'
+    fetch(`${GET_AUTHORIZATION_API}`, {
       method: 'GET',
       headers: { AUTHORIZATION: tokenValue },
     })

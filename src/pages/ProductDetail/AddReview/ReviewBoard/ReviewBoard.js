@@ -22,20 +22,27 @@ class ReviewBoard extends Component {
     this.setState({
       avgValue: avgValue,
     });
+
     const node = this.myRef.current.childNodes;
     const num = Number(String(avgValue).substr(0, 1));
     const point = Number(String(avgValue).substr(2, 1));
-    for (let i = 0; i < num; i++) {
-      node[i].style.color = '#f84f50';
-    }
-    for (let i = 0; i < 6 - num; i++) {
+    if (isNaN(avgValue)) return;
+
+    if (num === 5) {
+      for (let i = 0; i < num; i++) {
+        node[i].style.color = '#f84f50';
+      }
+    } else {
+      for (let i = 0; i < num; i++) {
+        node[i].style.color = '#f84f50';
+      }
       node[
-        num
+        num + 1
       ].style.background = `linear-gradient(to right, #f84f50 ${point}0%, #ebe9e9 ${
         10 - point
       }0%)`;
-      node[num].style.WebkitBackgroundClip = 'text';
-      node[num].style.color = 'transparent';
+      node[num + 1].style.WebkitBackgroundClip = 'text';
+      node[num + 1].style.color = 'transparent';
     }
   };
 
@@ -50,12 +57,12 @@ class ReviewBoard extends Component {
 
   componentDidMount() {
     this.changeAverage();
-    this.handleRating();
+    // this.handleRating();
   }
 
   render() {
     const { mapValue, avgValue } = this.state;
-    const { reviewData, ratio } = this.props;
+    const { reviewData } = this.props;
 
     return (
       <section className="board">

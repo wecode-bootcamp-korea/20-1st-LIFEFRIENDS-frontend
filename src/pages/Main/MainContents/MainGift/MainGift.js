@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MainMediumCard from '../MainMediumCard/MainMediumCard';
 import '../MainGift/MainGift.scss';
+import { GET_GIFT_API } from '../../../../config';
 
 class MainGift extends Component {
   constructor() {
@@ -19,7 +20,8 @@ class MainGift extends Component {
 
   componentDidMount() {
     const { target } = this.state;
-    fetch('http://10.58.7.181:8000/products/categories?&menu=선물추천')
+    // fetch('http://10.58.7.181:8000/categories?menu=선물추천')
+    fetch(GET_GIFT_API)
       .then(response => response.json())
       .then(giftdata => {
         this.setState({

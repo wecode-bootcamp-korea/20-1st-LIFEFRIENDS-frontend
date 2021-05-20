@@ -30,6 +30,10 @@ class MainHeader extends Component {
     setInterval(this.handleNextBtn, 3000);
   }
 
+  componentWillUnmount() {
+    clearInterval(setInterval(this.handleNextBtn, 3000));
+  }
+
   changePage = e => {
     const { headerData } = this.state;
     const elNum = e.target.parentElement.className;
@@ -46,12 +50,12 @@ class MainHeader extends Component {
   handlePrevBtn = () => {
     const { headerData, elNum } = this.state;
     let pageNum = elNum;
-    if (0 < elNum && elNum < headerData.length) {
+    if (elNum > 0 && elNum < headerData.length) {
       this.setState({
         elNum: pageNum - 1,
         clickedPage: [headerData[elNum]],
       });
-    } else if (0 >= elNum) {
+    } else if (elNum <= 0) {
       this.setState({
         elNum: headerData.length - 1,
         clickedPage: [headerData[elNum]],
@@ -62,7 +66,7 @@ class MainHeader extends Component {
   handleNextBtn = () => {
     const { headerData, elNum } = this.state;
     let pageNum = elNum;
-    if (0 <= elNum && elNum < headerData.length - 1) {
+    if (elNum >= 0 && elNum < headerData.length - 1) {
       this.setState({
         elNum: pageNum + 1,
         clickedPage: [headerData[elNum]],
