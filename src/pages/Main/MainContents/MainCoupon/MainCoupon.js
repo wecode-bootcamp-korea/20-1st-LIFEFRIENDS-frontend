@@ -6,7 +6,7 @@ class MainCoupon extends Component {
     super();
     this.state = {
       coupontData: {},
-      userName: '',
+      userName: '고객',
     };
   }
 

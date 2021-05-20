@@ -5,7 +5,6 @@ import Footer from '../../components/Footer/Footer';
 // import GoTop from '../../components/GoToTop/GoTop';
 
 class Main extends Component {
-  constructor() {
   render() {
     return (
       <>

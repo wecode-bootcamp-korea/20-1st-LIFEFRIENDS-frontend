@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import './CategoryList.scss';
 
@@ -7,36 +6,34 @@ export class CategoryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsToShow: '',
+      itemsToShow: 10,
       expanded: false,
-      disable: false,
     };
   }
 
-  goToCategory = i => {
-    const { eachCategoryList, categoryStatus } = this.props;
+  goToMenuList = menuIndex => {
+    const { eachCategoryList } = this.props;
     this.props.history.push(
-      `/categories?&menu=${eachCategoryList[i].menuName}`
+      `/categories?&menu=${eachCategoryList[menuIndex].menuName}`
     );
   };
 
-  goToSubCategory = (i, j) => {
-    const { eachCategoryList, categoryStatus } = this.props;
+  goToCategoryList = (menuIndex, categoryIndex) => {
+    const { eachCategoryList } = this.props;
     this.props.history.push(
-      `/categories?&theme=${eachCategoryList[i].categoryList[j].categoryName}`
+      `/categories?&theme=${eachCategoryList[menuIndex].categoryList[categoryIndex].categoryName}`
     );
   };
 
   showMore = () => {
+    const { eachCategoryList } = this.props;
     this.state.itemsToShow === 10
-      ? this.setState({ itemsToShow: this.props.length, expanded: true })
+      ? this.setState({ itemsToShow: eachCategoryList.length, expanded: true })
       : this.setState({ itemsToShow: 10, expanded: false });
   };
 
   render() {
     const { eachCategoryList } = this.props;
-    // console.log(this.state.expanded);
-    console.log(this.props);
 
     return (
       <div className="totalCategoryList">
@@ -45,35 +42,33 @@ export class CategoryList extends React.Component {
             eachCategoryList.slice(0, 10).map(menuObj => {
               return (
                 <div key={menuObj.menuId} className="categoryMenu">
-                  {menuObj.categoryList.length > 0 ? (
-                    <>
-                      <div
-                        onClick={() => this.goToCategory(menuObj.menuId - 1)}
-                      >
-                        {menuObj.menuName}
-                      </div>
+                  <span
+                    className="categoryText"
+                    onClick={() => {
+                      this.goToMenuList(menuObj.menuId - 1);
+                    }}
+                  >
+                    {menuObj.menuName}
+                    {menuObj.categoryList.length > 0 && (
                       <i className="fa fa-caret-down"></i>
-                    </>
-                  ) : (
-                    <div onClick={() => this.goToCategory(menuObj.menuId - 1)}>
-                      {menuObj.menuName}
-                    </div>
-                  )}
+                    )}
+                  </span>
+
                   {menuObj.categoryList.length > 0 && (
                     <div className="subMenuList">
                       {menuObj.categoryList.map(subMenuObj => (
-                        <div
+                        <span
                           key={subMenuObj.categoryId}
-                          onClick={() =>
-                            this.goToSubCategory(
+                          className="subMenu"
+                          onClick={() => {
+                            this.goToCategoryList(
                               menuObj.menuId - 1,
                               subMenuObj.categoryId - 1
-                            )
-                          }
-                          className="subMenu"
+                            );
+                          }}
                         >
                           {subMenuObj.categoryName}
-                        </div>
+                        </span>
                       ))}
                     </div>
                   )}
@@ -82,25 +77,21 @@ export class CategoryList extends React.Component {
             })}
           <button
             className="showMoreButton"
-            disabled={this.state.expanded ? true : false}
-            onClick={e => this.showMore()}
+            onClick={() => {
+              this.showMore();
+            }}
           >
-            <span className={this.state.expanded ? 'closed' : 'open'}>
-              {this.state.expanded ? <span> 닫기 </span> : <span>더 보기</span>}
+            <span className="ShowMoreLess">
+              {this.state.expanded ? (
+                <span>
+                   닫기<i className="fas fa-angle-up"></i>
+                </span>
+              ) : (
+                <span>
+                  더 보기<i className="fas fa-angle-down"></i>
+                </span>
+              )}
             </span>
-            <button
-              className="showMoreButton1"
-              disabled={this.state.expanded ? false : true}
-              onClick={e => this.showMore()}
-            >
-              <span className={this.state.expanded ? 'open' : 'closed'}>
-                {this.state.expanded ? (
-                  <span> 닫기 </span>
-                ) : (
-                  <span>더 보기</span>
-                )}
-              </span>
-            </button>
           </button>
         </div>
         <div className="categoryListNextLine">
@@ -108,35 +99,32 @@ export class CategoryList extends React.Component {
             eachCategoryList.slice(11, this.state.itemsToShow).map(menuObj => {
               return (
                 <div key={menuObj.menuId} className="categoryMenuNextLine">
-                  {menuObj.categoryList.length > 0 ? (
-                    <>
-                      <div
-                        onClick={() => this.goToCategory(menuObj.menuId - 1)}
-                      >
-                        {menuObj.menuName}
-                      </div>
+                  <span
+                    className="categoryTextNextLine"
+                    onClick={() => {
+                      this.goToMenuList(menuObj.menuId - 1);
+                    }}
+                  >
+                    {menuObj.menuName}
+                    {menuObj.categoryList.length > 0 && (
                       <i className="fa fa-caret-down"></i>
-                    </>
-                  ) : (
-                    <div onClick={() => this.goToCategory(menuObj.menuId - 1)}>
-                      {menuObj.menuName}
-                    </div>
-                  )}
+                    )}
+                  </span>
                   {menuObj.categoryList.length > 0 && (
                     <div className="subMenuListNextLine">
                       {menuObj.categoryList.map(subMenuObj => (
-                        <div
+                        <span
                           key={subMenuObj.categoryId}
-                          onClick={() =>
-                            this.goToSubCategory(
+                          className="subMenuNextLine"
+                          onClick={() => {
+                            this.goToCategoryList(
                               menuObj.menuId - 1,
                               subMenuObj.categoryId - 1
-                            )
-                          }
-                          className="subMenu"
+                            );
+                          }}
                         >
                           {subMenuObj.categoryName}
-                        </div>
+                        </span>
                       ))}
                     </div>
                   )}

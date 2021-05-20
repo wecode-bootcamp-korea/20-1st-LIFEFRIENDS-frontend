@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import CategoryList from './CategoryList/CategoryList';
 import LoginAndLogout from '../Nav/LoginAndLogout/LoginAndLogout';
 import './Nav.scss';
@@ -31,17 +30,7 @@ export class Navigator extends React.Component {
     });
   };
 
-  handleLoginStatus = () => {
-    this.props.history.push(`${!this.state.isloggedIn ? '/login' : '/'}`);
-  };
-
-  goToSearchResult = e => {
-    e.preventDefault();
-    this.state.history.push(`/product?menu='${this.state.searchValue}'`);
-  };
-
   render() {
-    const { categoryStatus } = this.props;
     const filteredList =
       this.state.categoryListData &&
       this.state.categoryListData.filter(category => {
@@ -65,49 +54,22 @@ export class Navigator extends React.Component {
               </a>
             </div>
             <LoginAndLogout />
-            {/* <div className="navHeaderRight">
-              <div className="loginButtonAndCart">
-                <button className="goToLogIn">
-                  <Link to={this.state.isLoggedIn ? '/signup' : '/'}>
-                    {this.state.isLoggedIn ? '로그아웃' : '로그인'}
-                  </Link>
-                </button>
-                {this.state.isLoggedIn && (
-                  <>
-                    <button className="goToPickStore">
-                      <Link to={'/cart'}>찜한스토어</Link>
-                    </button>
-                    <button className="goToMypage">
-                      <Link to={'/cart'}>마이페이지</Link>
-                    </button>
-                    <button className="goToCart">
-                      <Link to={'/cart'}>장바구니</Link>
-                    </button>
-                  </>
-                )}
-              </div>
-              <a className="viewTotal" href="/#">
-                <i className="fas fa-th"></i>
-              </a>
-            </div> */}
           </header>
           <nav className="navBody">
             <div className="logoAndSearch">
-              <Link className="logoLifeStore" to="/">
+              <Link className="logoLifeStore" to="/menu">
                 <button className="logoLifeStore">L I F E S T O R E</button>
               </Link>
               <div className="searchBox">
-                <form onSubmit={this.goToSearchResult}>
-                  <input
-                    className="search"
-                    type="text"
-                    placeholder="검색어를 입력해보세요"
-                    onChange={this.handleSearchValue}
-                  />
-                  <button className="searchButton">
-                    <i className="fas fa-search"></i>
-                  </button>
-                </form>
+                <input
+                  className="search"
+                  type="text"
+                  placeholder="검색어를 입력해보세요"
+                  onChange={this.handleSearchValue}
+                />
+                <button className="searchButton">
+                  <i className="fas fa-search"></i>
+                </button>
                 <ul
                   className={`searchListContainer ${
                     this.state.searchValue && filterLength && 'open'
@@ -119,7 +81,7 @@ export class Navigator extends React.Component {
                         <li key={category.menuId}>
                           <div>
                             <Link
-                              to={`/product?menu=${category.menuName}`}
+                              to={`/categories?&menu=${category.menuName}`}
                               className="categoryName"
                             >
                               {category.menuName}
@@ -132,14 +94,10 @@ export class Navigator extends React.Component {
               </div>
             </div>
           </nav>
-          <CategoryList
-            eachCategoryList={this.state.categoryListData}
-            categoryStatus={categoryStatus}
-          />
+          <CategoryList eachCategoryList={this.state.categoryListData} />
         </div>
       </div>
     );
   }
 }
-
-export default withRouter(Navigator);
+export default Navigator;

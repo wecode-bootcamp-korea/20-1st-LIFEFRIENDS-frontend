@@ -1,39 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import './LoginAndLogout.scss';
 
 export class LoginAndLogout extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+  istAllInputValid = () => {
+    const tokenValue = localStorage.getItem('AUTHORIZATION');
+    fetch('http://172.16.20.241:8000/users/user', {
+      method: 'GET',
+      headers: { AUTHORIZATION: tokenValue },
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.MESSAGE === 'SUCCESS') {
+          localStorage.setItem('user_name', res.USER_INFO.user_name);
+          localStorage.setItem('user_email', res.USER_INFO.user_email);
+        }
+        if (res.result === 'INVALID_USER') {
+          return alert('비밀번호 또는 이메일이 잘 못 되었습니다.');
+        }
+      });
+  };
+
   changeLogout = () => {
-    localStorage.removeItem('access_token');
-    // localStorage.removeItem('name');
-    // localStorage.removeItem('email');
-    // this.props.histoty.push('/');
+    localStorage.removeItem('AUTHORIZATION');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_email');
   };
 
   render() {
+    this.istAllInputValid();
     return (
       <div className="LoginAndLogout">
-        {localStorage.access_token ? (
+        {localStorage.AUTHORIZATION ? (
           <div className="loggedIn">
-            <button className="logoutButton" onClick={this.changeLogout}>
-              <Link to="/menu">
-                {localStorage.getItem('name')}님{' '}
-                <i className="fa fa-caret-down"></i>{' '}
-              </Link>
+            <span className="loggedInInfo">
+              {localStorage.getItem('user_name')}님
               <div className="loggedInBox">
                 <p className="loggedInUserName">
-                  {localStorage.getItem('name')}님
+                  {localStorage.getItem('user_name')}님
                 </p>
                 <p className="loggedInUserEmail">
-                  {localStorage.getItem('email')}님
+                  {localStorage.getItem('user_email')}
                 </p>
+                <button className="logoutButton" onClick={this.changeLogout}>
+                  <Link to="/">로그아웃</Link>
+                </button>
               </div>
-            </button>
+            </span>
+            <i className="fa fa-caret-down"></i>
             <button className="goToPickStore">
               <Link to={'/picked'}>찜한스토어</Link>
             </button>
@@ -59,4 +74,4 @@ export class LoginAndLogout extends React.Component {
   }
 }
 
-export default withRouter(LoginAndLogout);
+export default LoginAndLogout;

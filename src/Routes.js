@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
+import Nav from '../src/components/Nav/Nav';
 import Login from './pages/Login/Login';
 import Footer from './components/Footer/Footer';
 
 class Routes extends React.Component {
   render() {
-    console.log(this.state.categoryStatus);
     return (
       <Router>
         <Nav />
