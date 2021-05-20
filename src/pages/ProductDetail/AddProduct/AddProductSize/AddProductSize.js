@@ -1,12 +1,46 @@
 import React, { Component } from 'react';
+import Modal from '../../../../components/Modal/Modal';
 
 class AddProductSize extends Component {
   constructor() {
     super();
     this.state = {
       number: 1,
+      sizeValue: 'size',
+      modalOn: false,
     };
   }
+
+  sendBuyingInfo = e => {
+    e.preventDefault();
+
+    const tokenValue = localStorage.getItem('AUTHORIZATION');
+    const API = 'http://10.58.7.181:8000/orders/cart';
+    const { number, sizeValue } = this.state;
+    const { product_id } = this.props;
+
+    fetch(API, {
+      method: 'POST',
+      headers: { Authorization: tokenValue },
+      body: JSON.stringify({
+        product_id: product_id,
+        size: sizeValue,
+        quantity: number,
+      }),
+    }).then(res => {
+      if (res.ok) {
+        this.setState({ modalOn: true });
+      }
+    });
+  };
+
+  openModal = () => {
+    this.setState({ modalOn: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalOn: false });
+  };
 
   countQuantity = e => {
     const { number } = this.state;
@@ -25,22 +59,32 @@ class AddProductSize extends Component {
     }
   };
 
+  selectSize = e => {
+    this.setState({
+      sizeValue: e.target.value,
+    });
+  };
+
   render() {
-    const { size, cost } = this.props;
-    const { number } = this.state;
+    const { product_id, size, cost } = this.props;
+    const { number, sizeValue, modalOn } = this.state;
+    const buyingModal = `총 ${cost * number}원 구매완료 되었습니다.`;
+    const cartModal = `총 ${number}개의 상품이 장바구니에 담겼습니다.`;
+
     return (
       <>
         <div className="selectSizeBox">
-          <select className="selectSize">
-            {size.map(sizeName => (
-              <option value={sizeName} key={sizeName}>
-                {size}
-              </option>
-            ))}
+          <select className="selectSize" onChange={this.selectSize}>
+            {size &&
+              size.map(sizeName => (
+                <option value="size" key={sizeName}>
+                  {sizeName}
+                </option>
+              ))}
           </select>
         </div>
         <div className="selectQuantityBox">
-          <p className="sizeTitle">size</p>
+          <p className="sizeTitle">{sizeValue}</p>
           <div className="selectQuantity">
             <div className="countQuantity">
               <button
@@ -55,13 +99,43 @@ class AddProductSize extends Component {
               </button>
             </div>
             <div className="countedPrice">
-              <p>{cost * number}</p>
-              <button className="closeQuantity">
-                <i className="fas fa-times"></i>
-              </button>
+              <p>{cost * number}원</p>
             </div>
           </div>
         </div>
+        <section className="resultPriceBox">
+          <h3>
+            <span className="bold">총 상품 금액</span>
+          </h3>
+          <div className="resultPrice">
+            <p>
+              <span className="textGray">총 수량 {number}개 |</span>
+            </p>
+            <h2>
+              <span className="textBlue">{cost * number}원</span>
+            </h2>
+          </div>
+        </section>
+        <form className="addProductButtonBox" onSubmit={this.sendBuyingInfo}>
+          <button className="addProductBtn buyingBtn">구매하기</button>
+          {modalOn && (
+            <Modal
+              open={modalOn}
+              close={this.closeModal}
+              title="LIFE FRIENDS"
+              content={buyingModal}
+            />
+          )}
+          <button className="addProductBtn cartBtn">장바구니</button>
+          {modalOn && (
+            <Modal
+              open={modalOn}
+              close={this.closeModal}
+              title="LIFE FRIENDS"
+              content={cartModal}
+            />
+          )}
+        </form>
       </>
     );
   }

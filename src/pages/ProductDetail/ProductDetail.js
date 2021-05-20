@@ -8,7 +8,7 @@ class ProductDetail extends Component {
     this.state = {
       key: 0,
       productData: {},
-      copiedproductData: {},
+      copiedproductData: 0,
     };
   }
   componentDidMount() {
@@ -19,6 +19,13 @@ class ProductDetail extends Component {
           key: data.productdetail.product_id,
           productData: data,
           copiedproductData: data,
+        })
+      );
+    fetch(`http://10.58.2.190:8000/reviews/${this.props.match.params.id}`)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          reviewData: data,
         })
       );
   }

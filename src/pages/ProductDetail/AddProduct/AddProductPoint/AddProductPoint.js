@@ -5,7 +5,7 @@ class AddProductPoint extends Component {
     return (
       <>
         <section className="addProductPoint">
-          <h2 className="pointTitle">라인프렌즈 고객을 위한 혜택</h2>
+          <h2 className="pointTitle">라이프프렌즈 고객을 위한 혜택</h2>
           <div className="maxPointBox">
             <div className="maxPoint">
               <p>최대 적립 포인트</p>
