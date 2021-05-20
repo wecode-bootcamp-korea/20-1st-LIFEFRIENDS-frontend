@@ -119,7 +119,7 @@ class MainHeader extends Component {
           </p>
         </div>
         <ul className="contentPageBtn">
-          {headerData &&
+          {headerData.length &&
             headerData.map(el => {
               return (
                 <li key={el.id} className={el.id} onClick={this.changeBtnColor}>

@@ -1,0 +1,35 @@
+{
+  "name": "라인프렌즈 브라운 머그컵",
+  "price": { "normal": 10000, "sale": 30 },
+  "type": "사이즈",
+  "options": ["M", "L"],
+  "imgUrls": [
+    "https://images.unsplash.com/photo-1557985594-29f3ad9f5134?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ4fHxmaWd1cmUlMjB0b3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "https://images.unsplash.com/photo-1606663889134-b1dedb5ed8b7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTUwfHxmaWd1cmUlMjB0b3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "https://images.unsplash.com/photo-1581368976940-534956cab59b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzA5fHxkb2xsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "https://images.unsplash.com/photo-1534732806146-b3bf32171b48?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWluaSUyMHRveXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "https://images.unsplash.com/photo-1456082902841-3335005c3082?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pbmklMjB0b3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+  ],
+  "reviews": [
+    {
+      "user": "mock1",
+      "grade": 3
+    },
+    {
+      "user": "mock2",
+      "grade": 5
+    },
+    {
+      "user": "mock3",
+      "grade": 1
+    },
+    {
+      "user": "mock4",
+      "grade": 2
+    },
+    {
+      "user": "mock5",
+      "grade": 5
+    }
+  ]
+}

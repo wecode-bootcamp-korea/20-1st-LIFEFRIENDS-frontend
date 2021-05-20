@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
+import ProductPreview from './ProductPreview/ProductPreview';
 import AddReview from './AddReview/AddReview';
 import AddProduct from './AddProduct/AddProduct';
 import { ReviewPreview } from './ReviewPreview/ReviewPreview';
@@ -8,6 +9,42 @@ import './ProductDetail.scss';
 import './ReviewPreview/ReviewPreview.scss';
 
 class ProductDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      avgValue: 4.7,
+    };
+  }
+
+  changeAverage = () => {
+    const { avgValue } = this.state;
+    const node = this.myRef.current.childNodes;
+    const num = Number(String(avgValue).substr(0, 1));
+    const point = Number(String(avgValue).substr(2, 1));
+    console.log(num);
+    console.log(point, 10 - point);
+
+    for (let i = 0; i < num; i++) {
+      node[i].style.color = '#f84f50';
+    }
+
+    for (let i = 0; i < 6 - num; i++) {
+      console.log(num);
+      // node[num].style.color = 'blue';
+      // node[num].style.background = 'blue';
+      // node[num].style.backgroundClip = 'text';
+      // node[num].style.color = 'transparent';
+
+      node[
+        num
+      ].style.background = `linear-gradient(to right, #f84f50 70%, #888888 30%)`;
+      node[num].style.backgroundClip = 'text';
+      node[num].style.color = 'transparent';
+
+      // node[num].className = 'fas fa-star pointstar';
+    }
+  };
+
   render() {
     return (
       <>
@@ -19,14 +56,14 @@ class ProductDetail extends Component {
                 홈 > 캐릭터 > <span>BT21</span> (총 198개) | 다른상품보기
               </header>
               <div className="productInfoBox">
-                <div className="productPreview">준현님</div>
+                <ProductPreview />
                 <AddProduct />
               </div>
             </section>
             <section>
               <div className="content">
                 <ReviewPreview />
-                <AddReview />
+                <AddReview changeAverage={this.changeAverage} />
               </div>
             </section>
           </article>
