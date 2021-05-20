@@ -9,7 +9,6 @@ import ProductDatail from './pages/ProductDetail/ProductDetail';
 
 class Routes extends React.Component {
   render() {
-    console.log(this.state.categoryStatus);
     return (
       <Router>
         <Switch>

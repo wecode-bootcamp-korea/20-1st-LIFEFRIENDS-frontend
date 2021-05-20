@@ -11,7 +11,7 @@ class ProductPreview extends Component {
   }
 
   componentDidMount() {
-    fetch('/Data/ProductDetail.json')
+    fetch('')
       .then(res => res.json())
       .then(res => {
         this.setState({ productData: res });

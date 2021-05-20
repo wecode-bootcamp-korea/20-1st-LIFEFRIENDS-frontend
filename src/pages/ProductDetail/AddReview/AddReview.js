@@ -7,13 +7,34 @@ class AddReview extends Component {
     super();
     this.myRef = React.createRef();
     this.state = {
-      reviewText: 0,
-      reviewImgUrl: null,
-      reviewData: 0,
-      ratingValue: '',
+      // reviewText: 0,
+      // reviewImgUrl: null,
+      // reviewData: 0,
+      // ratingValue: '',
       mapValue: [1, 2, 3, 4, 5],
     };
   }
+
+  // uploadReviewData = () => {
+  //   const {reviewData, atingValue, reviewText, reviewImgUrl} = this.state;
+  //   fetch('', {
+  //     method: 'POST',
+  //     headers: {
+  //       key: reviewData,
+  //       key1: atingValue,
+  //       key2: reviewText,
+  //       key3: reviewImgUrl,
+  //     },
+  //   })
+  //   .then(response => response.json())
+  //     .then(data => {
+  //       if (data.MESSAGE === 'SUCCESS') {
+  //         alert('리뷰가 등록되었습니다 👍'),
+  //       } else if (data.MESSAGE === 'FAILED') {
+  //         alert('리뷰가 등록되지 않았습니다. 다시 시도해주세요 🥲'),
+  //       }
+  //     });
+  // };
 
   componentDidMount() {
     fetch('')
@@ -96,27 +117,10 @@ class AddReview extends Component {
     });
   };
 
-  handlePost = e => {
-    const { reviewText, reviewImgUrl, ratingValue } = this.state;
-    e.preventDefault();
-    fetch('', {
-      method: 'POST',
-      body: JSON.stringify({
-        reviewText: reviewText,
-        reviewImgUrl: reviewImgUrl,
-        reviewValue: ratingValue,
-      }),
-    })
-      .then(response => response.json())
-      .then(() => {
-        alert('리뷰가 등록되었습니다.😄');
-      });
-  };
-
   render() {
-    const { ratingValue, reviewText, mapValue } = this.state;
-    const isValid = 10 <= reviewText.length;
-    console.log(mapValue);
+    const { ratingValue, reviewText, reviewData, mapValue } = this.state;
+    const { changeAverage } = this.props;
+    // const isValid = 10 <= reviewText.length;
     return (
       <div className="addReview">
         <h2>상품 리뷰</h2>
@@ -124,13 +128,20 @@ class AddReview extends Component {
           상품을 구매하신 분들이 작성하신 리뷰입니다. 리뷰 작성 시 포인트가
           적립됩니다.
         </p>
-        <ReviewBoard mapValue={mapValue} />
+        <ReviewBoard
+          // reviewData={reviewData}
+          // atingValue={atingValue}
+          // reviewText={reviewText}
+          // reviewImgUrl={reviewImgUrl}
+          changeAverage={changeAverage}
+        />
         <div className="rating">
           <strong className="reviewTitle">상품은 만족하셨나요?</strong>
           <div>
             {mapValue.map(el => {
               return (
                 <i
+                  key={el}
                   className="fas fa-star"
                   data-value={el}
                   onMouseOver={this.mouseOverHandler}
@@ -170,9 +181,9 @@ class AddReview extends Component {
         </article>
         <div className="btn">
           <button
-            disabled={isValid ? false : true}
-            className={isValid ? 'activeBtn' : ''}
-            onClick={this.handlePost}
+            // disabled={isValid ? false : true}
+            // className={isValid ? 'activeBtn' : ''}
+            onClick={this.uploadReviewData}
           >
             등록
           </button>

@@ -7,20 +7,20 @@ class MainProducts extends Component {
     super();
     this.state = {
       productstData: 0,
-      items: 8,
-      preItems: 0,
+      num: 1,
     };
   }
 
   getData = () => {
-    const { preItems, items } = this.state;
-    fetch('http://10.58.7.181:8000/categories/all')
+    const { num } = this.state;
+    fetch(`http://10.58.7.181:8000/products/categories?size=10&page=${num}`)
       .then(response => response.json())
-      .then(productstData => {
-        let dataToAdd = productstData.MESSAGE.slice(preItems, items);
+      .then(productstdata => {
         this.setState({
-          productstData: [...this.state.productstData, ...dataToAdd],
+          productstData: productstdata.MESSAGE,
+          num: num + 1,
         });
+        console.log(productstdata.MESSAGE);
       });
   };
 
@@ -35,7 +35,7 @@ class MainProducts extends Component {
 
   infiniteScroll = () => {
     const { documentElement, body } = document;
-    const { items } = this.state;
+    const { num } = this.state;
     const scrollHeight = Math.max(
       documentElement.scrollHeight,
       body.scrollHeight
@@ -44,10 +44,16 @@ class MainProducts extends Component {
     const clientHeight = documentElement.clientHeight;
 
     if (scrollTop + clientHeight >= scrollHeight) {
-      this.setState({
-        preItems: items,
-        items: items + 8,
-      });
+      fetch(`http://10.58.7.181:8000/products/categories?size=10&page=${num}`)
+        .then(response => response.json())
+        .then(productstdata => {
+          this.setState({
+            productstData: [
+              ...this.state.productstData,
+              ...productstdata.MESSAGE,
+            ],
+          });
+        });
       this.getData();
     }
   };

@@ -11,7 +11,7 @@ class MainGift extends Component {
       giftData: 0,
       items: 0,
       pageSize: Math.round(document.documentElement.clientWidth * 0.8),
-      target: Math.ceil(this.pageSize / 230) - 2,
+      target: Math.ceil(this.pageSize / 230) - 1,
       cnt: 0,
       modalOn: false,
     };
@@ -22,6 +22,7 @@ class MainGift extends Component {
     fetch('http://10.58.7.181:8000/products/categories?&menu=선물추천')
       .then(response => response.json())
       .then(giftdata => {
+        console.log(giftdata);
         this.setState({
           giftData: giftdata.MESSAGE,
           items: giftdata.MESSAGE,

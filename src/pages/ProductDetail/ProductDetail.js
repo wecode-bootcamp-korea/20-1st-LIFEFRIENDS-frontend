@@ -43,19 +43,18 @@ class ProductDetail extends Component {
     }
 
     for (let i = 0; i < 6 - num; i++) {
-      console.log(num);
       // node[num].style.color = 'blue';
       // node[num].style.background = 'blue';
       // node[num].style.backgroundClip = 'text';
       // node[num].style.color = 'transparent';
 
-      node[
-        num
-      ].style.background = `linear-gradient(to right, #f84f50 70%, #888888 30%)`;
-      node[num].style.backgroundClip = 'text';
-      node[num].style.color = 'transparent';
+      // node[
+      //   num
+      // ].style.background = `linear-gradient(to right, #f84f50 70%, #888888 30%)`;
+      // node[num].style.backgroundClip = 'text';
+      // node[num].style.color = 'transparent';
 
-      // node[num].className = 'fas fa-star pointstar';
+      node[num].className = 'fas fa-star pointstar';
     }
   };
 
