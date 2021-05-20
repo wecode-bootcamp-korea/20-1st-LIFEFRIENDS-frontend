@@ -7,43 +7,67 @@ class AddReview extends Component {
     super();
     this.myRef = React.createRef();
     this.state = {
-      // reviewText: 0,
-      // reviewImgUrl: null,
-      // reviewData: 0,
-      // ratingValue: '',
+      reviewText: 0,
+      reviewImgUrl: null,
+      reviewData: 0,
+      ratingValue: '',
       mapValue: [1, 2, 3, 4, 5],
     };
   }
 
-  // uploadReviewData = () => {
-  //   const {reviewData, atingValue, reviewText, reviewImgUrl} = this.state;
-  //   fetch('', {
-  //     method: 'POST',
-  //     headers: {
-  //       key: reviewData,
-  //       key1: atingValue,
-  //       key2: reviewText,
-  //       key3: reviewImgUrl,
-  //     },
-  //   })
+  // initializeUserInfo = () => {
+  //   const loggedInfo = localStorage.getItem('AUTHORIZATION');
+  //   console.log(loggedInfo);
+  // fetch('http://10.58.7.181:8000/users/user', {
+  //   method: 'GET',
+  //   headers: {
+  //     AUTHORIZATION: loggedInfo,
+  //   },
+  // })
   //   .then(response => response.json())
-  //     .then(data => {
-  //       if (data.MESSAGE === 'SUCCESS') {
-  //         alert('리뷰가 등록되었습니다 👍'),
-  //       } else if (data.MESSAGE === 'FAILED') {
-  //         alert('리뷰가 등록되지 않았습니다. 다시 시도해주세요 🥲'),
-  //       }
-  //     });
+  //   .then(data => {
+  //     console.log(loggedInfo);
+  // if (data.MESSAGE === 'SUCCESS') {
+  //   this.setState({
+  //     userName: data.USER_INFO.user_name,
+  //   });
+  // } else if (data.MESSAGE === 'LOGIN_REQUIRED') {
+  //   this.setState({
+  //     userName: '고객',
+  //   });
+  // }
+  // });
   // };
 
-  componentDidMount() {
-    fetch('')
+  uploadReviewData = () => {
+    const loggedInfo = localStorage.getItem('AUTHORIZATION');
+    console.log(loggedInfo);
+    const { ratingValue, reviewText, reviewImgUrl } = this.state;
+    console.log(ratingValue, reviewText, reviewImgUrl);
+    fetch('http://10.58.7.181:8000/reviews/1', {
+      method: 'POST',
+      headers: {
+        AUTHORIZATION: loggedInfo,
+      },
+      body: JSON.stringify({
+        rating: ratingValue,
+        text: reviewText,
+        review_image_url: reviewImgUrl,
+        product_size: '11',
+      }),
+    })
       .then(response => response.json())
-      .then(reviewdata => {
-        this.setState({
-          reviewData: reviewdata,
-        });
+      .then(data => {
+        if (data.REVIEW === 'SUCCESS') {
+          alert('리뷰가 등록되었습니다 👍');
+        } else if (data.MESSAGE === 'LOGIN_REQUIRED') {
+          alert('로그인을 해주세요! 🥲');
+        }
       });
+  };
+
+  componentDidMount() {
+    // this.initializeUserInfo();
   }
 
   mouseOverHandler = e => {
@@ -62,7 +86,7 @@ class AddReview extends Component {
   };
 
   getRating = e => {
-    const dataValue = e.target.dataset.value;
+    const dataValue = Number(e.target.dataset.value);
     const targetList = e.target.parentNode.childNodes;
     const node = this.myRef.current;
     for (let i = 0; i < targetList.length; i++) {
@@ -118,9 +142,9 @@ class AddReview extends Component {
   };
 
   render() {
-    const { ratingValue, reviewText, reviewData, mapValue } = this.state;
-    const { changeAverage } = this.props;
-    // const isValid = 10 <= reviewText.length;
+    const { ratingValue, reviewText, mapValue } = this.state;
+    const { reviewData, ratio } = this.props;
+    const isValid = 10 <= reviewText.length;
     return (
       <div className="addReview">
         <h2>상품 리뷰</h2>
@@ -128,13 +152,7 @@ class AddReview extends Component {
           상품을 구매하신 분들이 작성하신 리뷰입니다. 리뷰 작성 시 포인트가
           적립됩니다.
         </p>
-        <ReviewBoard
-          // reviewData={reviewData}
-          // atingValue={atingValue}
-          // reviewText={reviewText}
-          // reviewImgUrl={reviewImgUrl}
-          changeAverage={changeAverage}
-        />
+        <ReviewBoard reviewData={reviewData} ratio={ratio} />
         <div className="rating">
           <strong className="reviewTitle">상품은 만족하셨나요?</strong>
           <div>
@@ -165,7 +183,7 @@ class AddReview extends Component {
               placeholder="최소 10자 이상 입력해주세요"
               onChange={this.handleReviewText}
             ></textarea>
-            <p>{reviewText ? reviewText.length : 0} / 5,000</p>
+            <p>{reviewText.length}/ 5,000</p>
           </div>
           <div>
             <div className="addImgBtn">
@@ -181,8 +199,8 @@ class AddReview extends Component {
         </article>
         <div className="btn">
           <button
-            // disabled={isValid ? false : true}
-            // className={isValid ? 'activeBtn' : ''}
+            disabled={isValid ? false : true}
+            className={isValid ? 'activeBtn' : ''}
             onClick={this.uploadReviewData}
           >
             등록

@@ -7,11 +7,22 @@ class ReviewBoard extends Component {
     this.myRef = React.createRef();
     this.state = {
       mapValue: [5, 4, 3, 2, 1],
+      avgValue: 0,
     };
   }
 
   changeAverage = () => {
-    const { avgValue } = this.props;
+    const { reviewData } = this.props;
+    let avgVal = 0;
+    let avgValue = 0;
+    for (let i = 0; i < reviewData.length; i++) {
+      avgVal = reviewData[i].rating + avgVal;
+      console.log(avgVal);
+    }
+    avgValue = avgVal / reviewData.length;
+    this.setState({
+      avgValue: avgValue,
+    });
     const node = this.myRef.current.childNodes;
     const num = Number(String(avgValue).substr(0, 1));
     const point = Number(String(avgValue).substr(2, 1));
@@ -21,7 +32,7 @@ class ReviewBoard extends Component {
     for (let i = 0; i < 6 - num; i++) {
       node[
         num
-      ].style.background = `linear-gradient(to right, #f84f50 ${num}0%, #ebe9e9 ${
+      ].style.background = `linear-gradient(to right, #f84f50 ${point}0%, #ebe9e9 ${
         10 - point
       }0%)`;
       node[num].style.WebkitBackgroundClip = 'text';
@@ -29,13 +40,24 @@ class ReviewBoard extends Component {
     }
   };
 
+  handleRating = () => {
+    const { ratio } = this.props;
+    for (let i = 0; i < ratio.length; i++) {
+      if (ratio[i].rating === i + 1) {
+        console.log(ratio[i].rate_count);
+      }
+    }
+  };
+
   componentDidMount() {
     this.changeAverage();
+    this.handleRating();
   }
 
   render() {
-    const { mapValue } = this.state;
-    const { avgValue } = this.props;
+    const { mapValue, avgValue } = this.state;
+    const { reviewData, ratio } = this.props;
+
     return (
       <section className="board">
         <div className="average">
@@ -46,7 +68,7 @@ class ReviewBoard extends Component {
             })}
           </div>
           <p>
-            <span>{avgValue ? avgValue : 0}</span> / 5
+            <span>{avgValue ? Number(avgValue).toFixed(1) : 0}</span> / 5
           </p>
         </div>
         <div className="totalReview">
@@ -54,7 +76,7 @@ class ReviewBoard extends Component {
           <p>
             <i class="far fa-comment-dots" />
           </p>
-          <p>80</p>
+          <p>{reviewData.length}</p>
         </div>
         <div className="ratio">
           <strong className="subtitle">평점 비율</strong>

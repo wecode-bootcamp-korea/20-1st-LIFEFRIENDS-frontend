@@ -13,8 +13,10 @@ class ProductDetail extends Component {
     super();
     this.state = {
       key: 0,
-      productData: {},
-      copiedproductData: {},
+      productData: 0,
+      copiedproductData: 0,
+      reviewData: 0,
+      ratio: 0,
     };
   }
 
@@ -28,38 +30,18 @@ class ProductDetail extends Component {
           copiedproductData: data,
         })
       );
+    fetch(`http://10.58.7.181:8000/reviews/${this.props.match.params.id}`)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          reviewData: data.review_info,
+          ratio: data.review_summary.rate_count,
+        })
+      );
   }
 
-  changeAverage = () => {
-    const { avgValue } = this.state;
-    const node = this.myRef.current.childNodes;
-    const num = Number(String(avgValue).substr(0, 1));
-    const point = Number(String(avgValue).substr(2, 1));
-    console.log(num);
-    console.log(point, 10 - point);
-
-    for (let i = 0; i < num; i++) {
-      node[i].style.color = '#f84f50';
-    }
-
-    for (let i = 0; i < 6 - num; i++) {
-      // node[num].style.color = 'blue';
-      // node[num].style.background = 'blue';
-      // node[num].style.backgroundClip = 'text';
-      // node[num].style.color = 'transparent';
-
-      // node[
-      //   num
-      // ].style.background = `linear-gradient(to right, #f84f50 70%, #888888 30%)`;
-      // node[num].style.backgroundClip = 'text';
-      // node[num].style.color = 'transparent';
-
-      node[num].className = 'fas fa-star pointstar';
-    }
-  };
-
   render() {
-    const { key, copiedproductData } = this.state;
+    const { key, copiedproductData, reviewData, ratio } = this.state;
     return (
       <>
         <Nav />
@@ -80,7 +62,7 @@ class ProductDetail extends Component {
                   key={key}
                   copiedproductData={copiedproductData}
                 />
-                <AddReview changeAverage={this.changeAverage} />
+                <AddReview reviewData={reviewData} ratio={ratio} />
               </div>
             </section>
           </article>
