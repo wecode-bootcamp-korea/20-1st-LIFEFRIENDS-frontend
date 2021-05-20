@@ -79,8 +79,6 @@ class MainHeader extends Component {
     const { headerData } = this.state;
     const targetList = e.target.parentNode.parentNode.childNodes;
     for (let i = 0; i < headerData.length; i++) {
-      console.log(targetList[i].childNodes[0], e.target);
-
       if (targetList[i].childNodes[0].className === 'onClick') {
         targetList[i].childNodes[0].className = '';
       }

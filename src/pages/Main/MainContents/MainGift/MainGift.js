@@ -68,11 +68,13 @@ class MainGift extends Component {
       <section className="mainGift mainMiddleCards">
         <article>
           <h2 className="title">선물하기 좋은 제품</h2>
-          <MainMediumCard
-            data={items}
-            openModal={this.openModal}
-            ref={this.sliderRef}
-          />
+          {items && (
+            <MainMediumCard
+              data={items}
+              openModal={this.openModal}
+              ref={this.sliderRef}
+            />
+          )}
           <div>
             <p className="prev" onClick={this.handlePrevBtn}>
               <i className="fas fa-chevron-left" />

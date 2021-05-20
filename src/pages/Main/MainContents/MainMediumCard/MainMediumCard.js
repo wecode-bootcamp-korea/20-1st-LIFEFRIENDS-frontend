@@ -20,14 +20,13 @@ class MainMediumCard extends Component {
 
   render() {
     const { data } = this.props;
-    console.log(data);
     return (
       <div className="mainMediumCard ">
         {data &&
           data.map(el => {
             return (
-              <>
-                <div className="mediumCard" key={el.id}>
+              <React.Fragment key={el.id}>
+                <div className="mediumCard">
                   <img alt={el.imgAlt} src={el.imgUrl} />
                   <div className="hoverButtonBundle">
                     <img
@@ -47,7 +46,7 @@ class MainMediumCard extends Component {
                   <p>{el.cost}원</p>
                   <p>{el.name}</p>
                 </div>
-              </>
+              </React.Fragment>
             );
           })}
         <Modal

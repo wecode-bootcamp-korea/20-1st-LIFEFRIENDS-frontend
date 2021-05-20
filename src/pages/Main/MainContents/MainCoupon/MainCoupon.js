@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from '../../../../components/Modal/Modal';
 import '../MainCoupon/MainCoupon.scss';
 
 class MainCoupon extends Component {
@@ -6,7 +7,8 @@ class MainCoupon extends Component {
     super();
     this.state = {
       coupontData: {},
-      userName: '',
+      userName: '고객',
+      modalOn: false,
     };
   }
 
@@ -44,25 +46,48 @@ class MainCoupon extends Component {
     this.initializeUserInfo();
   }
 
+  openModal = () => {
+    this.setState({ modalOn: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalOn: false });
+  };
+
   render() {
     const { couponData, userName } = this.state;
     return (
-      <section className="mainCoupon">
-        <div>
-          <div className="coupon">
-            <h3>LIFE FRIENDS</h3>
-            <p>
-              <span>{couponData}</span>
-            </p>
-            <p>Brand Store Coupon</p>
+      <>
+        <section className="mainCoupon">
+          <div>
+            <div className="coupon">
+              <h3>LIFE FRIENDS</h3>
+              <p>
+                <span>{couponData}</span>
+              </p>
+              <p>Brand Store Coupon</p>
+            </div>
+            <div className="couponDesc">
+              <h2>{userName}님을 위한 혜택</h2>
+              <p>스토어찜 고객에게 드리는 혜택! {couponData} 장바구니 할인</p>
+              <button
+                className="linkBtn"
+                onClick={() => {
+                  this.openModal();
+                }}
+              >
+                쿠폰받기
+              </button>
+            </div>
           </div>
-          <div className="couponDesc">
-            <h2>{userName}님을 위한 혜택</h2>
-            <p>스토어찜 고객에게 드리는 혜택! {couponData} 장바구니 할인</p>
-            <button className="linkBtn">쿠폰받기</button>
-          </div>
-        </div>
-      </section>
+        </section>
+        <Modal
+          open={this.state.modalOn}
+          close={this.closeModal}
+          title="LIFE FRIENDS"
+          content="쿠폰이 발급되었습니다."
+        />
+      </>
     );
   }
 }
