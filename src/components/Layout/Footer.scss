@@ -1,12 +1,10 @@
 .Footer {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   font-size: 11px;
+  padding: 20px 0;
 
   .footerList {
     display: flex;
+    justify-content: center;
     margin: 5px auto;
     li {
       margin: 0 3px;

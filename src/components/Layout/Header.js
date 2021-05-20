@@ -6,7 +6,6 @@ export default class Header extends Component {
     return (
       <header className="Header">
         <img alt="logo" src="../../../Data/images/naver_logo.png" />
-        {/* <h1 className="Logo">NEVER</h1> */}
       </header>
     );
   }
