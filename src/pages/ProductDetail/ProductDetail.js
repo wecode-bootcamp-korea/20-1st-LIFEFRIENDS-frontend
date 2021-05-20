@@ -12,7 +12,7 @@ class ProductDetail extends Component {
     };
   }
   componentDidMount() {
-    fetch(`http://10.58.2.190:8000/products?id=${this.props.match.params.id}`)
+    fetch(`http://10.58.7.181:8000/products?id=${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -21,7 +21,7 @@ class ProductDetail extends Component {
           copiedproductData: data,
         })
       );
-    fetch(`http://10.58.2.190:8000/reviews/${this.props.match.params.id}`)
+    fetch(`http://10.58.7.181:8000/reviews/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data =>
         this.setState({
