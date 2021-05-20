@@ -41,7 +41,6 @@ class MainCoupon extends Component {
         this.setState({
           couponData: coupondata.MESSAGE,
         });
-        console.log(this.state.couponData);
       });
     this.initializeUserInfo();
   }

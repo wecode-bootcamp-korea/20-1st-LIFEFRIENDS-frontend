@@ -1,34 +1,62 @@
 import React from 'react';
 
 class OneReviewPreview extends React.Component {
+  constructor() {
+    super();
+    this.myRef = React.createRef();
+    this.state = {
+      mapValue: [5, 4, 3, 2, 1],
+    };
+  }
+
+  changeAverage = () => {
+    const { avgValue } = this.props;
+    const node = this.myRef.count && this.myRef.current.childNodes;
+    const num = Number(String(avgValue).substr(0, 1));
+    const point = Number(String(avgValue).substr(2, 1));
+    for (let i = 0; i < num; i++) {
+      node[i].style.color = '#F84F50';
+    }
+    for (let i = 0; i < 6 - num; i++) {
+      node[
+        num
+      ].style.background = `linear-gradient(to right, #F84F50 ${num}0%, #EBE9E9 ${
+        10 - point
+      }0%)`;
+      node[num].style.WebkitBackgroundClip = 'text';
+      node[num].style.color = 'transparent';
+    }
+  };
+
   render() {
+    this.changeAverage();
+    const { mapValue } = this.state;
+    const { user_name, created_at, product_size, text, review_image, rating } =
+      this.props.reviewData;
     return (
       <li>
         <div className="textAndImageGroup">
           <div className="textPart">
             <div className="stars">
-              <i className="fas fa-star" />
-              <i className="fas fa-star" />
-              <i className="fas fa-star" />
-              <i className="fas fa-star" />
-              <i className="fas fa-star" />
-              <span> 5</span>
+              <div ref={this.myRef}>
+                {mapValue.map(el => {
+                  return <i key={el} className="fas fa-star" />;
+                })}
+              </div>
+              <span>&nbsp;{rating}</span>
             </div>
             <div className="idDateSize">
-              <span>id </span>
-              <span>date </span>
-              <span>사이즈:(코딩필요)</span>
+              <span>{user_name} </span>
+              <span>&nbsp;{created_at.slice(0, 10)} </span>
+              <span>&nbsp;사이즈:&nbsp;{product_size}</span>
             </div>
             <div className="reviewText">
               {' '}
-              <p>
-                2줄 짜리 글씨
-                왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비왈라비비비비
-              </p>
+              <p>{text}</p>
             </div>
           </div>
           <div className="imagepart">
-            <img alt="test" src="/images/dog.png" />
+            <img alt="test" src={review_image} />
           </div>
         </div>
       </li>

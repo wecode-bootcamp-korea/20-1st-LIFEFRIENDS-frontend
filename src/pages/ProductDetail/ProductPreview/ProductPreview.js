@@ -6,38 +6,33 @@ class ProductPreview extends Component {
     super();
     this.state = {
       imgIndex: 0,
-      productData: {},
     };
   }
 
-  componentDidMount() {
-    fetch('')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ productData: res });
-      });
-  }
-
   goToPreview = e => {
-    const { imgIndex, productData } = this.state;
-    const { imgUrls } = productData;
+    const { imgIndex } = this.state;
+    const {
+      PreviewData: { images },
+    } = this.props;
     const { className } = e.target;
     const buttonName = className;
     this.setState({
       imgIndex:
         buttonName === 'previousButton'
-          ? imgIndex === imgUrls.length - 1
+          ? imgIndex === images.length - 1
             ? 0
             : imgIndex - 1
           : imgIndex === 0
-          ? imgUrls.length - 1
+          ? images.length - 1
           : imgIndex - 1,
     });
   };
 
   goToNext = e => {
-    const { imgIndex, productData } = this.state;
-    const { imgUrls } = productData;
+    const { imgIndex } = this.state;
+    const {
+      PreviewData: { images },
+    } = this.props;
     const { className } = e.target;
     const buttonName = className;
     this.setState({
@@ -46,7 +41,7 @@ class ProductPreview extends Component {
           ? imgIndex === 0
             ? imgIndex + 1
             : 0
-          : imgIndex === imgUrls.length - 1
+          : imgIndex === images.length - 1
           ? 0
           : imgIndex + 1,
     });
@@ -59,17 +54,25 @@ class ProductPreview extends Component {
   };
 
   render() {
-    const { productData } = this.state;
-    const { imgUrls, reviews } = productData;
+    const {
+      PreviewData: { images },
+    } = this.props;
+    const {
+      ReviewData: { review_info },
+    } = this.props;
 
     const { imgIndex } = this.state;
     let totalGrade = 0;
-    reviews && reviews.forEach(review => (totalGrade += review.grade));
+    review_info && review_info.forEach(review => (totalGrade += review.rating));
 
     return (
       <div className="productPreview">
         <div className="previewBigImg">
-          <img src={imgUrls && imgUrls[imgIndex]} alt="상품 미리보기"></img>
+          <img
+            alt="상품 미리보기"
+            src={images && images[imgIndex]}
+            className="previewBigPic"
+          ></img>
           <button
             className="previousButton"
             onClick={e => {
@@ -88,13 +91,14 @@ class ProductPreview extends Component {
           </button>
         </div>
         <ul className="previewMiniImgList">
-          {imgUrls &&
-            imgUrls.map((imgUrl, index) => {
+          {images &&
+            images.map((imgUrl, index) => {
               return (
                 <li key={index} className="previewMiniImg">
                   <img
-                    src={imgUrl}
                     alt="상품 미리보기"
+                    src={imgUrl}
+                    className="previewMiniPic"
                     onMouseOver={e => {
                       this.changePicMouseOver(e, index);
                     }}
@@ -105,12 +109,14 @@ class ProductPreview extends Component {
         </ul>
         <div className="reviewsInfo">
           <span className="titleOfTotalReviewNumber">리뷰수</span>
-          <span className="totalReviewNumber">{reviews && reviews.length}</span>
+          <span className="totalReviewNumber">
+            {review_info && review_info.length}
+          </span>
           <span className="titleOfTotalReviewScore">
             사용자 총 평점
             <span className="TotalReviewScore">
-              {reviews && reviews.length !== 0
-                ? Number(totalGrade / reviews.length).toFixed(1)
+              {review_info && review_info.length !== 0
+                ? Number(totalGrade / review_info.length).toFixed(1)
                 : 0}
             </span>
             /<span className="maxReviewScore">5</span>

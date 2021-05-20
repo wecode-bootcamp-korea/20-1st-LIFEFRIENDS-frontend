@@ -4,6 +4,7 @@
   margin-right: 15px;
   color: $--font-title-black;
 }
+
 .productPreview {
   .previewBigImg {
     position: relative;
@@ -11,11 +12,13 @@
     height: 500px;
     margin-top: 50px;
     padding: 0px 80px;
+
     img.previewBigPic {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .previousButton {
       position: absolute;
       top: 50%;
@@ -26,6 +29,7 @@
       font-size: 30px;
       cursor: pointer;
     }
+
     .nextButton {
       position: absolute;
       top: 50%;
@@ -37,9 +41,11 @@
       cursor: pointer;
     }
   }
+
   .previewMiniImgList {
     @include flexBox(center, center, row);
     margin-top: 35px;
+
     .previewMiniImg {
       margin: 0 5px;
       cursor: pointer;
@@ -53,6 +59,7 @@
   .reviewsInfo {
     @include flexBox(center, center, row);
     margin-top: 150px;
+
     .titleOfTotalReviewNumber {
       @extend %reviewAndReviewScore;
     }

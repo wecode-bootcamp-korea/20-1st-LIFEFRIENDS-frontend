@@ -14,14 +14,16 @@ export class CategoryList extends React.Component {
   goToMenuList = menuIndex => {
     const { eachCategoryList } = this.props;
     this.props.history.push(
-      `/categories?&menu=${eachCategoryList[menuIndex].menuName}`
+      `/categories?menu=${eachCategoryList[menuIndex].menuName}`
     );
   };
 
   goToCategoryList = (menuIndex, categoryIndex) => {
     const { eachCategoryList } = this.props;
     this.props.history.push(
-      `/categories?&theme=${eachCategoryList[menuIndex].categoryList[categoryIndex].categoryName}`
+      `/categories?${menuIndex < 6 ? 'theme' : 'category'}=${
+        eachCategoryList[menuIndex].categoryList[categoryIndex].categoryName
+      }`
     );
   };
 

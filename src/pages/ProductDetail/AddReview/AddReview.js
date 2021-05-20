@@ -15,35 +15,9 @@ class AddReview extends Component {
     };
   }
 
-  // initializeUserInfo = () => {
-  //   const loggedInfo = localStorage.getItem('AUTHORIZATION');
-  //   console.log(loggedInfo);
-  // fetch('http://10.58.7.181:8000/users/user', {
-  //   method: 'GET',
-  //   headers: {
-  //     AUTHORIZATION: loggedInfo,
-  //   },
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(loggedInfo);
-  // if (data.MESSAGE === 'SUCCESS') {
-  //   this.setState({
-  //     userName: data.USER_INFO.user_name,
-  //   });
-  // } else if (data.MESSAGE === 'LOGIN_REQUIRED') {
-  //   this.setState({
-  //     userName: '고객',
-  //   });
-  // }
-  // });
-  // };
-
   uploadReviewData = () => {
     const loggedInfo = localStorage.getItem('AUTHORIZATION');
-    console.log(loggedInfo);
     const { ratingValue, reviewText, reviewImgUrl } = this.state;
-    console.log(ratingValue, reviewText, reviewImgUrl);
     fetch('http://10.58.7.181:8000/reviews/1', {
       method: 'POST',
       headers: {
@@ -65,10 +39,6 @@ class AddReview extends Component {
         }
       });
   };
-
-  componentDidMount() {
-    // this.initializeUserInfo();
-  }
 
   mouseOverHandler = e => {
     const dataValue = e.target.dataset.value;
@@ -183,7 +153,7 @@ class AddReview extends Component {
               placeholder="최소 10자 이상 입력해주세요"
               onChange={this.handleReviewText}
             ></textarea>
-            <p>{reviewText.length}/ 5,000</p>
+            <p>{reviewText ? reviewText.length : 0}/ 5,000</p>
           </div>
           <div>
             <div className="addImgBtn">

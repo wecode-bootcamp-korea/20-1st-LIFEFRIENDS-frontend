@@ -22,7 +22,6 @@ class MainGift extends Component {
     fetch('http://10.58.7.181:8000/products/categories?&menu=선물추천')
       .then(response => response.json())
       .then(giftdata => {
-        console.log(giftdata);
         this.setState({
           giftData: giftdata.MESSAGE,
           items: giftdata.MESSAGE,

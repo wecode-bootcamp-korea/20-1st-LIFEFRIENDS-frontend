@@ -5,32 +5,49 @@ export class ReviewPreview extends React.Component {
   constructor() {
     super();
     this.state = {
-      test: 0,
+      reviewPage: 0,
     };
   }
 
+  pageUp = () => {
+    this.setState({
+      reviewPage: this.state.reviewPage + 4,
+    });
+  };
+
+  pageDown = () => {
+    this.setState({
+      reviewPage: this.state.reviewPage - 4,
+    });
+  };
+
   render() {
+    const { productData, reviewData } = this.props;
+    const { reviewPage } = this.state;
+    const { pageDown, pageUp } = this;
     return (
       <>
         <div className="ReviewPreview">
           <div className="showReviewTitle">
-            <span className="showReviewTitleLeft">포토/동영상(n-코딩파트)</span>
+            <span className="showReviewTitleLeft">
+              포토/동영상&nbsp;({reviewData && reviewData.length})
+            </span>
             <div className="showReviewTitleRight">
               <span>더보기 </span>
-              <button>{'<'}</button>
-              <button>{'>'}</button>
+              <button onClick={() => pageDown()}>{'<'}</button>
+              <button onClick={() => pageUp()}>{'>'}</button>
             </div>
           </div>
           <div className="show4Reviews">
             <ul>
-              <OneReviewPreview />
-              <OneReviewPreview />
-              <OneReviewPreview />
-              <OneReviewPreview />
+              {reviewData &&
+                reviewData.slice(reviewPage, reviewPage + 4).map(data => {
+                  return <OneReviewPreview reviewData={data} />;
+                })}
             </ul>
           </div>
         </div>
-        <div className="productPreview">
+        <div className="productPreviewScroll">
           <ul>
             <li
               className="scrollButton"
@@ -50,7 +67,7 @@ export class ReviewPreview extends React.Component {
                   .scrollIntoView({ block: 'start' })
               }
             >
-              <span>리뷰 (개수:코딩필요)</span>
+              <span>리뷰 ({reviewData && reviewData.length})</span>
             </li>
             <li className="scrollButton">
               <span>Q&A</span>
@@ -69,6 +86,10 @@ export class ReviewPreview extends React.Component {
             <img
               alt="generalPurchaseInfo02"
               src="/images/generalPurchaseInfo02.png"
+            />
+            <img
+              alt="test"
+              src={productData && productData.productdetail.description}
             />
           </div>
         </div>

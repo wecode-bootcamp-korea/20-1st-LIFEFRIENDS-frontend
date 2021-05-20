@@ -20,7 +20,6 @@ class MainProducts extends Component {
           productstData: productstdata.MESSAGE,
           num: num + 1,
         });
-        console.log(productstdata.MESSAGE);
       });
   };
 

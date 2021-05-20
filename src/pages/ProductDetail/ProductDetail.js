@@ -16,6 +16,7 @@ class ProductDetail extends Component {
       productData: 0,
       copiedproductData: 0,
       reviewData: 0,
+      reviewsData: 0,
       ratio: 0,
     };
   }
@@ -34,14 +35,20 @@ class ProductDetail extends Component {
       .then(res => res.json())
       .then(data =>
         this.setState({
-          reviewData: data.review_info,
+          reviewData: data,
+          reviewsData: data.review_info,
           ratio: data.review_summary.rate_count,
         })
       );
   }
 
   render() {
-    const { key, copiedproductData, reviewData, ratio } = this.state;
+    const { key, copiedproductData, reviewData, reviewsData, ratio } =
+      this.state;
+    const { images } = copiedproductData && copiedproductData.productdetail;
+    const { review_info } = reviewData && reviewData;
+    const PreviewData = { images };
+    const ReviewData = { review_info };
     return (
       <>
         <Nav />
@@ -52,7 +59,10 @@ class ProductDetail extends Component {
                 홈 > 캐릭터 > <span>BT21</span> (총 198개) | 다른상품보기
               </header>
               <div className="productInfoBox">
-                <ProductPreview />
+                <ProductPreview
+                  PreviewData={PreviewData}
+                  ReviewData={ReviewData}
+                />
                 <AddProduct />
               </div>
             </section>
@@ -60,9 +70,10 @@ class ProductDetail extends Component {
               <div className="content">
                 <ReviewPreview
                   key={key}
-                  copiedproductData={copiedproductData}
+                  productData={copiedproductData}
+                  reviewData={reviewsData}
                 />
-                <AddReview reviewData={reviewData} ratio={ratio} />
+                <AddReview reviewData={reviewsData} ratio={ratio} />
               </div>
             </section>
           </article>

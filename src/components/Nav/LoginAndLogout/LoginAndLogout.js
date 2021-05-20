@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './LoginAndLogout.scss';
 
 export class LoginAndLogout extends React.Component {
-  istAllInputValid = () => {
+  isAllInputValid = () => {
     const tokenValue = localStorage.getItem('AUTHORIZATION');
     fetch('http://172.16.20.241:8000/users/user', {
       method: 'GET',
@@ -22,14 +22,11 @@ export class LoginAndLogout extends React.Component {
   };
 
   changeLogout = () => {
-    localStorage.removeItem('AUTHORIZATION');
-    localStorage.removeItem('user_name');
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('user_email');
+    localStorage.clear();
   };
 
   render() {
-    this.istAllInputValid();
+    this.isAllInputValid();
     return (
       <div className="LoginAndLogout">
         {localStorage.AUTHORIZATION ? (

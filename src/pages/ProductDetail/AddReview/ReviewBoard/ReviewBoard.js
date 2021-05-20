@@ -17,7 +17,6 @@ class ReviewBoard extends Component {
     let avgValue = 0;
     for (let i = 0; i < reviewData.length; i++) {
       avgVal = reviewData[i].rating + avgVal;
-      console.log(avgVal);
     }
     avgValue = avgVal / reviewData.length;
     this.setState({
@@ -40,14 +39,14 @@ class ReviewBoard extends Component {
     }
   };
 
-  handleRating = () => {
-    const { ratio } = this.props;
-    for (let i = 0; i < ratio.length; i++) {
-      if (ratio[i].rating === i + 1) {
-        console.log(ratio[i].rate_count);
-      }
-    }
-  };
+  // handleRating = () => {
+  //   const { ratio } = this.props;
+  //   for (let i = 0; i < ratio.length; i++) {
+  //     if (ratio[i].rating === i + 1) {
+  //       console.log(ratio[i].rate_count);
+  //     }
+  //   }
+  // };
 
   componentDidMount() {
     this.changeAverage();

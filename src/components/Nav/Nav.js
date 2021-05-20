@@ -15,9 +15,7 @@ export class Navigator extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/Data/CategoryData.json', {
-      method: 'Get',
-    })
+    fetch('/Data/CategoryData.json')
       .then(res => res.json())
       .then(data => {
         this.setState({ categoryListData: data.results });
@@ -57,8 +55,10 @@ export class Navigator extends React.Component {
           </header>
           <nav className="navBody">
             <div className="logoAndSearch">
-              <Link className="logoLifeStore" to="/menu">
-                <button className="logoLifeStore">L I F E S T O R E</button>
+              <Link className="logoLifeStore" to="/">
+                <button className="logoLifeStore">
+                  L I F E &nbsp; F R I E N D S
+                </button>
               </Link>
               <div className="searchBox">
                 <input
@@ -81,7 +81,7 @@ export class Navigator extends React.Component {
                         <li key={category.menuId}>
                           <div>
                             <Link
-                              to={`/categories?&menu=${category.menuName}`}
+                              to={`/categories?menu=${category.menuName}`}
                               className="categoryName"
                             >
                               {category.menuName}

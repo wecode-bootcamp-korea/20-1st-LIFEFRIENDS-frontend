@@ -1,8 +1,5 @@
 .ReviewPreview {
   padding: 30px 0px;
-  border-left: 0.1px solid #c2c2c2;
-  border-right: 0.1px solid #c2c2c2;
-  border-bottom: 0.1px solid #c2c2c2;
 
   .showReviewTitle {
     padding: 0px 39px;
@@ -36,15 +33,22 @@
       padding: 0px 39px;
       width: 50%;
       height: 118px;
+      border-style: solid;
+      border-width: 0px 0.1px;
+      border-color: #c2c2c2;
 
       .textAndImageGroup {
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
+        width: 100%;
         align-items: center;
       }
 
       .stars {
+        display: flex;
+        flex-direction: row;
         font-weight: bold;
         font-size: 14px;
       }
@@ -72,14 +76,10 @@
         background-size: cover; //기능체크
       }
     }
-    li:nth-child(1),
-    li:nth-child(3) {
-      border-right: 0.1px solid #c2c2c2;
-    }
   }
 }
 
-.productPreview {
+.productPreviewScroll {
   ul {
     display: flex;
     flex-direction: row;
@@ -94,6 +94,8 @@
       font-weight: bold;
       text-align: center;
       background-color: #f3f5f7;
+      // border-left: 0.1px solid gray;
+      // border-right: 0.1px solid gray;
     }
 
     li:hover {
