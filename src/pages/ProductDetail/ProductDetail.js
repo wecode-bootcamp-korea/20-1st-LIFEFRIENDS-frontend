@@ -12,8 +12,22 @@ class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
-      avgValue: 4.7,
+      key: 0,
+      productData: {},
+      copiedproductData: {},
     };
+  }
+
+  componentDidMount() {
+    fetch(`http://10.58.2.190:8000/products?id=${this.props.match.params.id}`)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          key: data.productdetail.product_id,
+          productData: data,
+          copiedproductData: data,
+        })
+      );
   }
 
   changeAverage = () => {
@@ -46,6 +60,7 @@ class ProductDetail extends Component {
   };
 
   render() {
+    const { key, copiedproductData } = this.state;
     return (
       <>
         <Nav />
@@ -62,7 +77,10 @@ class ProductDetail extends Component {
             </section>
             <section>
               <div className="content">
-                <ReviewPreview />
+                <ReviewPreview
+                  key={key}
+                  copiedproductData={copiedproductData}
+                />
                 <AddReview changeAverage={this.changeAverage} />
               </div>
             </section>
