@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './AddProductTitle.scss';
 
 class AddProductTitle extends Component {
   render() {
+    const { name, cost } = this.props;
     return (
       <header className="titleBox">
-        <div className="addProductTitle">LINE FRENDS X CASETIFY</div>
-        <div className="addProductPrice">44,000원</div>
+        <div className="addProductTitle">{name}</div>
+        <div className="addProductPrice">{cost}원</div>
       </header>
     );
   }

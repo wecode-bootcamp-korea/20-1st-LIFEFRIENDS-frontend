@@ -1,32 +1,63 @@
 import React, { Component } from 'react';
-import './AddProductSize.scss';
 
 class AddProductSize extends Component {
+  constructor() {
+    super();
+    this.state = {
+      number: 1,
+    };
+  }
+
+  countQuantity = e => {
+    const { number } = this.state;
+    if (number < 1) {
+      this.setState({
+        number: 1,
+      });
+    } else if (e.target.className.includes('minus')) {
+      this.setState({
+        number: number - 1,
+      });
+    } else if (e.target.className.includes('plus')) {
+      this.setState({
+        number: number + 1,
+      });
+    }
+  };
+
   render() {
+    const { size, cost } = this.props;
+    const { number } = this.state;
     return (
       <>
         <div className="selectSizeBox">
           <select className="selectSize">
-            <option value="size">size</option>
-            <option value="singleproduct">single product</option>
+            {size.map(sizeName => (
+              <option value={sizeName} key={sizeName}>
+                {size}
+              </option>
+            ))}
           </select>
         </div>
         <div className="selectQuantityBox">
           <p className="sizeTitle">size</p>
           <div className="selectQuantity">
             <div className="countQuantity">
-              <div className="quantityBox minus">
-                <i class="fas fa-minus"></i>
-              </div>
-              <div className="quantityBox quantityNumber">1</div>
-              <div className="quantityBox plus">
-                <i class="fas fa-plus"></i>
-              </div>
+              <button
+                className="quantityBox minus"
+                onClick={this.countQuantity}
+              >
+                <i className="fas fa-minus"></i>
+              </button>
+              <div className="quantityBox quantityNumber">{number}</div>
+              <button className="quantityBox plus" onClick={this.countQuantity}>
+                <i className="fas fa-plus"></i>
+              </button>
             </div>
             <div className="countedPrice">
-              <p>44,000원</p>
+              <p>{cost * number}</p>
               <button className="closeQuantity">
-                <i class="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </button>
             </div>
           </div>

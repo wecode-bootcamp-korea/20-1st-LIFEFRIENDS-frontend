@@ -1,6 +1,14 @@
-{
-  "id": 1,
-  "product_name": "wecode",
-  "size": ["single", "double"],
-  "price": 34000
-}
+[
+  {
+    "id": 1,
+    "product_name": "LINE FRENDS X CASETIFY",
+    "size": ["single", "double"],
+    "price": 34000
+  },
+  {
+    "id": 2,
+    "product_name": "pencil",
+    "size": ["black", "yellow"],
+    "price": 4000
+  }
+]

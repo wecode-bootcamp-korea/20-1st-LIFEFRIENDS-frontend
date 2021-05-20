@@ -3,7 +3,27 @@ import AddProduct from './AddProduct/AddProduct';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      key: 0,
+      productData: {},
+      copiedproductData: {},
+    };
+  }
+  componentDidMount() {
+    fetch(`http://10.58.2.190:8000/products?id=${this.props.match.params.id}`)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          key: data.productdetail.product_id,
+          productData: data,
+          copiedproductData: data,
+        })
+      );
+  }
   render() {
+    const { key, copiedproductData } = this.state;
     return (
       <main className="productDetail">
         <article>
@@ -13,7 +33,7 @@ class ProductDetail extends Component {
             </header>
             <div className="productInfoBox">
               <div className="productPreview">준현님</div>
-              <AddProduct />
+              <AddProduct key={key} copiedproductData={copiedproductData} />
             </div>
           </section>
           <section>

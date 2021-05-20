@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './AddProductResults.scss';
 
 class AddProductResults extends Component {
   render() {
