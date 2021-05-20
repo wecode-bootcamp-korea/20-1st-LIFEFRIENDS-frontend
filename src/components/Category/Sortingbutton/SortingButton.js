@@ -1,6 +1,10 @@
 import React from 'react';
 
 class SortingButton extends React.Component {
+  changeDirectory = () => {
+    this.props.history.push(`/categories?&menu=`);
+  };
+
   render() {
     const {
       key,
@@ -9,6 +13,7 @@ class SortingButton extends React.Component {
       sortFunction,
       sortingRule,
       currentSortingField,
+      isFrontendOperating,
     } = this.props;
     return (
       <li key={key}>
@@ -16,7 +21,11 @@ class SortingButton extends React.Component {
           className={
             currentSortingField === field ? 'sortButtonOn' : 'sortButtonOff'
           }
-          onClick={() => sortFunction(field, sortingRule)}
+          onClick={
+            isFrontendOperating === true
+              ? () => sortFunction(field, sortingRule)
+              : () => this.changeDirectory()
+          }
         >
           {title}
         </button>

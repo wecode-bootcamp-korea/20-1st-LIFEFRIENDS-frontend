@@ -40,11 +40,15 @@
       .textAndImageGroup {
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
+        width: 100%;
         align-items: center;
       }
 
       .stars {
+        display: flex;
+        flex-direction: row;
         font-weight: bold;
         font-size: 14px;
       }
@@ -75,7 +79,7 @@
   }
 }
 
-.productPreview {
+.productPreviewScroll {
   ul {
     display: flex;
     flex-direction: row;

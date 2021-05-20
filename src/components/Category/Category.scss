@@ -30,6 +30,18 @@
       flex-direction: row;
       margin-top: 30px;
 
+      .frontendOperating {
+        position: relative;
+        left: 59%;
+        color: rgb(184, 0, 0);
+      }
+
+      .backendOperating {
+        position: relative;
+        left: 59%;
+        color: rgb(13, 0, 192);
+      }
+
       li .sortButtonOn {
         font-weight: bold;
         color: black;

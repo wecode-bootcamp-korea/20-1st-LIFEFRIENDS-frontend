@@ -46,14 +46,15 @@ class Category extends React.Component {
       itemsOnEachPage: 8,
       numberOfPages: [],
       currentPage: 1,
+      isFrontendOperating: true,
     };
   }
 
   // api 연결성공
   componentDidMount = () => {
-    const { producData, itemsOnEachPage } = this.state;
+    const { itemsOnEachPage } = this.state;
     fetch(
-      `http://172.16.20.241:8000/products/categories${this.props.location.search}`
+      `http://10.58.7.181:8000/products/categories${this.props.location.search}`
     )
       .then(res => res.json())
       .then(data => {
@@ -69,12 +70,12 @@ class Category extends React.Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    const { producData, itemsOnEachPage } = this.state;
+    const { itemsOnEachPage } = this.state;
     if (prevProps.location.search !== this.props.location.search)
-      this.props.location.search == '?&menu=전체상품'
-        ? fetch(`http://172.16.20.241:8000/products/categories`)
+      this.props.location.search === '?&menu=전체상품'
+        ? fetch(`http://10.58.7.181:8000/products/categories`)
         : fetch(
-            `http://172.16.20.241:8000/products/categories${this.props.location.search}`
+            `http://10.58.7.181:8000/products/categories${this.props.location.search}`
           )
             .then(res => res.json())
             .then(data => {
@@ -108,6 +109,13 @@ class Category extends React.Component {
     });
   };
 
+  operatingSystemChange = () => {
+    const { isFrontendOperating } = this.state;
+    this.setState({
+      isFrontendOperating: isFrontendOperating === true ? false : true,
+    });
+  };
+
   render() {
     const {
       productData,
@@ -116,9 +124,12 @@ class Category extends React.Component {
       currentPage,
       itemsOnEachPage,
       currentSortingField,
+      isFrontendOperating,
     } = this.state;
     const { categoryStatus, location } = this.props;
-    const { changeSortingField, pageChange } = this;
+    const { changeSortingField, pageChange, operatingSystemChange } = this;
+    console.log(this.props);
+    console.log(this.props.location.search);
 
     return (
       <article className="category">
@@ -142,9 +153,20 @@ class Category extends React.Component {
                   sortFunction={changeSortingField}
                   sortingRule={data.manyToLittle}
                   currentSortingField={currentSortingField}
+                  isFrontendOperating={isFrontendOperating}
                 />
               );
             })}
+            <button
+              onClick={() => operatingSystemChange()}
+              className={
+                isFrontendOperating === true
+                  ? 'frontendOperating'
+                  : 'backendOperating'
+              }
+            >
+              F/B convert
+            </button>
           </ul>
         </div>
         <div>

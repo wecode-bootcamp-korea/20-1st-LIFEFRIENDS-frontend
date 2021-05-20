@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import './CategoryList.scss';
 
@@ -15,15 +14,16 @@ export class CategoryList extends React.Component {
 
   goToCategory = i => {
     const { eachCategoryList, categoryStatus } = this.props;
-    this.props.history.push(
-      `/categories?&menu=${eachCategoryList[i].menuName}`
-    );
+    this.props.history.push({
+      pathname: '/categories',
+      search: `?menu=${eachCategoryList[i].menuName}`,
+    });
   };
 
   goToSubCategory = (i, j) => {
     const { eachCategoryList, categoryStatus } = this.props;
     this.props.history.push(
-      `/categories?&${i < 6 ? 'theme' : 'category'}=${
+      `/categories?${i < 6 ? 'theme' : 'category'}=${
         eachCategoryList[i].categoryList[j].categoryName
       }`
     );

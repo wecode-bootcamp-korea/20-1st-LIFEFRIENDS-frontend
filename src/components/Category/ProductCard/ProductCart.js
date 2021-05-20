@@ -8,7 +8,7 @@ class ProductCart extends React.Component {
       <li
         className="productOnCategory"
         key={id}
-        onClick={() => this.props.history.push({ name })}
+        onClick={() => this.props.history.push(`/productdetail/${id}`)}
       >
         <img alt="product01" src={imgUrl} />
         <div className="hoverButtonBundle">
