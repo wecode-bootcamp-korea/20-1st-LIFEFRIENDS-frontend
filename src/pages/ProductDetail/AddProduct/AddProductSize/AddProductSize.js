@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Modal from '../../../../components/Modal/Modal';
-import { GET_CART_API } from '../../../../config';
 
 class AddProductSize extends Component {
   constructor() {
@@ -16,8 +15,7 @@ class AddProductSize extends Component {
     e.preventDefault();
 
     const tokenValue = localStorage.getItem('AUTHORIZATION');
-    const API = GET_CART_API;
-    // const API = 'http://10.58.7.181:8000/orders/c÷art';
+    const API = 'http://10.58.7.181:8000/orders/cart';
     const { number, sizeValue } = this.state;
     const { product_id } = this.props;
 
@@ -29,11 +27,13 @@ class AddProductSize extends Component {
         size: sizeValue,
         quantity: number,
       }),
-    }).then(res => {
-      if (res.ok) {
-        this.setState({ modalOn: true });
-      }
-    });
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.MESSAGE === 'SUCCESS') {
+          this.setState({ modalOn: true });
+        }
+      });
   };
 
   openModal = () => {
@@ -46,15 +46,16 @@ class AddProductSize extends Component {
 
   countQuantity = e => {
     const { number } = this.state;
-    if (number < 1) {
+    const className = e.target.className;
+    if (number <= 0) {
       this.setState({
         number: 1,
       });
-    } else if (e.target.className.includes('minus')) {
+    } else if (className.includes('minus')) {
       this.setState({
         number: number - 1,
       });
-    } else if (e.target.className.includes('plus')) {
+    } else if (className.includes('plus')) {
       this.setState({
         number: number + 1,
       });
@@ -68,18 +69,20 @@ class AddProductSize extends Component {
   };
 
   render() {
-    const { product_id, size, cost } = this.props;
+    const { size, cost } = this.props;
     const { number, sizeValue, modalOn } = this.state;
-    const buyingModal = `총 ${cost * number}원 구매완료 되었습니다.`;
+    const resultPrice = (cost * number).toLocaleString();
+    const buyingModal = `총 ${resultPrice}원 구매완료 되었습니다.`;
     const cartModal = `총 ${number}개의 상품이 장바구니에 담겼습니다.`;
 
     return (
       <>
         <div className="selectSizeBox">
           <select className="selectSize" onChange={this.selectSize}>
+            <option value="size">option</option>
             {size &&
               size.map(sizeName => (
-                <option value="size" key={sizeName}>
+                <option value={sizeName} key={sizeName}>
                   {sizeName}
                 </option>
               ))}
@@ -101,7 +104,7 @@ class AddProductSize extends Component {
               </button>
             </div>
             <div className="countedPrice">
-              <p>{cost * number}원</p>
+              <p>{resultPrice}원</p>
             </div>
           </div>
         </div>
@@ -114,12 +117,18 @@ class AddProductSize extends Component {
               <span className="textGray">총 수량 {number}개 |</span>
             </p>
             <h2>
-              <span className="textBlue">{cost * number}원</span>
+              <span className="textBlue">{resultPrice}원</span>
             </h2>
           </div>
         </section>
         <form className="addProductButtonBox" onSubmit={this.sendBuyingInfo}>
-          <button className="addProductBtn buyingBtn">구매하기</button>
+          <button
+            name="buy"
+            onClick={this.sendBuyingInfo}
+            className="addProductBtn buyingBtn"
+          >
+            구매하기
+          </button>
           {modalOn && (
             <Modal
               open={modalOn}
@@ -128,15 +137,9 @@ class AddProductSize extends Component {
               content={buyingModal}
             />
           )}
-          <button className="addProductBtn cartBtn">장바구니</button>
-          {modalOn && (
-            <Modal
-              open={modalOn}
-              close={this.closeModal}
-              title="LIFE FRIENDS"
-              content={cartModal}
-            />
-          )}
+          <button name="cart" className="addProductBtn cartBtn">
+            장바구니
+          </button>
         </form>
       </>
     );

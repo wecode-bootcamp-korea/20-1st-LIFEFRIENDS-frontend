@@ -20,13 +20,13 @@ class MainGift extends Component {
 
   componentDidMount() {
     const { target } = this.state;
-    // fetch('http://10.58.7.181:8000/categories?menu=선물추천')
+    // fetch('http://10.58.7.181:8000/products/categories?menu=선물추천')
     fetch(GET_GIFT_API)
       .then(response => response.json())
       .then(giftdata => {
         this.setState({
-          giftData: giftdata.MESSAGE,
-          items: giftdata.MESSAGE,
+          giftData: giftdata.message,
+          items: giftdata.message,
           cnt: target,
         });
       });

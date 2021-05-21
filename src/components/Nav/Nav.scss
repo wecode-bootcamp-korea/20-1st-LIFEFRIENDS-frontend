@@ -19,7 +19,8 @@
       @include flexBox(space-between, center, row);
       padding: 0 10px;
       border-bottom: 1px solid $--border-line;
-      color: $--font-desc-gray;
+      color: $--font-title-black;
+      font-weight: 600;
       font-size: 15px;
       .navHeaderLeft {
         .toMoveNaverPage {
@@ -43,6 +44,7 @@
           @include flexBox(center, center, row);
           margin: 22px auto;
           color: $--font-title-black;
+          font-weight: 600;
           font-size: 34px;
           font-weight: bolder;
         }
@@ -57,9 +59,11 @@
             margin-top: 20px 0;
             margin-bottom: 22px;
             padding-left: 10px;
-            border: 1px solid $--font-desc-gray;
+            border: 1px solid $--font-title-black;
+            font-weight: 600;
             border-radius: 10px;
             font-size: 13px;
+            color: black;
           }
 
           .searchButton {
@@ -76,7 +80,7 @@
             padding: 16px 0;
             max-height: 450px;
             background: white;
-            border: 1px solid $--font-desc-gray;
+            border: 1px solid $--font-title-black;
             border-radius: 10px;
             box-shadow: 0 30px 90px rgba(0, 0, 0, 0.09);
             z-index: 30;

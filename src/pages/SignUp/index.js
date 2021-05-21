@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import SignUpForm from '../../components/Form/SignUpForm';
-import { GET_SIGNUP_API } from '../../config';
 
 export default class SignUp extends Component {
   constructor() {
@@ -19,8 +18,7 @@ export default class SignUp extends Component {
 
   goToLogin = e => {
     e.preventDefault();
-    // const SIGNUPAPI = 'http://10.58.7.181:8000/users/signup';
-    const SIGNUPAPI = GET_SIGNUP_API;
+    const SIGNUPAPI = 'http://10.58.7.181:8000/users/signup';
     const { email, password, name, birth_date, gender, phone_number } =
       this.state;
     fetch(SIGNUPAPI, {
@@ -37,6 +35,9 @@ export default class SignUp extends Component {
       .then(res => {
         switch (res.status) {
           case 400:
+            alert('값을 확인해주세요.');
+            break;
+
           case 401:
             alert('값을 확인해주세요.');
             break;
@@ -50,9 +51,11 @@ export default class SignUp extends Component {
         }
       })
       .then(res => {
-        if (res.status === 201) {
+        if (!res) {
+          return;
+        } else if (res.message === 'SUCCESS') {
           //push to Login
-          this.props.history.push('./Login');
+          this.props.history.push('./login');
         }
       });
   };

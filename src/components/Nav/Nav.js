@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CategoryList from './CategoryList/CategoryList';
 import LoginAndLogout from '../Nav/LoginAndLogout/LoginAndLogout';
+import { GET_NAVBAR_API } from '../../config';
 import './Nav.scss';
 
 export class Navigator extends React.Component {
@@ -15,7 +16,7 @@ export class Navigator extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/Data/CategoryData.json')
+    fetch(GET_NAVBAR_API)
       .then(res => res.json())
       .then(data => {
         this.setState({ categoryListData: data.results });

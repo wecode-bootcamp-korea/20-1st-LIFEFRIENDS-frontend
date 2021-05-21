@@ -37,40 +37,39 @@ export default class LoginForm extends Component {
             />
           ))}
           <Button text={text} type={type} loginValid={loginValid} />
-        </form>
-
-        <div className="loginOption">
-          <div className="statusBox">
-            <button className="keepLogin" onClick={handleStatus}>
-              {loginState.statusActive ? (
-                <i className="fas fa-check-circle loginStatusAfter"></i>
+          <div className="loginOption">
+            <div className="statusBox">
+              <button className="keepLogin" onClick={handleStatus}>
+                {loginState.statusActive ? (
+                  <i className="fas fa-check-circle loginStatusAfter"></i>
+                ) : (
+                  <i className="far fa-check-circle loginStatusBefore"></i>
+                )}
+              </button>
+              로그인 상태 유지
+            </div>
+            <button className="ipSecurity" onClick={handleIp}>
+              IP 보안
+              {loginState.ipActive ? (
+                <span className="ipOnOff ipOn">ON</span>
               ) : (
-                <i className="far fa-check-circle loginStatusBefore"></i>
+                <span className="ipOnOff ipOff">OFF</span>
               )}
             </button>
-            로그인 상태 유지
           </div>
-          <button className="ipSecurity" onClick={handleIp}>
-            IP 보안
-            {loginState.ipActive ? (
-              <span className="ipOnOff ipOn">ON</span>
-            ) : (
-              <span className="ipOnOff ipOff">OFF</span>
-            )}
-          </button>
-        </div>
 
-        <div className="findInfoList">
-          <Link to="#" className="findInfo forgotId">
-            아이디 찾기
-          </Link>
-          <Link to="#" className="findInfo forgotPw">
-            비밀번호 찾기
-          </Link>
-          <Link to="./signup" className="findInfo signUp">
-            회원가입
-          </Link>
-        </div>
+          <div className="findInfoList">
+            <Link to="#" className="findInfo forgotId">
+              아이디 찾기
+            </Link>
+            <Link to="#" className="findInfo forgotPw">
+              비밀번호 찾기
+            </Link>
+            <Link to="./signup" className="findInfo signUp">
+              회원가입
+            </Link>
+          </div>
+        </form>
       </PageLayout>
     );
   }

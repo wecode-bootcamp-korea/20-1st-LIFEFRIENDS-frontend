@@ -7,7 +7,7 @@ class MainCoupon extends Component {
   constructor() {
     super();
     this.state = {
-      coupontData: {},
+      coupontData: 0,
       userName: '고객',
       modalOn: false,
     };
@@ -23,15 +23,24 @@ class MainCoupon extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.MESSAGE === 'SUCCESS') {
+        if (data.message === 'SUCCESS') {
           this.setState({
-            userName: data.USER_INFO.user_name,
-          });
-        } else if (data.MESSAGE === 'LOGIN_REQUIRED') {
-          this.setState({
-            userName: '고객',
+            userName: data.user_info.user_name,
           });
         }
+        // if (data.MESSAGE === 'LOGIN_REQUIRED')
+        else {
+          this.setState({
+            userName: '고객',
+            couponData: 0,
+          });
+        }
+        // else if (data.MESSAGE === 'INVALID_JWT') {
+        //   this.setState({
+        //     userName: '고객',
+        //     coupontData: 0,
+        //   });
+        // }
       });
   };
 
@@ -40,11 +49,13 @@ class MainCoupon extends Component {
     fetch(GET_COUPON_API)
       .then(response => response.json())
       .then(coupondata => {
-        this.setState({
-          couponData: coupondata.MESSAGE,
-        });
+        this.setState(
+          {
+            couponData: coupondata.message,
+          },
+          () => this.initializeUserInfo()
+        );
       });
-    this.initializeUserInfo();
   }
 
   openModal = () => {
@@ -57,6 +68,7 @@ class MainCoupon extends Component {
 
   render() {
     const { couponData, userName } = this.state;
+    console.log(couponData, userName);
     return (
       <>
         <section className="mainCoupon">

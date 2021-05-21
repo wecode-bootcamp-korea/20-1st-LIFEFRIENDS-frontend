@@ -23,7 +23,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    fetch(`${GET_PRODUCT_API}?id=${this.props.match.params.id}`)
+    fetch(`${GET_PRODUCT_API}/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -75,7 +75,11 @@ class ProductDetail extends Component {
                   productData={copiedproductData}
                   reviewData={reviewsData}
                 />
-                <AddReview reviewData={reviewsData} ratio={ratio} />
+                <AddReview
+                  review_info={review_info}
+                  reviewData={reviewsData}
+                  ratio={ratio}
+                />
               </div>
             </section>
           </article>

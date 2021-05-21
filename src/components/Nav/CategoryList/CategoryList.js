@@ -36,7 +36,6 @@ export class CategoryList extends React.Component {
 
   render() {
     const { eachCategoryList } = this.props;
-
     return (
       <div className="totalCategoryList">
         <div className="categoryList">
@@ -58,15 +57,12 @@ export class CategoryList extends React.Component {
 
                   {menuObj.categoryList.length > 0 && (
                     <div className="subMenuList">
-                      {menuObj.categoryList.map(subMenuObj => (
+                      {menuObj.categoryList.map((subMenuObj, index) => (
                         <span
                           key={subMenuObj.categoryId}
                           className="subMenu"
                           onClick={() => {
-                            this.goToCategoryList(
-                              menuObj.menuId - 1,
-                              subMenuObj.categoryId - 1
-                            );
+                            this.goToCategoryList(menuObj.menuId - 1, index);
                           }}
                         >
                           {subMenuObj.categoryName}
@@ -114,15 +110,12 @@ export class CategoryList extends React.Component {
                   </span>
                   {menuObj.categoryList.length > 0 && (
                     <div className="subMenuListNextLine">
-                      {menuObj.categoryList.map(subMenuObj => (
+                      {menuObj.categoryList.map((subMenuObj, index) => (
                         <span
                           key={subMenuObj.categoryId}
                           className="subMenuNextLine"
                           onClick={() => {
-                            this.goToCategoryList(
-                              menuObj.menuId - 1,
-                              subMenuObj.categoryId - 1
-                            );
+                            this.goToCategoryList(menuObj.menuId - 1, index);
                           }}
                         >
                           {subMenuObj.categoryName}

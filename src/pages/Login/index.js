@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import LoginForm from '../../components/Form/LoginForm';
-import { GET_LOGIN_API } from '../../config';
 
 export default class Login extends Component {
   constructor() {
@@ -15,8 +14,7 @@ export default class Login extends Component {
 
   goToMain = e => {
     e.preventDefault();
-    // const API = 'http://10.58.7.181:8000/users/login';
-    const API = GET_LOGIN_API;
+    const API = 'http://10.58.7.181:8000/users/login';
     const { email, password } = this.state;
     fetch(API, {
       method: 'POST',
@@ -44,7 +42,7 @@ export default class Login extends Component {
       .then(res => {
         if (res) {
           // save localstroage
-          localStorage.setItem('AUTHORIZATION', res['ACCESS_TOKEN']);
+          localStorage.setItem('AUTHORIZATION', res['access_token']);
           // push to main
           this.props.history.push('./');
         }

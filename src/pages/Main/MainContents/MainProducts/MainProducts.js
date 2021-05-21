@@ -7,7 +7,7 @@ class MainProducts extends Component {
   constructor() {
     super();
     this.state = {
-      productstData: 0,
+      productsData: 0,
       num: 1,
     };
   }
@@ -25,9 +25,9 @@ class MainProducts extends Component {
     const { num } = this.state;
     fetch(`${GET_CATEGORY_API}/categories?size=10&page=${num}`)
       .then(response => response.json())
-      .then(productstdata => {
+      .then(productsdata => {
         this.setState({
-          productstData: productstdata.MESSAGE,
+          productsData: productsdata.message,
           num: num + 1,
         });
       });
@@ -46,15 +46,15 @@ class MainProducts extends Component {
     if (scrollTop + clientHeight >= scrollHeight) {
       fetch(`${GET_CATEGORY_API}/categories?size=10&page=${num}`)
         .then(response => response.json())
-        .then(productstdata => {
+        .then(productsdata => {
           this.setState({
             productstData: [
-              ...this.state.productstData,
-              ...productstdata.MESSAGE,
+              ...this.state.productsData,
+              ...productsdata.message,
             ],
           });
         });
-      // this.getData();
+      this.getData();
     }
   };
 

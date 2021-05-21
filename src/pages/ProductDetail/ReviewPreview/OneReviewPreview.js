@@ -10,14 +10,13 @@ class OneReviewPreview extends React.Component {
   }
 
   componentDidMount() {
-    this.changeAverage();
+    this.changeAvg();
   }
 
-  changeAverage = () => {
-    const { rating } = this.props;
-    const node = this.myRef.count && this.myRef.current.childNodes;
-    const num = Number(String(rating).substr(0, 1));
-    const point = Number(String(rating).substr(2, 1));
+  changeAvg = () => {
+    const { rating } = this.props.reviewData;
+    const node = this.myRef.current.childNodes;
+    const num = Number(String(rating));
     if (isNaN(rating)) return;
 
     if (num === 5) {
@@ -28,13 +27,6 @@ class OneReviewPreview extends React.Component {
       for (let i = 0; i < num; i++) {
         node[i].style.color = '#f84f50';
       }
-      node[
-        num + 1
-      ].style.background = `linear-gradient(to right, #f84f50 ${point}0%, #ebe9e9 ${
-        10 - point
-      }0%)`;
-      node[num + 1].style.WebkitBackgroundClip = 'text';
-      node[num + 1].style.color = 'transparent';
     }
   };
 

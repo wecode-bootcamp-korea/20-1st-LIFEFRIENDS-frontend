@@ -26,7 +26,7 @@ class MainNews extends Component {
         <article>
           <h2 className="title">주목할만한 소식</h2>
           <MainLargeCard mainNews={mainNews} />
-          <Link to="/product?menu=전체상품" className="linkBtn">
+          <Link to="/categories" className="linkBtn">
             쇼핑 스토리 전체 보기
           </Link>
         </article>

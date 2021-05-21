@@ -4,7 +4,6 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/index';
 import SignUp from './pages/SignUp/index';
 import Category from './components/Category/Category';
-// import Nav from './components/Nav/Nav';
 import ProductDatail from './pages/ProductDetail/ProductDetail';
 
 class Routes extends React.Component {

@@ -13,9 +13,9 @@ export class LoginAndLogout extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.MESSAGE === 'SUCCESS') {
-          localStorage.setItem('user_name', res.USER_INFO.user_name);
-          localStorage.setItem('user_email', res.USER_INFO.user_email);
+        if (res.message === 'SUCCESS') {
+          localStorage.setItem('user_name', res.user_info.user_name);
+          localStorage.setItem('user_email', res.user_info.user_email);
         }
         if (res.result === 'INVALID_USER') {
           return alert('비밀번호 또는 이메일이 잘 못 되었습니다.');

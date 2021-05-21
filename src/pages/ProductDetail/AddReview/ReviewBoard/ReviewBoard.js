@@ -7,26 +7,14 @@ class ReviewBoard extends Component {
     this.myRef = React.createRef();
     this.state = {
       mapValue: [5, 4, 3, 2, 1],
-      avgValue: 0,
     };
   }
 
-  changeAverage = () => {
-    const { reviewData } = this.props;
-    let avgVal = 0;
-    let avgValue = 0;
-    for (let i = 0; i < reviewData.length; i++) {
-      avgVal = reviewData[i].rating + avgVal;
-    }
-    avgValue = avgVal / reviewData.length;
-    this.setState({
-      avgValue: avgValue,
-    });
-
+  changeAverage = avgValue => {
+    if (isNaN(avgValue)) return;
     const node = this.myRef.current.childNodes;
     const num = Number(String(avgValue).substr(0, 1));
     const point = Number(String(avgValue).substr(2, 1));
-    if (isNaN(avgValue)) return;
 
     if (num === 5) {
       for (let i = 0; i < num; i++) {
@@ -37,12 +25,12 @@ class ReviewBoard extends Component {
         node[i].style.color = '#f84f50';
       }
       node[
-        num + 1
+        num
       ].style.background = `linear-gradient(to right, #f84f50 ${point}0%, #ebe9e9 ${
         10 - point
       }0%)`;
-      node[num + 1].style.WebkitBackgroundClip = 'text';
-      node[num + 1].style.color = 'transparent';
+      node[num].style.WebkitBackgroundClip = 'text';
+      node[num].style.color = 'transparent';
     }
   };
 
@@ -55,14 +43,16 @@ class ReviewBoard extends Component {
   //   }
   // };
 
-  componentDidMount() {
-    this.changeAverage();
-    // this.handleRating();
-  }
-
   render() {
-    const { mapValue, avgValue } = this.state;
+    const { mapValue } = this.state;
     const { reviewData } = this.props;
+    let avgVal = 0;
+    let avgValue = 0;
+    for (let i = 0; i < reviewData.length; i++) {
+      avgVal = reviewData[i].rating + avgVal;
+    }
+    avgValue = avgVal / reviewData.length;
+    this.changeAverage(avgValue);
 
     return (
       <section className="board">

@@ -56,19 +56,17 @@ class Category extends React.Component {
   // api 연결성공
   componentDidMount = () => {
     const { itemsOnEachPage } = this.state;
-    fetch(
-      `${GET_CATEGORY_API}/products/categories${this.props.location.search}`
-    )
+    fetch(`${GET_CATEGORY_API}/categories${this.props.location.search}`)
       // fetch(
       //   `http://10.58.7.181:8000/products/categories${this.props.location.search}`
       // )
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productDataOrigin: data.MESSAGE,
-          productData: data.MESSAGE,
+          productDataOrigin: data.message,
+          productData: data.message,
           numberOfPages: Array.from(
-            { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
+            { length: Math.ceil(data.message.length / itemsOnEachPage) },
             (v, i) => i //원리 이해 필요
           ),
         });
@@ -79,20 +77,18 @@ class Category extends React.Component {
     const { itemsOnEachPage } = this.state;
     if (prevProps.location.search !== this.props.location.search)
       this.props.location.search === '?&menu=전체상품'
-        ? fetch(`${GET_CATEGORY_API}/products/categories`)
+        ? fetch(`${GET_CATEGORY_API}/categories`)
         : // fetch(`http://10.58.7.181:8000/products/categories`)
-          fetch(
-            `${GET_CATEGORY_API}/products/categories${this.props.location.search}`
-          )
+          fetch(`${GET_CATEGORY_API}/categories${this.props.location.search}`)
             // fetch(
             //   `http://10.58.7.181:8000/products/categories${this.props.location.search}`
             // )
             .then(res => res.json())
             .then(data => {
               this.setState({
-                productData: data.MESSAGE,
+                productData: data.message,
                 numberOfPages: Array.from(
-                  { length: Math.ceil(data.MESSAGE.length / itemsOnEachPage) },
+                  { length: Math.ceil(data.message.length / itemsOnEachPage) },
                   (v, i) => i //원리 이해 필요
                 ),
               });
